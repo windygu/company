@@ -1,0 +1,214 @@
+package com.astrolink.dao;
+
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
+
+import com.astrolink.consts.Const;
+import com.astrolink.domain.WoChannelExecLog;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IExecFinish;
+import com.astrolink.util.tools.BasicsTools;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTool;
+import com.astrolink.util.tools.ExceptionTools;
+import com.astrolink.util.tools.PostNetWork;
+import com.astrolink.util.tools.business.CryptUtil;
+import com.sun.rowset.CachedRowSetImpl;
+
+
+/**
+ * 发送短信线程
+ * @author cuilei
+ * @date 2015-11-30
+ */
+public class WoChannelSmsExecLinstenerThreadDao extends JobThread{
+	private Logger logger = Logger.getLogger(WoChannelSmsExecLinstenerThreadDao.class);
+	private String dbTableName;
+	public WoChannelExecLog woExecLog;
+	public IExecFinish execFinish;
+	private int connectionTimeout=Integer.parseInt(Const.WOCHANNE_connectionTimeout); 
+	private int soTimeout=Integer.parseInt(Const.WOCHANNE_soTimeout); 
+	
+	
+	public WoChannelSmsExecLinstenerThreadDao(WoChannelExecLog woExecLog){
+		this.woExecLog = woExecLog;
+	}
+	
+	public void setExecFinish(IExecFinish execFinish) {
+		this.execFinish = execFinish;
+	}
+	 
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	@Override
+	public void exec() {
+		logger.info("开始沃渠道计费确认，id为" + this.getKey());
+		boolean type=false;
+		String phoneNumber ="0";
+		try {
+			String payInfo = getPayInfo();
+			logger.info(payInfo);
+			payInfo = CryptUtil.encryptBy3DesAndBase64(URLEncoder.encode(payInfo, "utf-8"), "FILTERMAN");
+			String result=HTTPConnectPost(payInfo);
+			String str = CryptUtil.decryptBy3DesAndBase64(result, "FILTERMAN");
+			try {
+				//{"checkXY":0,"code":"0","dotFlag":"00011300000000000000","functionPara":"0000000000","isBlackUser":false,"isFirstOpenPopWindow":1,"isOpenPopWindow":3,"isShowPic":0,"moNumber":"10655198","payfee":5000,"provid":"4043","reqeustType":3,"showtime":5000,"ssmsFlag":"0","upNumber":"10655198008"}
+				//{"checkXY":0,"code":"0","dotFlag":"10001300000000000000","functionPara":"0000000000","isBlackUser":false,"isFirstOpenPopWindow":1,"isOpenPopWindow":3,"isShowPic":0,"moNumber":"10655198","payfee":5000,"phone":"13241264146","provid":"4043","reqeustType":3,"showtime":5000,"ssmsFlag":"0","upNumber":"10655198008"}
+				//{"checkXY":0,"code":"0","dotFlag":"10001300000000000000","functionPara":"0000000000","isBlackUser":false,"isFirstOpenPopWindow":1,"isOpenPopWindow":3,"isShowPic":0,"moNumber":"10655198","payfee":5000,"phone":"15639225506","provid":"4057","reqeustType":3,"showtime":5000,"ssmsFlag":"0","upNumber":"10655198008"}
+				JSONObject json=JSONObject.fromObject(str);
+				if(json.containsKey("phone")){
+					type=true;
+					phoneNumber=json.getString("phone");
+				}
+			} catch (Exception e) {
+				type=false;
+			}
+			logger.info(str);
+		} catch (Exception e) {
+			logger.error(ExceptionTools.exception(e));
+		}finally{
+			if(type){
+				updataExecLog(woExecLog.getId());
+				sevePayResultLog(phoneNumber,type);
+			}else{
+				if(woExecLog.getExecNum()<Const.WOCHANNE_LOGIC_RETRY_NUM-1){
+				//if(dmExecLog.getExecNum()<Const.WOCHANNE_LOGIC_RETRY_NUM_SK-1){
+					updateExecNum(woExecLog.getId());
+				}else{
+					updataExecLog(woExecLog.getId());
+					sevePayResultLog(phoneNumber,type);
+				}
+			}
+			
+			if (execFinish != null) {
+				execFinish.execDone(this.getKey());
+				logger.info("处理请求结束，id为" + this.getKey());
+			}
+		}
+	}
+	public  void updateExecNum(long id){
+		StringBuffer sqlBuff=new StringBuffer();
+		sqlBuff.append("UPDATE ").append(dbTableName).append(" SET  execNum = execNum+1, updateDate='").append(BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss")).append("'  WHERE `id` = '").append(id).append("' ");
+		DbTools dt=new  DbTools(Const.DB_WOCHANNE_URL,Const.DB_MYSQL_DRIVER,Const.DB_WOCHANNE_USERNAME,Const.DB_WOCHANNE_PASSWORD);
+		logger.info("updateExecNum：" + dt.upDate(sqlBuff.toString(), WoChannelSmsExecLinstenerThreadDao.class));
+	}
+	
+	public  void updataExecLog(long id){
+		StringBuffer sqlBuff=new StringBuffer();
+		//sqlBuff.append("UPDATE WOCHANNE.exec_log SET deleteType = '1' WHERE id= '").append(id).append("'");
+		sqlBuff.append("DELETE FROM "+Const.WOCHANNE_TABLE_EXEX_LOG+" WHERE id = '").append(id).append("'");
+		DbTools dt=new  DbTools(Const.DB_WOCHANNE_URL,Const.DB_MYSQL_DRIVER,Const.DB_WOCHANNE_USERNAME,Const.DB_WOCHANNE_PASSWORD);
+		logger.info("deleteExecLog：" + dt.upDate(sqlBuff.toString(), WoChannelSmsExecLinstenerThreadDao.class));
+	}
+	
+	public void sevePayResultLog(String phoneNumber,boolean type){
+		JSONObject dataInfo=new JSONObject();
+		dataInfo.put("execLogId", woExecLog.getId());
+		dataInfo.put("cpInfoId", woExecLog.getCpInfoId());
+		dataInfo.put("spProductConsumeCodeId",woExecLog.getSsid() );
+		dataInfo.put("imei", woExecLog.getImei());
+		dataInfo.put("imsi", woExecLog.getImsi());
+		dataInfo.put("phoneNumber", phoneNumber);
+		dataInfo.put("channelId", woExecLog.getChannel());
+		dataInfo.put("monum", woExecLog.getMonum());
+		dataInfo.put("consumeCode", woExecLog.getConsumeCode());
+		dataInfo.put("cpparam", woExecLog.getCpparam());
+		dataInfo.put("execNum", woExecLog.getExecNum());
+		dataInfo.put("methodType", woExecLog.getMethodType());
+		dataInfo.put("dayTime", BasicsTools.getForDate("yyyy-MM-dd"));
+		dataInfo.put("inputDate", BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss"));
+		dataInfo.put("orderId", woExecLog.getOrderId());
+		if(type){
+			dataInfo.put("status", 1);
+		}else{
+			dataInfo.put("status", 0);
+		}
+		if(String.valueOf(woExecLog.getProxyIp()).equals("") || String.valueOf(woExecLog.getProxyIp()).equals("null")){
+			dataInfo.put("proxyIp", "");
+		}else{
+			dataInfo.put("proxyIp", woExecLog.getProxyIp());
+		}
+		DbTools dt=new  DbTools(Const.DB_WOCHANNE_URL,Const.DB_MYSQL_DRIVER,Const.DB_WOCHANNE_USERNAME,Const.DB_WOCHANNE_PASSWORD);
+		logger.info("sevePayResultLog：" + dt.insertJson(Const.WOCHANNE_TABLE_PAY_RESULT_LOG, dataInfo, WoChannelSmsExecLinstenerThreadDao.class));
+		
+		if(phoneNumber.length()>=7){
+			String temp=phoneNumber.substring(0,7);
+			try {
+				String sqlStr="SELECT provCode,cityCode FROM mob_city WHERE mob7='"+temp+"'";
+				DbTools dt1=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+				CachedRowSetImpl cesi = dt1.executeQuery(sqlStr, WoChannelSmsExecLinstenerThreadDao.class);
+				if (cesi.next()) {
+					String sql="UPDATE syn_spincome SET prov_ID = '"+cesi.getString("provCode")+"', city_ID = '"+cesi.getString("cityCode")+"', mobile = '"+phoneNumber+"' WHERE linkId='"+woExecLog.getOrderId()+"'"; 
+					DbTools dt2=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+					dt2.upDate(sql,WoChannelSmsExecLinstenerThreadDao.class);
+				}else{
+					String sql="UPDATE syn_spincome SET mobile = '"+phoneNumber+"' WHERE linkId='"+woExecLog.getOrderId()+"'"; 
+					DbTools dt2=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+					dt2.upDate(sql,WoChannelSmsExecLinstenerThreadDao.class);
+				}
+			} catch (Exception e) {
+				logger.error(ExceptionTool.getErrorInfo(e));
+			}
+		}
+	}
+	
+	public  String getPayInfo(){
+		JSONObject json = new JSONObject();
+		json.put("imsi", woExecLog.getImsi());
+		json.put("mac", woExecLog.getMac());
+		json.put("appid", woExecLog.getAppid());//appid = "90810001446220151207165642447000";
+		json.put("appdeveloper", woExecLog.getCompany());//company = "北京卓思先科技有限公司";
+		json.put("serviceid", woExecLog.getConsumeCode());//vaccode = "1512071572" + (60);
+		json.put("feename", woExecLog.getConsumeName());//feename = "购买10个金币";
+		json.put("appname", woExecLog.getGameName());//gameName = "挑战历史题";
+		json.put("payfee", woExecLog.getConsumePrice());//money = 1;
+		json.put("channelid", woExecLog.getChannel());//channel = "00029901";
+		json.put("cpid", woExecLog.getCpId());//cpId = "91007382";	
+		json.put("orderid", woExecLog.getOrderId());//orderId = getOrderId();
+		json.put("appversion", woExecLog.getAppversion());//appversion = "1.0";
+		json.put("sdkversion", woExecLog.getSdkVersionCode());//sdkVersionCode = "321";
+		json.put("sdktotalversion", woExecLog.getSdktotalversion()); //sdkversion = "3.2.1";
+		json.put("ordertime", new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
+		json.put("paytype", woExecLog.getPaytype()+"");
+		json.put("uuid", "");
+		json.put("imei", "");
+		logger.info(json);
+		return json.toString();
+	}
+	
+	public String HTTPConnectPost(String payInfo) {
+		PostNetWork postNetWork =null;
+		String result = "";
+		try {
+			postNetWork = new PostNetWork("http://secpay.wostore.cn:81/unipay/precheck");
+			postNetWork.setConnectionTimeout(this.connectionTimeout);
+			postNetWork.setSoTimeout(this.soTimeout);
+			postNetWork.setInfoInputStream(payInfo);
+			//if(true){
+			if(String.valueOf(woExecLog.getProxyIp()).equals("") || String.valueOf(woExecLog.getProxyIp()).equals("null")){
+				postNetWork.executeMethod();
+				result = postNetWork.getString("UTF-8");
+			}else{
+				logger.info("ProxyIp..........................HTTPConnectPost................."+woExecLog.getProxyIp());
+				String[] Proxy =woExecLog.getProxyIp().split(":");
+				postNetWork.setProxyHost(Proxy[0]);
+				postNetWork.setProxyPort(Integer.parseInt(Proxy[1]));
+				postNetWork.executeMethod(true);
+				result = postNetWork.getString("UTF-8");
+			}
+			postNetWork.getNetState();
+		} catch (Exception e) {
+			logger.error(ExceptionTool.getErrorInfo(e));
+		} finally {
+			postNetWork.closeConn();
+		}
+		return result;
+	}
+}

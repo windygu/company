@@ -1,0 +1,83 @@
+package com.astrolink.dao;
+
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+
+import com.astrolink.consts.Const;
+import com.astrolink.domain.JdGameExecLog;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IDbObjectReciver;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTools;
+
+
+/**
+ * 数据监听线程
+ * @author cuilei
+ * @date 2015-11-30
+ */
+public class JdGameSmsDataLinstenerThreadDao extends JobThread{
+	private Logger logger = Logger.getLogger(JdGameSmsDataLinstenerThreadDao.class);
+	public String dbTableName = "";
+	private int methodType = 0;
+	public IDbObjectReciver dbObjectReciver; 
+	
+	public void setDbObjectReciver(IDbObjectReciver dbObjectReciver) {
+		this.dbObjectReciver = dbObjectReciver;
+	}
+	
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	public void setMethodType(int methodType) {
+		this.methodType = methodType;
+	}
+	@Override
+	public void exec() {
+		while (true) {
+			int taskNum=0;
+			try {
+				DbTools dt=new  DbTools(Const.DB_JDGAME_URL,Const.DB_MYSQL_DRIVER,Const.DB_JDGAME_USERNAME,Const.DB_JDGAME_PASSWORD);
+				
+				String sql="SELECT id,ip,cpInfoId,imei,imsi,consumeCode,cpparam,sdkSessionId,rand4num,uuid,sdkversion,cpId,contentId,chid,packageName," +
+						"brand,model,macAddr,proxyIp,logEventInvokeTime,logInvokeTime,cookie,gamefee,itemName,gameType,rules,pkgid,device_cid,soVersion,appid,netstat," +
+						"displayName,versionName,versionCode,methodType,execNum,key1,key2,spProductConsumeCodeId,responseType,csmPolicy,reqNum FROM  exec_log " +
+						"where " +
+							"execNum<"+Const.JDGAME_LOGIC_RETRY_NUM+" " +
+							"AND getSmsType='true' " +
+							"AND deleteType=0 " +
+							"AND methodType="+methodType+" ";
+					if(methodType<100){	
+					  sql+="AND ((execNum=0 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(updateDate))>= 15) " +
+						    "OR (execNum=1 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(updateDate))>= 20) " +
+						    "OR (execNum>=2 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(updateDate))>= 30)) order by execNum,id	limit 200";
+					}else{		
+				      sql+="AND ((execNum=0 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(updateDate))>= 30) " +
+							"OR (execNum=1 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(updateDate))>= 60) " +
+							"OR (execNum>=2 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(updateDate))>= 90)) order by execNum,id	limit 200";
+					}
+				
+				ArrayList<Object> list=dt.executeQuery(sql, JdGameExecLog.class, JdGameSmsDataLinstenerThreadDao.class);
+				taskNum=list.size();
+				if (taskNum > 0) {
+					logger.info(this.dbTableName + "扫描结束，需要处理的数据个数" + taskNum);
+				}
+				
+				if (dbObjectReciver != null) {
+					dbObjectReciver.dataRecived(list);
+				}
+			} catch (Exception e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+
+			try {
+					Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+		}
+	}
+
+}

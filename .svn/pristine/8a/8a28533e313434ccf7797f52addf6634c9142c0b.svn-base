@@ -1,0 +1,68 @@
+package com.astrolink.dao;
+
+import java.util.ArrayList;
+import org.apache.log4j.Logger;
+import com.astrolink.consts.Const;
+import com.astrolink.domain.VideoExecLog;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IDbObjectReciver;
+import com.astrolink.service.MusicService;
+import com.astrolink.service.VideoService;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTools;
+
+/**
+ * 数据监听线程
+ * @author sjh
+ * @date 2016-04-21
+ */
+public class VideoDataLinstenerThreadDao extends JobThread{
+	private Logger logger = Logger.getLogger(VideoDataLinstenerThreadDao.class);
+	public String dbTableName = "";
+	public IDbObjectReciver dbObjectReciver; 
+	
+	public void setDbObjectReciver(IDbObjectReciver dbObjectReciver) {
+		this.dbObjectReciver = dbObjectReciver;
+	}
+	
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	@Override
+	public void exec() {
+		while (true) {
+			int taskNum=0;
+			try {
+				DbTools dt=new  DbTools(Const.DB_VIDEO_URL,Const.DB_MYSQL_DRIVER,Const.DB_VIDEO_USERNAME,Const.DB_VIDEO_PASSWORD);
+				String sql="SELECT "+
+						"a.id,a.cpInfoId,a.ssid,a.provId,a.monum,a.consumeCode,a.ip,a.imei,a.imsi,a.iccid,a.mobile,a.cpparam,a.proxyIp,a.linkId,a.execNum,a.getSmsType,a.pramType,a.methodType,a.dayTime,a.inputDate,a.updateDate,a.device_cid,a.apkstatus,a.appid,a.mode,a.packageName,a.packageSign,a.pubKey,a.miguopen_appid,a.serviceId,a.chid,a.contentId,a.cpid,a.transId,a.sdksessionid,a.ctype,a.itemId,a.itemPrice,a.itemSafeLevel,a.itemMethod,a.spProductId,a.encodeCID,a.rand16Num,a.timeStamp,a.smsInfo,a.key1,a.key2,a.generateCpparam,a.sessionrep,a.UA,a.rand4num,a.securityCode,a.scrkey,a.nodeId,a.videoSms,a.miguSms,a.miguContentId,a.miguChid,a.itemExt,a.b1,a.b2,a.sdkcpparam,a.spProductConsumeCodeId,b.crackSynUrl  "+
+						"FROM new_exec_log AS a INNER JOIN spinfo.cp_info AS b ON a.cpInfoId=b.cpInfoId " +
+					"where " +
+						"execNum<"+Const.VIDEO_LOGIC_RETRY_NUM+" " +
+						"AND getSmsType='true' " +
+						"AND methodType=0 " +//正常业务
+						"AND ((execNum=0 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(a.updateDate))>= 15) " +
+						"OR (execNum=1 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(a.updateDate))>= 30) " +
+						"OR (execNum>=2 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(a.updateDate))>= 60)) order by execNum,a.id	limit "+(200-taskNum);
+				
+				ArrayList<Object> list=dt.executeQuery(sql, VideoExecLog.class, VideoDataLinstenerThreadDao.class);
+				taskNum=list.size();
+				logger.info(this.dbTableName + "扫描结束，需要处理的数据个数" + taskNum);
+				
+				if (dbObjectReciver != null) {
+					dbObjectReciver.dataRecived(list);
+				}
+			} catch (Exception e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+
+			try {
+					Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+		}
+	}
+
+}

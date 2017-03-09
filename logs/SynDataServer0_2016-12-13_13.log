@@ -1,0 +1,343 @@
+2016-12-13 13:00:07,657 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:00:07,684 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：5120
+ 2016-12-13 13:00:07,684 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:4991993999641116汇丰动漫_800000887月报表.xls
+ 2016-12-13 13:00:07,803 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:00:08,323 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：5120
+ 2016-12-13 13:00:08,323 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:1333592466651529漫云_700002275月报表.xls
+ 2016-12-13 13:00:09,272 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为11,信息:4991993999641116汇丰动漫_800000887月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2016-12-13 13:00:09,272 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为5,信息:1333592466651529漫云_700002275月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2016-12-13 13:00:09,600 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=11
+ 2016-12-13 13:00:09,625 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=5
+ 2016-12-13 13:00:09,625 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为11
+ 2016-12-13 13:00:09,650 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为5
+ 2016-12-13 13:00:10,635 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:00:12,335 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:00:12,354 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：5120
+ 2016-12-13 13:00:12,354 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9159243136464152二人麻将_800001814月报表.xls
+ 2016-12-13 13:00:13,134 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为24,信息:9159243136464152二人麻将_800001814月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2016-12-13 13:00:13,410 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=24
+ 2016-12-13 13:00:13,444 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为24
+ 2016-12-13 13:00:23,921 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:00:23,932 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：5120
+ 2016-12-13 13:00:23,932 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9169969642446563心阅动漫_700002081月报表.xls
+ 2016-12-13 13:00:24,776 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为8,信息:9169969642446563心阅动漫_700002081月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2016-12-13 13:00:25,051 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=8
+ 2016-12-13 13:00:25,086 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为8
+ 2016-12-13 13:00:25,817 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:00:25,831 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：5120
+ 2016-12-13 13:00:25,831 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:4462599926525623绘心动漫_600000133月报表.xls
+ 2016-12-13 13:00:27,659 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为59,信息:4462599926525623绘心动漫_600000133月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2016-12-13 13:00:27,968 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=59
+ 2016-12-13 13:00:28,017 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为59
+ 2016-12-13 13:00:35,471 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:00:35,476 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：5120
+ 2016-12-13 13:00:35,476 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9369492641155921小希漫画_700004870月报表.xls
+ 2016-12-13 13:00:35,660 ERROR com.astrolink.dao.DmLoginExecLinstenerThreadDao  - java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.String.substring(String.java:1967)
+	at com.astrolink.util.tools.DmLoginTools.subStr(DmLoginTools.java:668)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:378)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:00:35,978 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('上传任务id:',spProductTaskId,'<br>业务名称:',spProductName,'<br>业务类型：月报表<br>失败信息：下载失败,重试http://121.42.157.151:8080/spInfo/retryAction?spProductTaskId=176'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=176
+ 2016-12-13 13:00:36,317 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为35,信息:9369492641155921小希漫画_700004870月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2016-12-13 13:00:36,624 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=35
+ 2016-12-13 13:00:36,653 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为35
+ 2016-12-13 13:00:37,593 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=176
+ 2016-12-13 13:00:37,632 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为176
+ 2016-12-13 13:01:06,140 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:01:06,145 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：6144
+ 2016-12-13 13:01:06,145 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9299239646511394辉盛动漫_800001892月报表.xls
+ 2016-12-13 13:01:06,998 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为20,信息:9299239646511394辉盛动漫_800001892月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2016-12-13 13:01:07,679 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=20
+ 2016-12-13 13:01:07,705 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为20
+ 2016-12-13 13:01:28,089 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-13 13:01:28,089 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量0execMap执行缓冲数量9
+ 2016-12-13 13:01:28,089 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-13 13:03:13,355 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1820)
+	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1611)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1033)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:574)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:375)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:03:13,355 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:575)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:375)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:03:13,355 ERROR com.astrolink.dao.DmLoginExecLinstenerThreadDao  - java.lang.NullPointerException
+	at com.astrolink.util.tools.DmLoginTools.subStr(DmLoginTools.java:667)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:378)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:03:21,281 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:04:30,687 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-13 13:07:13,244 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1820)
+	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1611)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1033)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:574)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:318)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:07:13,244 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:575)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:318)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:07:33,049 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数2
+ 2016-12-13 13:07:33,050 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量1
+ 2016-12-13 13:07:33,050 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量1
+ 2016-12-13 13:07:33,050 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为66
+ 2016-12-13 13:07:33,050 INFO  com.astrolink.service.DmLoginService  - id为66的处理线程添加成功
+ 2016-12-13 13:07:33,050 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为61
+ 2016-12-13 13:07:33,050 INFO  com.astrolink.service.DmLoginService  - id为61的处理线程添加成功
+ 2016-12-13 13:07:33,051 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫渠道投诉，id为66
+ 2016-12-13 13:07:33,051 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量3删除缓冲0
+ 2016-12-13 13:07:33,051 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫渠道投诉，id为61
+ 2016-12-13 13:07:33,956 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:07:34,184 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:07:47,818 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:07:48,354 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:08:01,167 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:08:09,627 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:08:19,724 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:08:45,180 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-13 13:08:45,493 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=61
+ 2016-12-13 13:08:45,521 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为61
+ 2016-12-13 13:10:13,318 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1820)
+	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1611)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1033)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:574)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:324)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:10:13,318 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:575)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:324)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:10:34,882 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-13 13:10:34,883 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量0execMap执行缓冲数量3
+ 2016-12-13 13:10:34,883 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量2删除缓冲0
+ 2016-12-13 13:12:35,387 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1820)
+	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1611)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1033)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:574)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:395)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:65)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:12:35,389 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:575)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:395)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:65)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:13:13,495 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1820)
+	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1611)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1033)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:574)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:349)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:13:13,495 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:575)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:349)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:13:36,541 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-13 13:13:36,541 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量0execMap执行缓冲数量2
+ 2016-12-13 13:13:36,541 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量2删除缓冲0
+ 2016-12-13 13:14:35,467 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1820)
+	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1611)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1033)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWorkIO(DmLoginTools.java:642)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:421)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:65)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:14:35,468 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.ByteArrayInputStream.<init>(ByteArrayInputStream.java:106)
+	at com.astrolink.util.tools.PostNetWork_singleton.getInputStream(PostNetWork_singleton.java:148)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWorkIO(DmLoginTools.java:643)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:421)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:65)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:14:42,388 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('上传任务id:',spProductTaskId,'<br>业务名称:',spProductName,'<br>业务类型：动漫渠道投诉<br>失败信息：下载失败,重试http://121.42.157.151:8080/spInfo/retryAction?spProductTaskId=66'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=66
+ 2016-12-13 13:14:52,725 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=66
+ 2016-12-13 13:14:52,765 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为66
+ 2016-12-13 13:16:13,557 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1820)
+	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1611)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1033)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:574)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:375)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:16:13,557 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.util.tools.DmLoginTools.post_doNetWork(DmLoginTools.java:575)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:375)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:16:13,558 ERROR com.astrolink.dao.DmLoginExecLinstenerThreadDao  - java.lang.NullPointerException
+	at com.astrolink.util.tools.DmLoginTools.subStr(DmLoginTools.java:667)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:378)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:265)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-13 13:16:13,911 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('上传任务id:',spProductTaskId,'<br>业务名称:',spProductName,'<br>业务类型：月报表<br>失败信息：下载失败,重试http://121.42.157.151:8080/spInfo/retryAction?spProductTaskId=167'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=167
+ 2016-12-13 13:16:15,753 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=167
+ 2016-12-13 13:16:15,777 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为167
+ 

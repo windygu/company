@@ -1,0 +1,26 @@
+2016-12-21 17:09:18,129 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.IllegalArgumentException: host parameter is null
+	at org.apache.commons.httpclient.HttpConnection.setHost(HttpConnection.java:249)
+	at org.apache.commons.httpclient.SimpleHttpConnectionManager.getConnectionWithTimeout(SimpleHttpConnectionManager.java:189)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:153)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:128)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:373)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:383)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:120)
+
+ 2016-12-21 17:09:18,131 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:375)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:383)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:120)
+
+ 2016-12-21 17:11:16,127 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-21 17:12:43,447 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-21 17:14:48,819 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-21 17:16:24,556 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-21 17:17:58,119 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-21 17:19:43,247 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 

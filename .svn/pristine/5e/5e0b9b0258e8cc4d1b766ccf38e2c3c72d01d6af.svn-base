@@ -1,0 +1,83 @@
+package com.astrolink.dao;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.apache.log4j.Logger;
+
+import com.astrolink.consts.Const;
+import com.astrolink.domain.DmLogin;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IDbObjectReciver;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTools;
+/**
+ * 数据监听线程
+ * @author Administrator
+ *
+ */
+public class JdLoginLinstenerThreadDao extends JobThread {
+
+	private Logger logger = Logger.getLogger(JdLoginLinstenerThreadDao.class);
+	public String dbTableName = "";
+	public IDbObjectReciver dbObjectReciver;
+	public Map<Object,Object> taskMap;
+	
+	
+	public void setTaskMap(Map<Object, Object> taskMap) {
+		this.taskMap = taskMap;
+	}
+
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	public void setDbObjectReciver(IDbObjectReciver dbObjectReciver) {
+		this.dbObjectReciver = dbObjectReciver;
+	}
+
+	@Override
+	public void exec() {
+		while(true) {
+			Calendar calender = Calendar.getInstance();
+			int  hour = calender.get(Calendar.HOUR_OF_DAY);
+			int taskNum = 0;
+			try {
+				if(hour == 0) {
+					taskMap.clear();
+				}
+				if(hour==14 && taskMap.size()!=0) {
+					for(Entry<Object, Object> entry : taskMap.entrySet()) {
+						DbTools dt=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+						String sql = "UPDATE sp_product_task SET automaticState=1 WHERE spProductTaskId="+entry.getKey();
+						dt.upDate(sql, DmLoginLinstenerThreadDao.class);
+					}
+					sleep(1000*3600);
+					taskMap.clear();
+				}
+				
+				String sql = "SELECT a.*,b.spProductName FROM sp_product_task AS a INNER JOIN sp_product AS b ON a.spProductId=b.spProductId WHERE automaticState=1 AND type=7 LIMIT 1";
+				DbTools dt=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+				ArrayList<Object> list = dt.executeQuery(sql, DmLogin.class,JdLoginLinstenerThreadDao.class);
+				taskNum = list.size();
+				if (taskNum > 0) {
+					logger.info(this.dbTableName + "扫描结束，需要处理的数据个数" + taskNum);
+				}
+				if(dbObjectReciver != null) {
+					dbObjectReciver.dataRecived(list);
+				}
+			}catch (Exception e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+			try {
+				Thread.sleep(2000*60);
+			}catch(InterruptedException e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+			
+		}
+	}
+
+}

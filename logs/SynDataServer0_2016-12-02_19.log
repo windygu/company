@@ -1,0 +1,233 @@
+2016-12-02 17:06:49,749 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 17:06:49,759 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 17:06:49,761 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 17:07:55,897 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 17:07:55,905 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 17:07:55,907 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 17:07:57,120 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 17:07:57,120 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 17:07:57,121 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 17:07:57,148 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 17:07:57,148 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:10:59,618 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:14:00,504 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:17:01,180 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:20:02,040 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:23:02,899 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:26:03,842 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:29:04,844 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:32:05,949 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:35:06,888 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:38:07,613 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:53:44,590 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 17:53:44,598 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 17:53:44,600 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 17:53:51,695 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 17:53:51,696 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 17:53:51,697 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 17:53:51,728 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 17:53:51,728 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 17:55:17,276 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地收入没数据
+ 2016-12-02 17:55:17,547 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地收入<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 17:55:18,541 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-02 17:55:18,912 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 17:55:19,216 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 17:55:19,241 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 18:03:49,061 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 18:03:49,070 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 18:03:49,071 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 18:03:50,373 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 18:03:50,373 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 18:03:50,374 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 18:03:50,389 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 18:03:50,389 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:06:17,429 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 18:06:17,434 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 18:06:17,434 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 18:06:17,434 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 18:06:17,434 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:06:51,176 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:09:20,028 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:09:54,134 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:12:20,940 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:12:54,937 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:15:21,805 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:15:55,609 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:18:22,500 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:23:07,529 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 18:23:07,537 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 18:23:07,539 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 18:24:15,480 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 18:24:15,490 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 18:24:15,492 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 18:24:16,657 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 18:24:16,657 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 18:24:16,658 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 18:24:16,675 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 18:24:16,676 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:25:27,098 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 上传失败,错误信息为：<html><head><title>Apache Tomcat/7.0.28 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP Status 500 - </h1><HR size="1" noshade="noshade"><p><b>type</b> Exception report</p><p><b>message</b> <u></u></p><p><b>description</b> <u>The server encountered an internal error () that prevented it from fulfilling this request.</u></p><p><b>exception</b> <pre>java.lang.NullPointerException
+</pre></p><p><b>note</b> <u>The full stack trace of the root cause is available in the Apache Tomcat/7.0.28 logs.</u></p><HR size="1" noshade="noshade"><h3>Apache Tomcat/7.0.28</h3></body></html>
+ 2016-12-02 18:25:27,098 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地收入上传失败
+ 2016-12-02 18:25:27,354 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地收入<br>上传失败'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 18:25:28,206 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-02 18:25:28,434 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 18:25:28,713 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 18:25:28,734 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 18:31:55,304 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 18:31:55,313 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 18:31:55,315 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 18:31:56,447 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 18:31:56,447 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 18:31:56,448 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 18:31:56,473 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 18:31:56,473 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:33:08,763 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地收入没数据
+ 2016-12-02 18:33:12,739 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地收入<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 18:33:15,582 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-02 18:33:15,920 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 18:33:16,179 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 18:33:16,202 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 18:34:57,285 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 18:34:57,285 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量0execMap执行缓冲数量1
+ 2016-12-02 18:35:02,409 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 18:35:02,417 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 18:35:02,419 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 18:35:03,529 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 18:35:03,530 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 18:35:03,531 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 18:35:03,557 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 18:35:03,557 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:36:19,682 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 18:36:19,682 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 18:36:19,682 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 18:36:19,683 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 18:36:19,683 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:38:04,277 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:39:00,365 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 上传失败,错误信息为：<html><head><title>Apache Tomcat/7.0.28 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP Status 500 - </h1><HR size="1" noshade="noshade"><p><b>type</b> Exception report</p><p><b>message</b> <u></u></p><p><b>description</b> <u>The server encountered an internal error () that prevented it from fulfilling this request.</u></p><p><b>exception</b> <pre>java.lang.NullPointerException
+</pre></p><p><b>note</b> <u>The full stack trace of the root cause is available in the Apache Tomcat/7.0.28 logs.</u></p><HR size="1" noshade="noshade"><h3>Apache Tomcat/7.0.28</h3></body></html>
+ 2016-12-02 18:39:05,647 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地收入上传失败
+ 2016-12-02 18:39:06,210 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地收入<br>上传失败'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 18:39:08,365 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-02 18:39:08,619 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 18:39:08,913 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 18:39:08,939 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 18:39:20,402 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:42:28,879 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:45:29,550 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:48:30,270 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:51:31,045 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:54:32,141 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 18:57:32,818 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:00:33,809 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:01:07,946 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 上传失败,错误信息为：<html><head><title>Apache Tomcat/7.0.28 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP Status 500 - </h1><HR size="1" noshade="noshade"><p><b>type</b> Exception report</p><p><b>message</b> <u></u></p><p><b>description</b> <u>The server encountered an internal error () that prevented it from fulfilling this request.</u></p><p><b>exception</b> <pre>java.lang.NullPointerException
+</pre></p><p><b>note</b> <u>The full stack trace of the root cause is available in the Apache Tomcat/7.0.28 logs.</u></p><HR size="1" noshade="noshade"><h3>Apache Tomcat/7.0.28</h3></body></html>
+ 2016-12-02 19:01:07,946 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地收入上传失败
+ 2016-12-02 19:01:08,248 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地收入<br>上传失败'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 19:01:09,122 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-02 19:01:09,499 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 19:01:09,766 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 19:01:09,788 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 19:01:39,986 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 19:01:39,994 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 19:01:39,996 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 19:01:41,083 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 19:01:41,083 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 19:01:41,085 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 19:01:41,101 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 19:01:41,101 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:02:04,239 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 19:02:04,249 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 19:02:04,249 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 19:02:04,249 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 19:02:04,249 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:02:10,435 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 19:02:10,436 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 19:02:10,436 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 19:02:10,437 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 19:02:10,437 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:04:41,958 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:05:04,974 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:05:11,565 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:07:42,746 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:08:05,682 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:08:12,280 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:10:43,501 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:11:06,391 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:11:13,308 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:13:44,260 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:14:07,182 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:14:14,044 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:16:45,051 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:17:08,164 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:17:14,816 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:17:45,026 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 19:17:45,051 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - java.io.IOException: Attempted read on closed stream.
+	at org.apache.commons.httpclient.AutoCloseInputStream.isReadAllowed(AutoCloseInputStream.java:183)
+	at org.apache.commons.httpclient.AutoCloseInputStream.read(AutoCloseInputStream.java:126)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:214)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-02 19:17:45,323 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 19:17:45,347 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 19:18:25,130 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 19:18:25,138 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 19:18:25,140 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 19:18:26,266 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 19:18:26,266 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 19:18:26,267 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 19:18:26,286 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 19:18:26,286 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:18:57,305 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 19:18:57,334 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - java.io.IOException: Attempted read on closed stream.
+	at org.apache.commons.httpclient.AutoCloseInputStream.isReadAllowed(AutoCloseInputStream.java:183)
+	at org.apache.commons.httpclient.AutoCloseInputStream.read(AutoCloseInputStream.java:126)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:214)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-02 19:18:57,659 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 19:18:57,683 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 19:33:38,460 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 19:33:38,468 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 19:33:38,469 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 19:35:55,220 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 19:35:55,228 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 19:35:55,229 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 19:35:56,377 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 19:35:56,377 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 19:35:56,378 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 19:35:56,393 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 19:35:56,393 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:38:44,402 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 19:38:44,409 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 19:38:44,411 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 19:38:45,585 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 19:38:45,585 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 19:38:45,586 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 19:38:45,628 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 19:38:45,629 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:39:41,868 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 19:39:41,868 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 19:39:41,869 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 19:39:41,883 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 19:39:41,883 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:40:13,627 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 上传失败,错误信息为：<html><head><title>Apache Tomcat/7.0.28 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP Status 500 - </h1><HR size="1" noshade="noshade"><p><b>type</b> Exception report</p><p><b>message</b> <u></u></p><p><b>description</b> <u>The server encountered an internal error () that prevented it from fulfilling this request.</u></p><p><b>exception</b> <pre>java.lang.NullPointerException
+</pre></p><p><b>note</b> <u>The full stack trace of the root cause is available in the Apache Tomcat/7.0.28 logs.</u></p><HR size="1" noshade="noshade"><h3>Apache Tomcat/7.0.28</h3></body></html>
+ 2016-12-02 19:40:13,627 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地收入上传失败
+ 2016-12-02 19:40:13,853 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地收入<br>上传失败'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 19:40:14,709 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-02 19:40:15,012 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 19:40:15,285 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 19:40:15,318 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 19:41:46,311 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:44:47,199 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:47:47,864 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:51:08,128 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 19:51:08,136 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 19:51:08,137 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 19:51:09,308 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 19:51:09,309 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 19:51:09,310 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 19:51:09,336 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 19:51:09,336 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 19:54:10,089 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 

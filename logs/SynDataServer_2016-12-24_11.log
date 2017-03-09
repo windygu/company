@@ -1,0 +1,43 @@
+2016-12-24 11:01:12,545 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-24 11:04:16,462 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.IllegalArgumentException: host parameter is null
+	at org.apache.commons.httpclient.HttpConnection.setHost(HttpConnection.java:249)
+	at org.apache.commons.httpclient.SimpleHttpConnectionManager.getConnectionWithTimeout(SimpleHttpConnectionManager.java:189)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:153)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:374)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:383)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:120)
+
+ 2016-12-24 11:04:16,464 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:375)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:383)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:120)
+
+ 2016-12-24 11:05:57,937 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-24 11:09:26,183 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-24 11:10:31,065 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.IllegalArgumentException: host parameter is null
+	at org.apache.commons.httpclient.HttpConnection.setHost(HttpConnection.java:249)
+	at org.apache.commons.httpclient.SimpleHttpConnectionManager.getConnectionWithTimeout(SimpleHttpConnectionManager.java:189)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:153)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:88)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:374)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:383)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:120)
+
+ 2016-12-24 11:10:31,067 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:375)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:383)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:120)
+
+ 2016-12-24 11:11:11,263 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 

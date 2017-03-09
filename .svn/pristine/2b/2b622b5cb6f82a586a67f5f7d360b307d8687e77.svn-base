@@ -1,0 +1,111 @@
+package com.astrolink.dao;
+
+import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
+
+import com.astrolink.consts.Const;
+import com.astrolink.domain.PcWebGame;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IExecFinish;
+import com.astrolink.util.tools.BasicsTools;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTools;
+import com.astrolink.util.tools.GetNetWork;
+
+
+/**
+ * PcWebGame线程
+ * @author cuilei
+ * @date 2015-11-30
+ */
+public class PcWebGameExecLinstenerThreadDao extends JobThread{
+	private Logger logger = Logger.getLogger(PcWebGameExecLinstenerThreadDao.class);
+	private String dbTableName;
+	private PcWebGame pcWebGame;
+	public IExecFinish execFinish; 
+	
+	public PcWebGameExecLinstenerThreadDao(PcWebGame pcWebGame){
+		this.pcWebGame = pcWebGame;
+	}
+	
+	public void setExecFinish(IExecFinish execFinish) {
+		this.execFinish = execFinish;
+	}
+	
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	@Override
+	public void exec() {
+		logger.info("开始发送PcWebGame请求，id为" + this.getKey());
+		try {
+			String url=pcWebGame.toUrl("http://127.0.0.1:8081/logic/pcWebGameGetCode");
+			//发送请求
+			GetNetWork gnw=new GetNetWork(url);
+			gnw.executeMethod();
+			
+			//请求日志
+			requestLog(url,gnw.getString(),gnw.getNetState());
+			//数据日志
+			dataLog();
+		} catch (Exception e) {
+			logger.info("发送PcWebGame请求失败，id为" + this.getKey() + ExceptionTools.exception(e));
+		} finally{
+			try {
+				//删除pcWebGame
+				deletePcWebGameData(); 	 
+			} catch (Exception e) {
+				logger.info("发送PcWebGame请求失败，id为" + this.getKey() + ExceptionTools.exception(e));
+			} finally{
+				if (execFinish != null) {
+					execFinish.execDone(this.getKey());
+					logger.info("发送PcWebGame请求结束，id为" + this.getKey());
+				}
+			}
+		}
+	}
+	
+	private void dataLog() {
+		DbTools dt=new  DbTools(Const.DB_QXT_URL,Const.DB_MYSQL_DRIVER,Const.DB_QXT_USERNAME,Const.DB_QXT_PASSWORD);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("id",pcWebGame.getId());
+		jsonObject.put("mobile",pcWebGame.getMobile() );
+		jsonObject.put("content", pcWebGame.getContent());
+		jsonObject.put("dest", pcWebGame.getDest());
+		try {
+			jsonObject.put("time", pcWebGame.getTime().toString());
+		} catch (Exception e) {}
+		
+		jsonObject.put("serial", pcWebGame.getSerial());
+		jsonObject.put("serialRev", pcWebGame.getSerialRev());
+		try {
+			jsonObject.put("intime", pcWebGame.getIntime().toString());
+		} catch (Exception e) {}
+		dt.insertJson("mo_log_pcfee", jsonObject, PcWebGameExecLinstenerThreadDao.class);
+		logger.debug("id为" + this.getKey() + "写入日志mo_log_pcfee");
+	}
+	
+	private void requestLog(String url,String netInfo,int netState) {
+		DbTools dt=new  DbTools(Const.DB_PCWEBGAME_URL,Const.DB_MYSQL_DRIVER,Const.DB_PCWEBGAME_USERNAME,Const.DB_PCWEBGAME_PASSWORD);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("execKey", this.getKey());
+		jsonObject.put("mobile", pcWebGame.getMobile());
+		jsonObject.put("content", pcWebGame.getContent());
+		jsonObject.put("url", url);
+		jsonObject.put("netInfo",netInfo);
+		jsonObject.put("netState",netState);
+		jsonObject.put("dayTime",BasicsTools.getForDate("yyyy-MM-dd"));
+		jsonObject.put("inputDate",BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss"));
+		dt.insertJson("gateway_request_log", jsonObject, PcWebGameExecLinstenerThreadDao.class);
+		logger.debug("id为" + this.getKey() + "写入日志gateway_request_log");
+	}
+
+	private void deletePcWebGameData(){
+		DbTools dt=new  DbTools(Const.DB_QXT_URL,Const.DB_MYSQL_DRIVER,Const.DB_QXT_USERNAME,Const.DB_QXT_PASSWORD);
+		String deleteSql = "delete from "+this.dbTableName+" where id=" + pcWebGame.getId();
+		boolean state = dt.upDate(deleteSql, PcWebGameExecLinstenerThreadDao.class);
+		logger.debug("更新mo_log_pcfee状态:"+state+"，更新sql" + deleteSql);
+	}
+}

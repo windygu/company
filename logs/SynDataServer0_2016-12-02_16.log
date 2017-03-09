@@ -1,0 +1,93 @@
+2016-12-02 16:18:10,233 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 16:18:10,245 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 16:18:10,255 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 16:18:53,387 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 16:18:53,393 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 16:18:53,394 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 16:18:54,805 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 16:18:54,805 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 16:18:54,808 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 16:18:54,816 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 16:18:54,816 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:18:57,816 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 16:18:57,840 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:653)
+	at java.util.ArrayList.get(ArrayList.java:429)
+	at net.sf.json.JSONArray.get(JSONArray.java:1886)
+	at net.sf.json.JSONArray.getJSONObject(JSONArray.java:1975)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:134)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-02 16:18:58,169 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 16:18:58,194 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 16:24:36,613 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 16:24:36,624 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 16:24:36,626 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 16:24:58,062 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 16:24:58,063 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 16:24:58,063 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 16:24:58,063 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 16:24:58,063 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:25:00,980 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 16:25:01,111 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:653)
+	at java.util.ArrayList.get(ArrayList.java:429)
+	at net.sf.json.JSONArray.get(JSONArray.java:1886)
+	at net.sf.json.JSONArray.getJSONObject(JSONArray.java:1975)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:134)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-02 16:25:01,740 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 16:25:01,930 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 16:25:18,923 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 16:25:18,930 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 16:25:18,932 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 16:26:10,470 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 16:26:10,478 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 16:26:10,479 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 16:26:20,745 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 16:26:20,746 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 16:26:20,747 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 16:26:20,767 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 16:26:20,767 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:26:23,724 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 16:26:23,956 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:653)
+	at java.util.ArrayList.get(ArrayList.java:429)
+	at net.sf.json.JSONArray.get(JSONArray.java:1886)
+	at net.sf.json.JSONArray.getJSONObject(JSONArray.java:1975)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:134)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-02 16:26:24,275 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 16:26:24,303 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 16:27:21,124 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-02 16:27:21,132 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-02 16:27:21,133 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-02 16:27:25,934 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 16:27:25,934 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 16:27:25,935 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 16:27:25,956 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 16:27:25,956 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:30:26,704 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:33:27,635 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:36:28,866 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:39:29,725 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:42:29,722 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=81
+ 2016-12-02 16:42:29,755 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:653)
+	at java.util.ArrayList.get(ArrayList.java:429)
+	at net.sf.json.JSONArray.get(JSONArray.java:1886)
+	at net.sf.json.JSONArray.getJSONObject(JSONArray.java:1975)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:134)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-02 16:42:30,277 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=81
+ 2016-12-02 16:42:30,302 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为81
+ 2016-12-02 16:47:51,955 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数1
+ 2016-12-02 16:47:51,955 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-02 16:47:51,955 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为81
+ 2016-12-02 16:47:51,955 INFO  com.astrolink.service.JdLoginService  - id为81的处理线程添加成功
+ 2016-12-02 16:47:51,955 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 2016-12-02 16:51:00,838 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量1删除缓冲0
+ 

@@ -1,0 +1,610 @@
+2017-02-16 09:39:22,420 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2017-02-16 09:39:22,457 INFO  com.astrolink.service.DmLoginService  - 数据导入监听服务
+ 2017-02-16 09:39:22,472 INFO  com.astrolink.service.DmLoginService  - 数据导入监听服务完毕
+ 2017-02-16 09:39:32,480 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数10
+ 2017-02-16 09:39:32,480 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2017-02-16 09:39:32,480 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量0
+ 2017-02-16 09:39:32,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量3execMap执行缓冲数量0
+ 2017-02-16 09:39:32,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量4execMap执行缓冲数量0
+ 2017-02-16 09:39:32,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量5execMap执行缓冲数量0
+ 2017-02-16 09:39:32,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量6execMap执行缓冲数量0
+ 2017-02-16 09:39:32,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量7execMap执行缓冲数量0
+ 2017-02-16 09:39:32,483 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量8execMap执行缓冲数量0
+ 2017-02-16 09:39:32,483 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量9execMap执行缓冲数量0
+ 2017-02-16 09:39:32,483 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量10execMap执行缓冲数量0
+ 2017-02-16 09:39:32,484 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为17
+ 2017-02-16 09:39:32,486 INFO  com.astrolink.service.DmLoginService  - id为17的处理线程添加成功
+ 2017-02-16 09:39:32,486 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为35
+ 2017-02-16 09:39:32,486 INFO  com.astrolink.service.DmLoginService  - id为35的处理线程添加成功
+ 2017-02-16 09:39:32,486 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为67
+ 2017-02-16 09:39:32,487 INFO  com.astrolink.service.DmLoginService  - id为67的处理线程添加成功
+ 2017-02-16 09:39:32,487 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为4
+ 2017-02-16 09:39:32,487 INFO  com.astrolink.service.DmLoginService  - id为4的处理线程添加成功
+ 2017-02-16 09:39:32,487 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为20
+ 2017-02-16 09:39:32,487 INFO  com.astrolink.service.DmLoginService  - id为20的处理线程添加成功
+ 2017-02-16 09:39:32,487 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为5
+ 2017-02-16 09:39:32,487 INFO  com.astrolink.service.DmLoginService  - id为5的处理线程添加成功
+ 2017-02-16 09:39:32,488 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为8
+ 2017-02-16 09:39:32,488 INFO  com.astrolink.service.DmLoginService  - id为8的处理线程添加成功
+ 2017-02-16 09:39:32,488 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为24
+ 2017-02-16 09:39:32,488 INFO  com.astrolink.service.DmLoginService  - id为24的处理线程添加成功
+ 2017-02-16 09:39:32,488 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为11
+ 2017-02-16 09:39:32,488 INFO  com.astrolink.service.DmLoginService  - id为11的处理线程添加成功
+ 2017-02-16 09:39:32,488 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为110
+ 2017-02-16 09:39:32,489 INFO  com.astrolink.service.DmLoginService  - id为110的处理线程添加成功
+ 2017-02-16 09:39:32,489 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量10删除缓冲0
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为67
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为17
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为8
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为4
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为20
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为11
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为110
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为35
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为24
+ 2017-02-16 09:39:32,519 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为5
+ 2017-02-16 09:39:38,464 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:38,722 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:38,801 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:45,278 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:45,974 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:45,974 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:45,975 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:46,768 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:46,989 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:39:47,129 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:00,539 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:04,930 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:05,310 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:05,539 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:10,191 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:13,820 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:13,919 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:14,928 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:16,101 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:16,380 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:20,386 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:20,653 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:20,896 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:23,734 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:33,993 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:37,536 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=110
+ 2017-02-16 09:40:37,652 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:37,761 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：6144
+ 2017-02-16 09:40:37,761 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:4251919346692266心阅动漫_700002081月报表.xls
+ 2017-02-16 09:40:37,927 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为110
+ 2017-02-16 09:40:39,297 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为8,信息:4251919346692266心阅动漫_700002081月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:40:39,507 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:39,764 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=8
+ 2017-02-16 09:40:39,815 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为8
+ 2017-02-16 09:40:43,722 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:43,729 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：10240
+ 2017-02-16 09:40:43,729 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6494252349266322卓钦新动漫_700000560月报表.xls
+ 2017-02-16 09:40:45,838 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为67,信息:6494252349266322卓钦新动漫_700000560月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:40:46,831 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=67
+ 2017-02-16 09:40:46,927 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为67
+ 2017-02-16 09:40:47,536 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:52,154 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:59,333 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:40:59,339 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：12288
+ 2017-02-16 09:40:59,339 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3436451415566933小希漫画_700004870月报表.xls
+ 2017-02-16 09:41:00,122 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=24
+ 2017-02-16 09:41:00,176 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为24
+ 2017-02-16 09:41:01,371 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为35,信息:3436451415566933小希漫画_700004870月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:41:02,001 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=35
+ 2017-02-16 09:41:02,049 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为35
+ 2017-02-16 09:41:03,893 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:41:05,079 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：10240
+ 2017-02-16 09:41:05,079 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6423264662262591乐云动漫_800001654月报表.xls
+ 2017-02-16 09:41:10,187 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:41:10,199 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：10240
+ 2017-02-16 09:41:10,200 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6335334265962626酷猫妙招_800000658月报表.xls
+ 2017-02-16 09:41:10,991 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:41:11,000 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：6144
+ 2017-02-16 09:41:11,000 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6125694925136465漫云_700002275月报表.xls
+ 2017-02-16 09:41:13,867 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:41:13,965 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：18432
+ 2017-02-16 09:41:13,966 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9266269145122524汇丰动漫_800000887月报表.xls
+ 2017-02-16 09:41:14,062 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为17,信息:6335334265962626酷猫妙招_800000658月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:41:14,099 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为5,信息:6125694925136465漫云_700002275月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:41:15,449 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为4,信息:6423264662262591乐云动漫_800001654月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:41:15,795 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为11,信息:9266269145122524汇丰动漫_800000887月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:41:16,102 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=17
+ 2017-02-16 09:41:16,145 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为17
+ 2017-02-16 09:41:16,292 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=4
+ 2017-02-16 09:41:16,319 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为4
+ 2017-02-16 09:41:16,402 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=11
+ 2017-02-16 09:41:16,438 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为11
+ 2017-02-16 09:41:17,303 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=5
+ 2017-02-16 09:41:17,328 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为5
+ 2017-02-16 09:41:22,763 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:41:22,842 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：14336
+ 2017-02-16 09:41:22,842 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3136264343949456辉盛动漫_800001892月报表.xls
+ 2017-02-16 09:41:23,890 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为20,信息:3136264343949456辉盛动漫_800001892月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:41:24,213 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=20
+ 2017-02-16 09:41:24,240 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为20
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量3execMap执行缓冲数量10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量4execMap执行缓冲数量10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量5execMap执行缓冲数量10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量6execMap执行缓冲数量10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量7execMap执行缓冲数量10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量8execMap执行缓冲数量10
+ 2017-02-16 09:42:34,166 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量9execMap执行缓冲数量10
+ 2017-02-16 09:42:34,167 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量10execMap执行缓冲数量10
+ 2017-02-16 09:42:34,167 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为144
+ 2017-02-16 09:42:34,167 INFO  com.astrolink.service.DmLoginService  - id为144的处理线程添加成功
+ 2017-02-16 09:42:34,167 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为129
+ 2017-02-16 09:42:34,167 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为144
+ 2017-02-16 09:42:34,167 INFO  com.astrolink.service.DmLoginService  - id为129的处理线程添加成功
+ 2017-02-16 09:42:34,167 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为129
+ 2017-02-16 09:42:34,167 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为162
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - id为162的处理线程添加成功
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为147
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - id为147的处理线程添加成功
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为117
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - id为117的处理线程添加成功
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为119
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - id为119的处理线程添加成功
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为138
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - id为138的处理线程添加成功
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为141
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - id为141的处理线程添加成功
+ 2017-02-16 09:42:34,168 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为157
+ 2017-02-16 09:42:34,169 INFO  com.astrolink.service.DmLoginService  - id为157的处理线程添加成功
+ 2017-02-16 09:42:34,169 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为126
+ 2017-02-16 09:42:34,169 INFO  com.astrolink.service.DmLoginService  - id为126的处理线程添加成功
+ 2017-02-16 09:42:34,169 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量10删除缓冲0
+ 2017-02-16 09:42:34,169 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为141
+ 2017-02-16 09:42:34,170 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为119
+ 2017-02-16 09:42:34,169 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为138
+ 2017-02-16 09:42:34,169 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为126
+ 2017-02-16 09:42:34,169 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为157
+ 2017-02-16 09:42:34,170 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为147
+ 2017-02-16 09:42:34,170 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为117
+ 2017-02-16 09:42:34,170 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为162
+ 2017-02-16 09:42:34,941 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:35,056 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:35,135 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:35,154 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:35,820 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:35,860 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:36,827 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:36,827 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:40,660 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:40,705 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:54,300 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:54,734 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:42:56,683 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:04,618 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:04,910 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:05,196 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:05,203 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:05,281 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:05,291 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:05,296 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:14,931 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:16,814 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:17,554 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:17,835 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:21,922 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:21,935 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：9216
+ 2017-02-16 09:43:21,935 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:4596143621116952水晶鞋之恋_00000000月报表.xls
+ 2017-02-16 09:43:23,100 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为117,信息:4596143621116952水晶鞋之恋_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:23,375 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=117
+ 2017-02-16 09:43:23,402 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为117
+ 2017-02-16 09:43:26,701 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:26,709 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：10240
+ 2017-02-16 09:43:26,709 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:1466695619546924麦克竞跑_00000000月报表.xls
+ 2017-02-16 09:43:27,775 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为144,信息:1466695619546924麦克竞跑_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:28,074 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=144
+ 2017-02-16 09:43:28,107 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为144
+ 2017-02-16 09:43:28,339 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:28,348 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：11264
+ 2017-02-16 09:43:28,348 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:2334512569314216古城宝矿_00000000月报表.xls
+ 2017-02-16 09:43:28,638 ERROR com.astrolink.dao.DmLoginExecLinstenerThreadDao  - java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.String.substring(String.java:1967)
+	at com.astrolink.util.tools.DmLoginTools.subStr(DmLoginTools.java:667)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:377)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:266)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2017-02-16 09:43:29,347 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为141,信息:2334512569314216古城宝矿_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:29,587 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=141
+ 2017-02-16 09:43:29,611 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为141
+ 2017-02-16 09:43:30,185 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:30,199 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：10240
+ 2017-02-16 09:43:30,199 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:1561524531236415果冻旋风_00000000月报表.xls
+ 2017-02-16 09:43:31,198 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:31,217 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：11264
+ 2017-02-16 09:43:31,217 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:1949416569929132达信动漫_00000000月报表.xls
+ 2017-02-16 09:43:31,234 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为138,信息:1561524531236415果冻旋风_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:31,386 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:31,561 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=138
+ 2017-02-16 09:43:31,588 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为138
+ 2017-02-16 09:43:31,705 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:32,265 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为162,信息:1949416569929132达信动漫_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:32,571 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=162
+ 2017-02-16 09:43:32,598 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为162
+ 2017-02-16 09:43:40,771 ERROR com.astrolink.dao.DmLoginExecLinstenerThreadDao  - java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.String.substring(String.java:1967)
+	at com.astrolink.util.tools.DmLoginTools.subStr(DmLoginTools.java:667)
+	at com.astrolink.util.tools.DmLoginTools.downLoadFile(DmLoginTools.java:377)
+	at com.astrolink.util.tools.DmLoginTools.doWork(DmLoginTools.java:266)
+	at com.astrolink.dao.DmLoginExecLinstenerThreadDao.exec(DmLoginExecLinstenerThreadDao.java:57)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2017-02-16 09:43:41,092 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('上传任务id:',spProductTaskId,'<br>业务名称:',spProductName,'<br>业务类型：月报表<br>失败信息：下载失败,重试http://121.42.157.151:8080/spInfo/retryAction?spProductTaskId=129'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=129
+ 2017-02-16 09:43:42,717 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=129
+ 2017-02-16 09:43:42,745 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为129
+ 2017-02-16 09:43:42,749 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:42,766 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：10240
+ 2017-02-16 09:43:42,766 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6244369625665465黑暗使者_00000000月报表.xls
+ 2017-02-16 09:43:43,758 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为157,信息:6244369625665465黑暗使者_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:44,054 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=157
+ 2017-02-16 09:43:44,083 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为157
+ 2017-02-16 09:43:45,340 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:45,359 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：8192
+ 2017-02-16 09:43:45,359 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9923414655922166哆来咪连萌_600000182月报表.xls
+ 2017-02-16 09:43:46,368 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为126,信息:9923414655922166哆来咪连萌_600000182月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:46,674 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=126
+ 2017-02-16 09:43:46,704 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为126
+ 2017-02-16 09:43:51,161 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:51,174 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：12288
+ 2017-02-16 09:43:51,174 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:5444491369656356启晨兴动漫_00000000月报表.xls
+ 2017-02-16 09:43:52,212 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为119,信息:5444491369656356启晨兴动漫_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:52,551 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=119
+ 2017-02-16 09:43:52,577 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为119
+ 2017-02-16 09:43:54,775 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:43:54,843 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：13312
+ 2017-02-16 09:43:54,843 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3434991363261645幽漫_00000000月报表.xls
+ 2017-02-16 09:43:56,043 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为147,信息:3434991363261645幽漫_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:43:56,393 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=147
+ 2017-02-16 09:43:56,429 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为147
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量3execMap执行缓冲数量10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量4execMap执行缓冲数量10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量5execMap执行缓冲数量10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量6execMap执行缓冲数量10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量7execMap执行缓冲数量10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量8execMap执行缓冲数量10
+ 2017-02-16 09:45:35,867 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量9execMap执行缓冲数量10
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量10execMap执行缓冲数量10
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为176
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - id为176的处理线程添加成功
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为177
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - id为177的处理线程添加成功
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为163
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - id为163的处理线程添加成功
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为181
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - id为181的处理线程添加成功
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为166
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - id为166的处理线程添加成功
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为167
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为176
+ 2017-02-16 09:45:35,869 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为166
+ 2017-02-16 09:45:35,869 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为177
+ 2017-02-16 09:45:35,869 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为181
+ 2017-02-16 09:45:35,868 INFO  com.astrolink.service.DmLoginService  - id为167的处理线程添加成功
+ 2017-02-16 09:45:35,869 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为185
+ 2017-02-16 09:45:35,870 INFO  com.astrolink.service.DmLoginService  - id为185的处理线程添加成功
+ 2017-02-16 09:45:35,870 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为170
+ 2017-02-16 09:45:35,870 INFO  com.astrolink.service.DmLoginService  - id为170的处理线程添加成功
+ 2017-02-16 09:45:35,870 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为174
+ 2017-02-16 09:45:35,870 INFO  com.astrolink.service.DmLoginService  - id为174的处理线程添加成功
+ 2017-02-16 09:45:35,870 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为175
+ 2017-02-16 09:45:35,870 INFO  com.astrolink.service.DmLoginService  - id为175的处理线程添加成功
+ 2017-02-16 09:45:35,870 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量10删除缓冲0
+ 2017-02-16 09:45:35,869 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为167
+ 2017-02-16 09:45:35,871 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为174
+ 2017-02-16 09:45:35,871 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为175
+ 2017-02-16 09:45:35,871 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为170
+ 2017-02-16 09:45:35,869 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为163
+ 2017-02-16 09:45:35,871 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为185
+ 2017-02-16 09:45:36,566 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,577 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,634 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,653 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,658 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,750 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,764 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,894 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,970 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:36,977 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:46,021 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:47,381 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:48,165 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:49,521 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:52,006 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:53,106 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:53,815 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:45:59,954 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:00,944 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:00,957 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：11264
+ 2017-02-16 09:46:00,957 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6312669666269624远浩旺动漫_00000000月报表.xls
+ 2017-02-16 09:46:03,816 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为181,信息:6312669666269624远浩旺动漫_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:04,250 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=181
+ 2017-02-16 09:46:04,289 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为181
+ 2017-02-16 09:46:06,977 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:07,044 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：13312
+ 2017-02-16 09:46:07,044 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9352633524641594逍遥剑_600000198月报表.xls
+ 2017-02-16 09:46:08,120 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为175,信息:9352633524641594逍遥剑_600000198月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:08,464 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=175
+ 2017-02-16 09:46:08,488 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为175
+ 2017-02-16 09:46:10,400 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:10,408 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：12288
+ 2017-02-16 09:46:10,408 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6421544615469125博易德动漫_00000000月报表.xls
+ 2017-02-16 09:46:11,512 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为166,信息:6421544615469125博易德动漫_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:11,734 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:11,747 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：12288
+ 2017-02-16 09:46:11,747 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9322542561131251永无止境_00000000月报表.xls
+ 2017-02-16 09:46:11,800 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=166
+ 2017-02-16 09:46:11,847 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为166
+ 2017-02-16 09:46:12,777 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为185,信息:9322542561131251永无止境_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:12,937 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:12,962 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：6144
+ 2017-02-16 09:46:12,962 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:5266319344925939点幻动漫_700001256月报表.xls
+ 2017-02-16 09:46:13,002 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:13,009 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：6144
+ 2017-02-16 09:46:13,009 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6566664661693526心阅动漫_700005297月报表.xls
+ 2017-02-16 09:46:13,070 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=185
+ 2017-02-16 09:46:13,102 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为185
+ 2017-02-16 09:46:14,770 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为177,信息:5266319344925939点幻动漫_700001256月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:14,800 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为176,信息:6566664661693526心阅动漫_700005297月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:15,093 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=176
+ 2017-02-16 09:46:15,110 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=177
+ 2017-02-16 09:46:15,120 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为176
+ 2017-02-16 09:46:15,139 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为177
+ 2017-02-16 09:46:16,775 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:16,854 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：13312
+ 2017-02-16 09:46:16,854 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3339626193661256高凯麒动漫_00000000月报表.xls
+ 2017-02-16 09:46:17,909 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为163,信息:3339626193661256高凯麒动漫_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:18,242 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=163
+ 2017-02-16 09:46:18,282 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为163
+ 2017-02-16 09:46:19,808 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:19,914 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：14336
+ 2017-02-16 09:46:19,914 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6555346992929193阳漫_00000000月报表.xls
+ 2017-02-16 09:46:21,073 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为170,信息:6555346992929193阳漫_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:21,093 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:21,153 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：13312
+ 2017-02-16 09:46:21,153 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6214635251246459热血格斗_600000201月报表.xls
+ 2017-02-16 09:46:21,476 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=170
+ 2017-02-16 09:46:21,536 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为170
+ 2017-02-16 09:46:22,213 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为174,信息:6214635251246459热血格斗_600000201月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:22,474 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=174
+ 2017-02-16 09:46:22,500 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为174
+ 2017-02-16 09:46:34,093 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:46:34,103 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：7168
+ 2017-02-16 09:46:34,103 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3996153592493663心阅动漫_700001759月报表.xls
+ 2017-02-16 09:46:35,357 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为167,信息:3996153592493663心阅动漫_700001759月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:46:35,574 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=167
+ 2017-02-16 09:46:35,594 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为167
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量3execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量4execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量5execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量6execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量7execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量8execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量9execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量10execMap执行缓冲数量10
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为208
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - id为208的处理线程添加成功
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为226
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - id为226的处理线程添加成功
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为211
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为208
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为226
+ 2017-02-16 09:48:44,225 INFO  com.astrolink.service.DmLoginService  - id为211的处理线程添加成功
+ 2017-02-16 09:48:44,226 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为229
+ 2017-02-16 09:48:44,226 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为211
+ 2017-02-16 09:48:44,226 INFO  com.astrolink.service.DmLoginService  - id为229的处理线程添加成功
+ 2017-02-16 09:48:44,226 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为214
+ 2017-02-16 09:48:44,226 INFO  com.astrolink.service.DmLoginService  - id为214的处理线程添加成功
+ 2017-02-16 09:48:44,226 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为202
+ 2017-02-16 09:48:44,226 INFO  com.astrolink.service.DmLoginService  - id为202的处理线程添加成功
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为234
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - id为234的处理线程添加成功
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为235
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - id为235的处理线程添加成功
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为205
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - id为205的处理线程添加成功
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为222
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - id为222的处理线程添加成功
+ 2017-02-16 09:48:44,227 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量10删除缓冲0
+ 2017-02-16 09:48:44,229 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为229
+ 2017-02-16 09:48:44,229 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为234
+ 2017-02-16 09:48:44,229 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为235
+ 2017-02-16 09:48:44,229 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为205
+ 2017-02-16 09:48:44,229 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为214
+ 2017-02-16 09:48:44,229 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为202
+ 2017-02-16 09:48:44,229 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为222
+ 2017-02-16 09:48:45,054 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,057 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,068 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,136 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,151 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,178 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,228 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,328 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,396 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:45,720 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:51,550 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:54,427 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:55,935 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:55,974 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:55,986 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:56,696 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:56,977 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:57,234 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:48:58,750 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:06,929 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:18,382 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:18,388 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：13312
+ 2017-02-16 09:49:18,388 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6292612633656463萌死小怪物_00000000月报表.xls
+ 2017-02-16 09:49:18,885 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:18,909 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：11264
+ 2017-02-16 09:49:18,909 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3923595959366193沙漠英豪_00000000月报表.xls
+ 2017-02-16 09:49:19,790 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:19,849 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：17408
+ 2017-02-16 09:49:19,849 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:1531663645143125新益微漫_800001581月报表.xls
+ 2017-02-16 09:49:21,015 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:21,047 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：11264
+ 2017-02-16 09:49:21,047 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6333645652469464达尔谜题_00000000月报表.xls
+ 2017-02-16 09:49:21,104 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为214,信息:6292612633656463萌死小怪物_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:21,369 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=214
+ 2017-02-16 09:49:21,393 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为214
+ 2017-02-16 09:49:21,885 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为229,信息:3923595959366193沙漠英豪_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:21,894 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为234,信息:1531663645143125新益微漫_800001581月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:22,060 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为222,信息:6333645652469464达尔谜题_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:22,117 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=234
+ 2017-02-16 09:49:22,152 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为234
+ 2017-02-16 09:49:22,172 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=229
+ 2017-02-16 09:49:22,197 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为229
+ 2017-02-16 09:49:22,307 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=222
+ 2017-02-16 09:49:22,332 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为222
+ 2017-02-16 09:49:22,334 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:22,347 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：11264
+ 2017-02-16 09:49:22,347 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6961259151555356BB战士三国传_00000000月报表.xls
+ 2017-02-16 09:49:23,388 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为226,信息:6961259151555356BB战士三国传_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:23,880 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=226
+ 2017-02-16 09:49:23,917 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为226
+ 2017-02-16 09:49:25,545 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:25,559 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：11264
+ 2017-02-16 09:49:25,559 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:6133662526466419战舰世界_00000000月报表.xls
+ 2017-02-16 09:49:26,381 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:26,392 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：13312
+ 2017-02-16 09:49:26,392 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9495163969641391皇家骑士_00000000月报表.xls
+ 2017-02-16 09:49:27,005 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:27,065 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：15360
+ 2017-02-16 09:49:27,065 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:4426221546659261暴击忍者_00000000月报表.xls
+ 2017-02-16 09:49:28,057 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为202,信息:6133662526466419战舰世界_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:28,137 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:28,168 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：13312
+ 2017-02-16 09:49:28,168 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:9664324636241646垂直火力_00000000月报表.xls
+ 2017-02-16 09:49:28,194 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为208,信息:9495163969641391皇家骑士_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:28,235 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为211,信息:4426221546659261暴击忍者_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:29,315 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=211
+ 2017-02-16 09:49:29,315 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=202
+ 2017-02-16 09:49:29,315 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=208
+ 2017-02-16 09:49:29,315 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为205,信息:9664324636241646垂直火力_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:29,361 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为211
+ 2017-02-16 09:49:29,361 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为208
+ 2017-02-16 09:49:29,383 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为202
+ 2017-02-16 09:49:31,814 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=205
+ 2017-02-16 09:49:31,865 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为205
+ 2017-02-16 09:49:35,512 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:49:35,522 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：5120
+ 2017-02-16 09:49:35,522 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3653669265155364心阅动漫_700001321月报表.xls
+ 2017-02-16 09:49:36,527 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为235,信息:3653669265155364心阅动漫_700001321月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:49:36,875 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=235
+ 2017-02-16 09:49:36,916 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为235
+ 2017-02-16 09:51:48,481 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数8
+ 2017-02-16 09:51:48,481 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量10
+ 2017-02-16 09:51:48,481 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量10
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量3execMap执行缓冲数量10
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量4execMap执行缓冲数量10
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量5execMap执行缓冲数量10
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量6execMap执行缓冲数量10
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量7execMap执行缓冲数量10
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量8execMap执行缓冲数量10
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为241
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - id为241的处理线程添加成功
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为243
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - id为243的处理线程添加成功
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为245
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为241
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - id为245的处理线程添加成功
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为250
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - id为250的处理线程添加成功
+ 2017-02-16 09:51:48,482 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为236
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.service.DmLoginService  - id为236的处理线程添加成功
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为237
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.service.DmLoginService  - id为237的处理线程添加成功
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为238
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.service.DmLoginService  - id为238的处理线程添加成功
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为239
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.service.DmLoginService  - id为239的处理线程添加成功
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量8删除缓冲0
+ 2017-02-16 09:51:48,483 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为243
+ 2017-02-16 09:51:48,484 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为239
+ 2017-02-16 09:51:48,484 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为245
+ 2017-02-16 09:51:48,484 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为237
+ 2017-02-16 09:51:48,484 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为236
+ 2017-02-16 09:51:48,484 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为250
+ 2017-02-16 09:51:48,484 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理月报表，id为238
+ 2017-02-16 09:51:49,501 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:49,543 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:49,543 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:49,543 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:49,571 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:49,589 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:49,620 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:49,643 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:57,348 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:58,877 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:59,140 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:59,216 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:51:59,505 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:00,144 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:02,446 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:13,312 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:13,329 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：6144
+ 2017-02-16 09:52:13,329 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3641932363355663全民战机_600000145月报表.xls
+ 2017-02-16 09:52:14,530 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为241,信息:3641932363355663全民战机_600000145月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:52:14,764 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=241
+ 2017-02-16 09:52:14,788 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为241
+ 2017-02-16 09:52:23,457 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:23,524 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：17408
+ 2017-02-16 09:52:23,524 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:4369166422644499酷虫漫画_800001923月报表.xls
+ 2017-02-16 09:52:24,637 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为239,信息:4369166422644499酷虫漫画_800001923月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:52:24,906 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=239
+ 2017-02-16 09:52:24,930 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为239
+ 2017-02-16 09:52:25,522 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:25,601 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：14336
+ 2017-02-16 09:52:25,601 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:1221649233656163动漫小屋_800001493月报表.xls
+ 2017-02-16 09:52:25,784 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:25,845 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：18432
+ 2017-02-16 09:52:25,845 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3124656639366691漫控_00000000月报表.xls
+ 2017-02-16 09:52:26,290 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:26,307 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：9216
+ 2017-02-16 09:52:26,307 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:1292625426453564彩蛋漫画_600000210月报表.xls
+ 2017-02-16 09:52:26,455 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:26,580 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:26,590 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：10240
+ 2017-02-16 09:52:26,590 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:5364666193933116嘉诚漫画_800000640月报表.xls
+ 2017-02-16 09:52:27,239 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:52:27,253 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：5120
+ 2017-02-16 09:52:27,253 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:3366336261559925心阅动漫_700001255月报表.xls
+ 2017-02-16 09:52:29,284 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为238,信息:1221649233656163动漫小屋_800001493月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:52:29,345 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为236,信息:3366336261559925心阅动漫_700001255月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:52:29,369 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为250,信息:3124656639366691漫控_00000000月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:52:29,457 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('上传任务id:',spProductTaskId,'<br>业务名称:',spProductName,'<br>业务类型：月报表<br>失败信息：1292625426453564彩蛋漫画_600000210月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;该表格已上传'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=245
+ 2017-02-16 09:52:29,485 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为245,信息:1292625426453564彩蛋漫画_600000210月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;该表格已上传
+ 2017-02-16 09:52:29,528 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('上传任务id:',spProductTaskId,'<br>业务名称:',spProductName,'<br>业务类型：月报表<br>失败信息：5364666193933116嘉诚漫画_800000640月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;该表格已上传'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=243
+ 2017-02-16 09:52:29,551 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=238
+ 2017-02-16 09:52:29,573 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为243,信息:5364666193933116嘉诚漫画_800000640月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;该表格已上传
+ 2017-02-16 09:52:29,576 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为238
+ 2017-02-16 09:52:29,595 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=236
+ 2017-02-16 09:52:29,618 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为236
+ 2017-02-16 09:52:29,686 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=250
+ 2017-02-16 09:52:29,711 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=245
+ 2017-02-16 09:52:29,716 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为250
+ 2017-02-16 09:52:29,730 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为245
+ 2017-02-16 09:52:29,800 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=243
+ 2017-02-16 09:52:29,829 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为243
+ 2017-02-16 09:52:49,699 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:53:12,872 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2017-02-16 09:53:12,931 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 文件大小为：13312
+ 2017-02-16 09:53:12,931 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 月报表上传，文件名为:5619661626456134心阅动漫_800001775月报表.xls
+ 2017-02-16 09:53:13,676 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - id为237,信息:5619661626456134心阅动漫_800001775月报表.xls&nbsp;&nbsp;&nbsp;&nbsp;成功
+ 2017-02-16 09:53:13,896 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=237
+ 2017-02-16 09:53:13,919 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为237
+ 

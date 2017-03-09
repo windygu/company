@@ -1,0 +1,40 @@
+2016-12-26 17:37:17,940 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.IllegalArgumentException: host parameter is null
+	at org.apache.commons.httpclient.HttpConnection.setHost(HttpConnection.java:249)
+	at org.apache.commons.httpclient.SimpleHttpConnectionManager.getConnectionWithTimeout(SimpleHttpConnectionManager.java:189)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:153)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:128)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:374)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:384)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:121)
+
+ 2016-12-26 17:37:17,958 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:376)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:384)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:121)
+
+ 2016-12-26 17:39:23,649 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.IllegalArgumentException: host parameter is null
+	at org.apache.commons.httpclient.HttpConnection.setHost(HttpConnection.java:249)
+	at org.apache.commons.httpclient.SimpleHttpConnectionManager.getConnectionWithTimeout(SimpleHttpConnectionManager.java:189)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:153)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at com.astrolink.util.tools.PostNetWork_singleton.executeMethod(PostNetWork_singleton.java:128)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:374)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:384)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:121)
+
+ 2016-12-26 17:39:23,651 ERROR com.astrolink.util.tools.PostNetWork_singleton  - java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:97)
+	at com.astrolink.util.tools.PostNetWork_singleton.getHtml(PostNetWork_singleton.java:244)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:376)
+	at com.astrolink.websiteCrack.JdLogin.post_doNetWork(JdLogin.java:384)
+	at com.astrolink.websiteCrack.JdLogin.main(JdLogin.java:121)
+
+ 2016-12-26 17:41:07,247 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 

@@ -1,0 +1,4 @@
+2016-12-08 08:59:33,542 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-08 08:59:33,598 INFO  com.astrolink.service.DmLoginService  - 数据导入监听服务
+ 2016-12-08 08:59:33,612 INFO  com.astrolink.service.DmLoginService  - 数据导入监听服务完毕
+ 

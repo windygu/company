@@ -1,0 +1,73 @@
+package com.astrolink.dao;
+
+import java.util.ArrayList;
+import org.apache.log4j.Logger;
+import com.astrolink.consts.Const;
+import com.astrolink.domain.Cmd;
+import com.astrolink.domain.CtccSmsSend;
+import com.astrolink.domain.DmExecLog;
+import com.astrolink.domain.WoChannelExecLog;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IDbObjectReciver;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTools;
+
+
+/**
+ * 数据监听线程
+ * @author cuilei
+ * @date 2015-11-30
+ */
+public class WoChannelSmsDataLinstenerThreadDao extends JobThread{
+	private Logger logger = Logger.getLogger(WoChannelSmsDataLinstenerThreadDao.class);
+	public String dbTableName = "";
+	public IDbObjectReciver dbObjectReciver; 
+	
+	public void setDbObjectReciver(IDbObjectReciver dbObjectReciver) {
+		this.dbObjectReciver = dbObjectReciver;
+	}
+	
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	@Override
+	public void exec() {
+		while (true) {
+			int taskNum=0;
+			try {
+				DbTools dt=new  DbTools(Const.DB_WOCHANNE_URL,Const.DB_MYSQL_DRIVER,Const.DB_WOCHANNE_USERNAME,Const.DB_WOCHANNE_PASSWORD);
+				
+				String sql="SELECT "+
+							"a.paytype,a.ssid,a.proxyIp,a.id,a.imei,a.imsi,a.monum,a.consumeCode,a.execNum,a.cpparam,a.cpInfoId,a.methodType,b.crackSynUrl,  "+
+							"a.mac,a.sdkVersionCode,a.consumePrice,a.consumeName,a.company,a.channel,a.appid,a.cpId,a.gameName,a.versionCode,a.appversion,a.sdktotalversion,a.orderId  "+
+							"FROM channel_exec_log AS a INNER JOIN spinfo.cp_info AS b ON a.cpInfoId=b.cpInfoId " +
+						"where " +
+							"execNum<"+Const.WOCHANNE_LOGIC_RETRY_NUM+" " +
+							//"execNum<"+Const.WOCHANNE_LOGIC_RETRY_NUM_SK+" " +
+							"AND getSmsType='true' " +
+							"AND methodType=0 " +//正常业务
+							"AND ((execNum=0 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(a.updateDate))>= 20) " +
+							"OR (execNum=1 AND (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(a.updateDate))>= 30)) order by execNum,a.id	limit 200";
+				ArrayList<Object> list=dt.executeQuery(sql, WoChannelExecLog.class, WoChannelSmsDataLinstenerThreadDao.class);
+				taskNum=list.size();
+				if (taskNum > 0) {
+					logger.info(this.dbTableName + "扫描结束，需要处理的数据个数" + taskNum);
+				}
+				
+				if (dbObjectReciver != null) {
+					dbObjectReciver.dataRecived(list);
+				}
+			} catch (Exception e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+
+			try {
+					Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+		}
+	}
+
+}

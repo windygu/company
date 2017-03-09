@@ -1,0 +1,74 @@
+2016-12-06 10:58:03,838 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-06 10:58:03,850 INFO  com.astrolink.service.DmLoginService  - 数据导入监听服务
+ 2016-12-06 10:58:03,851 INFO  com.astrolink.service.DmLoginService  - 数据导入监听服务完毕
+ 2016-12-06 10:58:05,883 INFO  com.astrolink.dao.DmLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数10
+ 2016-12-06 10:58:05,883 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-06 10:58:05,883 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量0
+ 2016-12-06 10:58:05,885 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量3execMap执行缓冲数量0
+ 2016-12-06 10:58:05,885 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量4execMap执行缓冲数量0
+ 2016-12-06 10:58:05,885 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量5execMap执行缓冲数量0
+ 2016-12-06 10:58:05,885 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量6execMap执行缓冲数量0
+ 2016-12-06 10:58:05,885 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量7execMap执行缓冲数量0
+ 2016-12-06 10:58:05,885 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量8execMap执行缓冲数量0
+ 2016-12-06 10:58:05,885 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量9execMap执行缓冲数量0
+ 2016-12-06 10:58:05,885 INFO  com.astrolink.service.DmLoginService  - 数据到达接收器，waitMap数据缓冲数量10execMap执行缓冲数量0
+ 2016-12-06 10:58:05,886 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为16
+ 2016-12-06 10:58:05,888 INFO  com.astrolink.service.DmLoginService  - id为16的处理线程添加成功
+ 2016-12-06 10:58:05,888 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为32
+ 2016-12-06 10:58:05,888 INFO  com.astrolink.service.DmLoginService  - id为32的处理线程添加成功
+ 2016-12-06 10:58:05,888 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为3
+ 2016-12-06 10:58:05,888 INFO  com.astrolink.service.DmLoginService  - id为3的处理线程添加成功
+ 2016-12-06 10:58:05,889 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为19
+ 2016-12-06 10:58:05,889 INFO  com.astrolink.service.DmLoginService  - id为19的处理线程添加成功
+ 2016-12-06 10:58:05,889 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为22
+ 2016-12-06 10:58:05,889 INFO  com.astrolink.service.DmLoginService  - id为22的处理线程添加成功
+ 2016-12-06 10:58:05,889 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为7
+ 2016-12-06 10:58:05,889 INFO  com.astrolink.service.DmLoginService  - id为7的处理线程添加成功
+ 2016-12-06 10:58:05,889 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为10
+ 2016-12-06 10:58:05,890 INFO  com.astrolink.service.DmLoginService  - id为10的处理线程添加成功
+ 2016-12-06 10:58:05,890 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为26
+ 2016-12-06 10:58:05,890 INFO  com.astrolink.service.DmLoginService  - id为26的处理线程添加成功
+ 2016-12-06 10:58:05,890 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为13
+ 2016-12-06 10:58:05,890 INFO  com.astrolink.service.DmLoginService  - id为13的处理线程添加成功
+ 2016-12-06 10:58:05,890 INFO  com.astrolink.service.DmLoginService  - 查询到,数据同步处理线程，开始添加，id为29
+ 2016-12-06 10:58:05,890 INFO  com.astrolink.service.DmLoginService  - id为29的处理线程添加成功
+ 2016-12-06 10:58:05,891 INFO  com.astrolink.service.DmLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量10删除缓冲0
+ 2016-12-06 10:58:05,915 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为7
+ 2016-12-06 10:58:05,915 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为32
+ 2016-12-06 10:58:05,916 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为22
+ 2016-12-06 10:58:05,915 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为19
+ 2016-12-06 10:58:05,915 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为29
+ 2016-12-06 10:58:05,916 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为3
+ 2016-12-06 10:58:05,916 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为10
+ 2016-12-06 10:58:05,916 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为16
+ 2016-12-06 10:58:05,916 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为26
+ 2016-12-06 10:58:05,916 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 开始处理动漫CP投诉，id为13
+ 2016-12-06 10:58:07,329 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,468 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,543 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,546 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,558 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,669 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,688 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,696 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,823 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:07,827 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:14,849 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:15,467 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:15,878 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:16,369 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:16,945 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:17,222 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:17,780 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:20,335 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:21,444 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:24,476 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:24,624 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:24,625 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:29,535 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:31,320 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-06 10:58:39,171 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=13
+ 2016-12-06 10:58:39,193 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为13
+ 2016-12-06 10:58:41,483 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=16
+ 2016-12-06 10:58:41,511 INFO  com.astrolink.dao.DmLoginExecLinstenerThreadDao  - 处理请求结束，id为16
+ 

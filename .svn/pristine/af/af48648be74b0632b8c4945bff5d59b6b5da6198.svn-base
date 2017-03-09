@@ -1,0 +1,39 @@
+package com.astrolink.main;
+
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import net.sf.json.JSONObject;
+
+import com.astrolink.consts.Const;
+import com.astrolink.consts.LoadProperties;
+import com.astrolink.service.DmSmsService;
+import com.astrolink.service.WoChannel20SmsService;
+import com.astrolink.service.WoChannelSmsService;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.GetNetWork;
+import com.sun.rowset.CachedRowSetImpl;
+
+/**
+ * 小wo渠道20计费确认主入口
+ * 
+ * @author cuilei
+ * @date 2016-11-07
+ */
+public class WoChannel20SmsMain {
+
+	public static void main(String[] args) {
+		String configName = "config";
+		if (args.length == 1) {
+			configName = args[0];
+		}
+
+		// 配置文件config.properties路径
+		String configPath = "." + File.separator + "conf" + File.separator + configName + ".properties";
+
+		new LoadProperties(configPath).init();
+		WoChannel20SmsService.getInstance().doWoChannel20SmsExec();
+		
+	}
+}

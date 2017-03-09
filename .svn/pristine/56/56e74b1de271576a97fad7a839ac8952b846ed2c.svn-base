@@ -1,0 +1,277 @@
+package com.astrolink.dao;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.security.interfaces.RSAPublicKey;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.crypto.SecretKey;
+
+import org.apache.log4j.Logger;
+import com.astrolink.consts.Const;
+import com.astrolink.domain.VideoExecLog;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IExecFinish;
+import com.astrolink.util.tools.BasicsTools;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTools;
+import com.astrolink.util.tools.GetNetWork;
+import com.astrolink.util.tools.VideoNewTools;
+
+import net.sf.json.JSONObject;
+
+/**
+ * 新视频
+ * 
+ * @author sjh
+ * @date 2016-04-21
+ */
+public class VideoExecLinstenerThreadDao extends JobThread {
+	private Logger logger = Logger.getLogger(VideoExecLinstenerThreadDao.class);
+	private String dbTableName;
+	public VideoExecLog videoExecLog;
+	public IExecFinish execFinish;
+
+	public VideoExecLinstenerThreadDao(VideoExecLog videoExecLog) {
+		this.videoExecLog = videoExecLog;
+	}
+
+	public void setExecFinish(IExecFinish execFinish) {
+		this.execFinish = execFinish;
+	}
+
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	@Override
+	public void exec() {
+		int payStepNum = 0;
+		String message = "";
+		String phoneNumber = "";
+		String doChargeStatus = "-1";
+		String en_session = "";
+		StringBuffer logBuff = new StringBuffer();
+		logBuff.append("开始新视频计费确认,id为" + this.getKey() + ";imsi:" + videoExecLog.getImsi());
+
+		try {
+			byte[] Key1 = VideoNewTools.hexString2Bytes(videoExecLog.getKey1());
+			byte[] Key2 = VideoNewTools.hexString2Bytes(videoExecLog.getKey2());
+			String md5imsi = VideoNewTools.md52String32(videoExecLog.getImsi().getBytes());
+			SecretKey secretKey = VideoNewTools.getSecretKey();
+			RSAPublicKey pubkey = VideoNewTools.generateRSAPublicKey(videoExecLog.getB1(), videoExecLog.getB2());
+
+			Map<String, String> sessionIdCookie = new HashMap<String, String>();
+			String queryTokenStr = VideoNewTools.get_queryTokenStr(videoExecLog.getPackageName(), videoExecLog.getPackageSign(), videoExecLog.getSecurityCode(), logBuff);
+			String queryTokenReq = VideoNewTools.generateVideoPostReq(md5imsi, videoExecLog.getRand4num(), queryTokenStr, pubkey);
+			String queryTokenRsp = VideoNewTools.postVideoPostReq(videoExecLog.getUA(), videoExecLog.getChid(), queryTokenReq, sessionIdCookie, secretKey, logBuff);
+			String token = VideoNewTools.gettoken(queryTokenRsp, videoExecLog.getUA());
+			if (token.equals("")){
+				message="token 为空";
+				doChargeStatus=VideoNewTools.getContextByTag(queryTokenRsp, "code", logBuff);
+				return;
+			}
+
+			String tkInfo = VideoNewTools.get_tkInfo(token, videoExecLog.getUA());
+			String checkVersionStr = VideoNewTools.get_checkVersionStr(videoExecLog.getChid(), videoExecLog.getPackageName(), videoExecLog.getPackageSign(), videoExecLog.getSecurityCode(), videoExecLog.getScrkey(), md5imsi, videoExecLog.getRand4num(), tkInfo, logBuff);
+			String checkVersionReq = VideoNewTools.generateVideoPostReq(md5imsi, videoExecLog.getRand4num(), checkVersionStr, pubkey);
+			String checkVersionRsp = VideoNewTools.postVideoPostReq(videoExecLog.getUA(), videoExecLog.getChid(), checkVersionReq, sessionIdCookie, secretKey, logBuff);
+
+			String playUrl2Str = VideoNewTools.get_playUrl2Str(videoExecLog.getNodeId(), videoExecLog.getContentId(), videoExecLog.getPackageName(), videoExecLog.getPackageSign(), videoExecLog.getSecurityCode(), videoExecLog.getScrkey(), md5imsi, videoExecLog.getRand4num(), tkInfo, logBuff);
+			String playUrl2Req = VideoNewTools.generateVideoPostReq(md5imsi, videoExecLog.getRand4num(), playUrl2Str, pubkey);
+			String playUrl2Rsp = VideoNewTools.postVideoPostReq(videoExecLog.getUA(), videoExecLog.getChid(), playUrl2Req, sessionIdCookie, secretKey, logBuff);
+
+			if (playUrl2Rsp.contains("playUrl")) {
+				message="已订购";
+				doChargeStatus="000000";
+				logBuff.append(playUrl2Rsp);
+				logBuff.append("********** 已订购 *********");
+				return;
+			}
+
+			String requestTime = VideoNewTools.getRequestTime();
+			String enreq1 = VideoNewTools.generate_enreq1(videoExecLog.getCtype(), videoExecLog.getAppid(), videoExecLog.getImsi(), videoExecLog.getImei(), videoExecLog.getEncodeCID(), videoExecLog.getRand16Num(), videoExecLog.getTimeStamp(), videoExecLog.getCpid(), videoExecLog.getMiguContentId(), videoExecLog.getMiguChid(), videoExecLog.getSdksessionid(), videoExecLog.getApkstatus(), requestTime, videoExecLog.getSdkcpparam(), Key1, Key2, logBuff);
+			String req1singature = VideoNewTools.getHmacSHA1("+15BFidS}7/+POST+en_sessionreq=" + enreq1 + "&apiVersion=1.0&SDKVersion=12001000", "15BFidS}7/&");
+			VideoNewTools.post_getSession1(videoExecLog.getImsi(), videoExecLog.getImei(), req1singature, enreq1, logBuff);
+
+			requestTime = VideoNewTools.getRequestTime();
+			String enreq2 = VideoNewTools.generate_enreq2(videoExecLog.getCtype(), videoExecLog.getAppid(), videoExecLog.getImsi(), videoExecLog.getImei(), videoExecLog.getEncodeCID(), videoExecLog.getRand16Num(), videoExecLog.getTimeStamp(), videoExecLog.getCpid(), videoExecLog.getMiguContentId(), videoExecLog.getMiguChid(), videoExecLog.getSdksessionid(), videoExecLog.getApkstatus(), requestTime, videoExecLog.getSdkcpparam(), Key1, Key2, logBuff);
+			String req2singature = VideoNewTools.getHmacSHA1("+15BFidS}7/+POST+en_sessionreq=" + enreq2 + "&apiVersion=1.0&SDKVersion=12001000", "15BFidS}7/&");
+			String sessionrep = VideoNewTools.post_getSession2(videoExecLog.getImsi(), videoExecLog.getImei(), req2singature, enreq2, logBuff);
+			if(sessionrep!=null){
+				message = VideoNewTools.getContextByTag(sessionrep, "message",logBuff);
+				doChargeStatus = VideoNewTools.getContextByTag(sessionrep, "status",logBuff);
+			}
+			
+			en_session = VideoNewTools.getContextByTag(sessionrep, "en_session", logBuff);
+			if (en_session==null || en_session.equals("")){
+				return;
+			}
+
+			String de_session = VideoNewTools.decode_RequestResponse(videoExecLog.getRand16Num(), en_session);
+			String session = VideoNewTools.getContextByTag(de_session, "session", logBuff);
+			requestTime = VideoNewTools.getRequestTime();
+
+			String enreq3 = VideoNewTools.generate_enreq3(videoExecLog.getCtype(), videoExecLog.getAppid(), videoExecLog.getImsi(), videoExecLog.getImei(), videoExecLog.getEncodeCID(), videoExecLog.getRand16Num(), videoExecLog.getTimeStamp(), videoExecLog.getCpid(), videoExecLog.getMiguContentId(), videoExecLog.getMiguChid(), videoExecLog.getSdksessionid(), videoExecLog.getApkstatus(), requestTime, session, videoExecLog.getTransId(), videoExecLog.getItemId(), videoExecLog.getItemPrice(), videoExecLog.getItemSafeLevel(), videoExecLog.getItemMethod(), videoExecLog.getItemExt(), videoExecLog.getSdkcpparam(), Key1, Key2, logBuff);
+			String req3singature = VideoNewTools.getHmacSHA1("+15BFidS}7/+POST+ctype=" + videoExecLog.getCtype() + "&en_billingreq=" + enreq3 + "&transId=" + videoExecLog.getTransId() + "&apiVersion=1.0&SDKVersion=12001000", "15BFidS}7/&");
+			String chargerep = VideoNewTools.post_doCharge(videoExecLog.getImsi(), videoExecLog.getImei(), req3singature, enreq3, videoExecLog.getCtype(), videoExecLog.getTransId(), logBuff);
+
+			doChargeStatus = VideoNewTools.getContextByTag(chargerep, "status", logBuff);
+			if (!doChargeStatus.equals("0")) {
+				logBuff.append("失败");
+				message = VideoNewTools.getContextByTag(sessionrep, "message",logBuff);
+				return;
+			}
+
+			String doChargeReturnExt = VideoNewTools.getContextByTag(chargerep, "message", logBuff);
+
+			// System.out.println(new String(Base64.decode(doChargeReturnExt
+			// .replaceAll("-", "+").replaceAll("_", "/"))));
+			// migu end
+
+			// video play start
+			String playURLRsp = VideoNewTools.postVideoPostReq(videoExecLog.getUA(), videoExecLog.getChid(), playUrl2Req, sessionIdCookie, secretKey, logBuff);
+			//String playUrl = VideoNewTools.getplayUrl(playURLRsp).replace(".m3u8", "@0-0.ts") + "&hls_type=2";
+			String playUrl = VideoNewTools.getplayUrl(playURLRsp);
+			String playUrlContent = VideoNewTools.get_doNetWork(playUrl, "", logBuff);
+			String downloadurl="";
+			if(playUrlContent!=null && !playUrlContent.equals("")){
+				downloadurl=playUrlContent.substring(playUrlContent.indexOf(",")+1,playUrlContent.indexOf("#EXTINF", 88));
+				//下载服务器域名替换
+				playUrl=playUrl.replace("vod.gslb.cmvideo.cn", "vod.hcs.cmvideo.cn:8088");
+				logBuff.append(",playUrl:"+playUrl);
+				downloadurl=playUrl.substring(0,playUrl.lastIndexOf("/")+1)+downloadurl;
+			}
+			logBuff.append(",downloadurl:"+downloadurl);
+			VideoNewTools.downloadByURL(downloadurl,logBuff);
+			logBuff.append("**********Order success*********");
+			// video paly end
+
+			doChargeStatus = VideoNewTools.getContextByTag(chargerep, "status", logBuff);
+			message = VideoNewTools.getContextByTag(chargerep, "message", logBuff);
+			phoneNumber = VideoNewTools.getContextByTag(chargerep, "phoneNumber", logBuff);
+			logBuff.append("doChargeStatus:" + doChargeStatus);
+			if (!doChargeStatus.equals("0")) {
+				logBuff.append("计费失败");
+			}
+			payStepNum++;
+		} catch (Exception e) {
+			logBuff.append(ExceptionTools.exception(e));
+		} finally {
+			try {
+				if(payStepNum<1 && doChargeStatus.equals("0")){
+					doChargeStatus="-1";
+				}
+				if (doChargeStatus.equals("0")) {
+					updataExecLog(videoExecLog.getId(), logBuff);
+					sevePayResultLog(payStepNum, doChargeStatus, message, phoneNumber, videoExecLog.getCrackSynUrl(), en_session, videoExecLog.getId(), logBuff);
+				} else {
+					if (videoExecLog.getExecNum() < Const.VIDEO_LOGIC_RETRY_NUM - 1) {
+						updateExecNum(videoExecLog.getId(), logBuff);
+					} else {
+						updataExecLog(videoExecLog.getId(), logBuff);
+						sevePayResultLog(payStepNum, doChargeStatus, message, phoneNumber, videoExecLog.getCrackSynUrl(), en_session, videoExecLog.getId(), logBuff);
+					}
+				}
+			} catch (Exception e) {
+				logBuff.append("处理请求失败，id为" + this.getKey() + ExceptionTools.exception(e));
+			} finally {
+				if (execFinish != null) {
+					execFinish.execDone(this.getKey());
+					logBuff.append("处理请求结束，id为" + this.getKey());
+				}
+				logger.info(logBuff.toString());
+			}
+		}
+	}
+
+	public void updateExecNum(long id, StringBuffer logBuff) {
+		StringBuffer sqlBuff = new StringBuffer();
+		sqlBuff.append("UPDATE ").append(dbTableName).append(" SET  execNum = execNum+1, updateDate='").append(BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss")).append("'  WHERE `id` = '").append(id).append("' ");
+		DbTools dt = new DbTools(Const.DB_VIDEO_URL, Const.DB_MYSQL_DRIVER, Const.DB_VIDEO_USERNAME, Const.DB_VIDEO_PASSWORD);
+		logBuff.append("updateExecNum：" + dt.upDate(sqlBuff.toString(), VideoExecLinstenerThreadDao.class));
+	}
+
+	public void deleteExecLog(long id, StringBuffer logBuff) {
+		StringBuffer sqlBuff = new StringBuffer();
+		sqlBuff.append("DELETE FROM ").append(dbTableName).append(" WHERE `id` = '").append(id).append("' ");
+		DbTools dt = new DbTools(Const.DB_VIDEO_URL, Const.DB_MYSQL_DRIVER, Const.DB_VIDEO_USERNAME, Const.DB_VIDEO_PASSWORD);
+		logBuff.append("deleteExecLog：" + dt.upDate(sqlBuff.toString(), VideoExecLinstenerThreadDao.class));
+	}
+
+	public void updataExecLog(long id, StringBuffer logBuff) {
+		StringBuffer sqlBuff = new StringBuffer();
+		sqlBuff.append("DELETE FROM new_exec_log WHERE id = '").append(id).append("'");
+		DbTools dt = new DbTools(Const.DB_VIDEO_URL, Const.DB_MYSQL_DRIVER, Const.DB_VIDEO_USERNAME, Const.DB_VIDEO_PASSWORD);
+		logBuff.append("deleteExecLog：" + dt.upDate(sqlBuff.toString(), VideoExecLinstenerThreadDao.class));
+	}
+
+	public void sevePayResultLog(int payStepNum, String status, String message, String phoneNumber, String crackSynUrl, String en_session, long execLogId, StringBuffer logBuff) {
+		JSONObject dataInfo = new JSONObject();
+		dataInfo.put("payStepNum", payStepNum);
+		dataInfo.put("execLogId", execLogId);
+		if (status == null || status.equals("")) {
+			status = "-1";
+		}
+		dataInfo.put("status", status);
+		dataInfo.put("message", message);
+		dataInfo.put("en_session", en_session);
+		dataInfo.put("imei", videoExecLog.getImei());
+		dataInfo.put("imsi", videoExecLog.getImsi());
+		dataInfo.put("monum", videoExecLog.getMonum());
+		dataInfo.put("consumeCode", videoExecLog.getConsumeCode());
+		dataInfo.put("cpparam", videoExecLog.getCpparam());
+		dataInfo.put("execNum", videoExecLog.getExecNum());
+		if (phoneNumber == null || phoneNumber.equals("")) {
+			phoneNumber = "0";
+		}
+		dataInfo.put("phoneNumber", phoneNumber);
+		dataInfo.put("cpInfoId", videoExecLog.getCpInfoId());
+		dataInfo.put("transId", videoExecLog.getRand16Num() + videoExecLog.getTimeStamp());
+		dataInfo.put("dayTime", BasicsTools.getForDate("yyyy-MM-dd"));
+		dataInfo.put("inputDate", BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss"));
+		dataInfo.put("methodType", videoExecLog.getMethodType());
+		dataInfo.put("spProductConsumeCodeId", videoExecLog.getSpProductConsumeCodeId());
+		dataInfo.put("channelId", videoExecLog.getChid());
+
+		dataInfo.put("synUrl", crackSynUrl);
+		try {
+			crackSyn(dataInfo, crackSynUrl(dataInfo, crackSynUrl));
+		} catch (Exception e) {
+			logBuff.append(ExceptionTools.exception(e));
+		}
+		DbTools dt = new DbTools(Const.DB_VIDEO_URL, Const.DB_MYSQL_DRIVER, Const.DB_VIDEO_USERNAME, Const.DB_VIDEO_PASSWORD);
+		logBuff.append("sevePayResultLog：" + dt.insertJson(Const.VIDEO_TABLE_PAY_RESULT_LOG, dataInfo, VideoExecLinstenerThreadDao.class));
+	}
+
+	public void crackSyn(JSONObject dataInfo, String url) {
+		GetNetWork get = new GetNetWork(url);
+		get.executeMethod();
+		dataInfo.put("synUrl", url);
+		dataInfo.put("synstatus", get.getNetState());
+		dataInfo.put("synresult", get.getString().replaceAll("'", ""));
+	}
+
+	public String crackSynUrl(JSONObject dataInfo, String crackSynUrl) {
+		StringBuffer sbuff = new StringBuffer();
+		sbuff.append(crackSynUrl);
+		sbuff.append("?").append("mobile=").append(dataInfo.optString("phoneNumber"));
+		sbuff.append("&").append("cpid=").append(dataInfo.optString("cpInfoId"));
+		sbuff.append("&").append("cpparam=").append(dataInfo.optString("cpparam"));
+		sbuff.append("&").append("monum=").append(dataInfo.optString("monum"));
+		sbuff.append("&").append("sid=").append(dataInfo.optString("consumeCode"));
+		sbuff.append("&").append("imei=").append(dataInfo.optString("imei"));
+		sbuff.append("&").append("imsi=").append(dataInfo.optString("imsi"));
+		sbuff.append("&").append("linkId=").append(dataInfo.optString("transId"));
+		sbuff.append("&").append("status=").append(dataInfo.optString("status"));
+		sbuff.append("&").append("chid=").append(dataInfo.optString("channelId"));
+		sbuff.append("&").append("spProductConsumeCodeId=").append(dataInfo.optString("spProductConsumeCodeId"));
+		try {
+			sbuff.append("&").append("message=").append(URLEncoder.encode(dataInfo.optString("message"), "utf-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return sbuff.toString();
+	}
+}

@@ -1,0 +1,523 @@
+package com.astrolink.dao;
+
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+
+import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
+
+import com.astrolink.consts.Const;
+import com.astrolink.domain.JdGameExecLog;
+import com.astrolink.logic.listener.JobThread;
+import com.astrolink.service.IExecFinish;
+
+import com.astrolink.util.tools.Base64;
+import com.astrolink.util.tools.BasicsTools;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTool;
+import com.astrolink.util.tools.ExceptionTools;
+import com.astrolink.util.tools.GetNetWork;
+import com.astrolink.util.tools.PostNetWork;
+import com.astrolink.util.tools.business.JdTools;
+
+
+/**
+ * 发送短信线程
+ * @author cuilei
+ * @date 2015-11-30
+ */
+public class JdGameSmsExecLinstenerThreadDao extends JobThread{
+	private Logger logger = Logger.getLogger(JdGameSmsExecLinstenerThreadDao.class);
+	private String dbTableName;
+	public JdGameExecLog jdGameExecLog;
+	public IExecFinish execFinish;
+	private byte[] Key1;
+	private byte[] Key2; 
+	private int connectionTimeout=Integer.parseInt(Const.JDGAME_connectionTimeout); 
+	private int soTimeout=Integer.parseInt(Const.JDGAME_soTimeout); 
+	
+	public JdGameSmsExecLinstenerThreadDao(JdGameExecLog jdGameExecLog){
+		this.jdGameExecLog = jdGameExecLog;
+	}
+	
+	public void setExecFinish(IExecFinish execFinish) {
+		this.execFinish = execFinish;
+	}
+	 
+	public void setDbTableName(String dbTableName) {
+		this.dbTableName = dbTableName;
+	}
+
+	@Override
+	public void exec() {
+		StringBuffer logBuff=new StringBuffer();
+		logBuff.append(jdGameExecLog.toString()).append("\r\n");
+		logBuff.append("开始基地单机计费确认，id为" + this.getKey()).append("\r\n");
+		long logEventInvokeTime = 0;
+		long logInvokeTime = 0;
+		long stayTime =0;
+		boolean type=false;
+		JSONObject dataInfo=new JSONObject();
+		dataInfo.put("execLogId", jdGameExecLog.getId());
+		dataInfo.put("cpInfoId", jdGameExecLog.getCpInfoId());
+		dataInfo.put("imei", jdGameExecLog.getImei());
+		dataInfo.put("imsi", jdGameExecLog.getImsi());
+		dataInfo.put("consumeCode", jdGameExecLog.getConsumeCode());
+		dataInfo.put("cpparam", jdGameExecLog.getCpparam());
+		dataInfo.put("methodType", jdGameExecLog.getMethodType());
+		dataInfo.put("proxyIp", jdGameExecLog.getProxyIp());
+		dataInfo.put("execNum", jdGameExecLog.getExecNum());
+		dataInfo.put("dayTime", BasicsTools.getForDate("yyyy-MM-dd"));
+		dataInfo.put("inputDate", BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss"));
+		dataInfo.put("spProductConsumeCodeId", jdGameExecLog.getSpProductConsumeCodeId());
+		
+		Map<String, String> Cookie = new HashMap<String, String>();
+		
+		/*
+		Key1 = new byte[] { (byte) 0x23, (byte) 0xA3, (byte) 0xBC, (byte) 0xCE, (byte) 0x3C, (byte) 0x10, (byte) 0xA1, (byte) 0x00, (byte) 0x4F, (byte) 0xE1, (byte) 0xF1, (byte) 0x15, (byte) 0x5D, (byte) 0xD9, (byte) 0xEE, (byte) 0x55, (byte) 0xDB, (byte) 0x40, (byte) 0x6D, (byte) 0x9D, (byte) 0x00, (byte) 0x02, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x4E, (byte) 0x02, (byte) 0x74, (byte) 0x74, (byte) 0x63, (byte) 0x03, (byte) 0x00, (byte) 0x06, (byte) 0x75, (byte) 0x07, (byte) 0x04, (byte) 0x66, (byte) 0x03, (byte) 0x05, (byte) 0x01, (byte) 0x7F, (byte) 0x03, (byte) 0x66, (byte) 0x06, (byte) 0x66, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36,
+				(byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36, (byte) 0x36 };
+		Key2 = new byte[] { (byte) 0x3A, (byte) 0xA5, (byte) 0x93, (byte) 0xA9, (byte) 0xB4, (byte) 0x2B, (byte) 0x03, (byte) 0x3F, (byte) 0xCF, (byte) 0x73, (byte) 0x6C, (byte) 0x70, (byte) 0x31, (byte) 0x71, (byte) 0x6A, (byte) 0x9B, (byte) 0x3F, (byte) 0x5A, (byte) 0x10, (byte) 0x6C, (byte) 0x00, (byte) 0x02, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x24, (byte) 0x68, (byte) 0x1E, (byte) 0x1E, (byte) 0x09, (byte) 0x69, (byte) 0x6A, (byte) 0x6C, (byte) 0x1F, (byte) 0x6D, (byte) 0x6E, (byte) 0x0C, (byte) 0x69, (byte) 0x6F, (byte) 0x6B, (byte) 0x15, (byte) 0x69, (byte) 0x0C, (byte) 0x6C, (byte) 0x0C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C,
+				(byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C, (byte) 0x5C };
+		String key1=JdTools.byte2hexString(Key1);
+		String key2=JdTools.byte2hexString(Key2);
+		System.out.println(key1);
+		System.out.println(key2);
+		*/
+		Key1 = JdTools.hexString2Bytes(jdGameExecLog.getKey1());
+		Key2 = JdTools.hexString2Bytes(jdGameExecLog.getKey2());
+		
+		String logdata = "sdkSessionId@" + jdGameExecLog.getSdkSessionId() + ",tel@,uid@,sdkType@1,sdkVer@" + jdGameExecLog.getSdkversion() + ",logVer@2.1,serviceType@6,cpId@" + jdGameExecLog.getCpId() + ",contentId@" + jdGameExecLog.getContentId() + ",channelId@" + jdGameExecLog.getChid() + ",installFlag@0,startFlag@7,packer@,uuid@" + jdGameExecLog.getUuid() + ",imei@" + jdGameExecLog.getImei() + ",imsi@" + jdGameExecLog.getImsi() + ",macAddr@" + jdGameExecLog.getMacAddr() + ",brand@" + jdGameExecLog.getBrand() + ",model@" + jdGameExecLog.getModel() + ",operator@1,network@0,invokeTime@";
+		try {
+			if(jdGameExecLog.getResponseType()==0){
+				//String egsb_authentication_getUserToken_rep = get_egsb_authentication_getUserToken(sdkversion, imei, imsi, sdkSessionId, rand4num);
+				String signature =  JdTools.getHmacSHA1("+Signature-OF-Secret+POST+Encrypt-IMSI=" + jdGameExecLog.getImsi() + "&Random-Code=" + jdGameExecLog.getRand4num(), "Signature-OF-Secret&");
+				String netURL= "http://drm.cmgame.com/egsb/authentication/getUserToken?Random-Code=" + jdGameExecLog.getRand4num() + "&Encrypt-IMSI=" + jdGameExecLog.getImsi();
+				String netContent="";
+				String jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+				logBuff.append("egsb_authentication_getUserToken_rep :").append(jdNetUrl).append("\r\n");
+				seveStepStatus(dataInfo,"egsb_authentication_getUserToken_rep :",jdNetUrl);
+				String userToken = JdTools.getContextByTag(jdNetUrl, "userToken");
+				dataInfo.put("userToken", userToken);
+				
+				//String access_login_rsp = post_access_login(sdkversion, imei, imsi, sdkSessionId, contentId, chid, userToken);
+				signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId() + "&gameId=&loginType=2&needTel=1&userToken=" + userToken, "Signature-OF-Secret&");
+				netURL= "http://drm.cmgame.com/egsb/access/login";
+				netContent="loginType=2&gameId=&contentId=" + jdGameExecLog.getContentId() + "&channelId=" + jdGameExecLog.getChid() + "&userToken=" + userToken + "&needTel=1&tokenType=0";
+				jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+				logBuff.append("post_access_login :").append(jdNetUrl).append("\r\n");
+				seveStepStatus(dataInfo,"post_access_login :",jdNetUrl);
+				if (!JdTools.getContextByTag(jdNetUrl, "status").equals("0")){
+					type=false;
+				}else{
+					type=true;
+				}
+				
+				String uid="",ub="",tel="";
+				if(type){
+					uid = JdTools.getContextByTag(jdNetUrl, "uid");
+					ub = JdTools.getContextByTag(jdNetUrl, "ub");
+					tel = new String(JdTools.DESdecrypt(JdTools.hexString2Bytes(new String(Base64.decode(JdTools.getContextByTag(jdNetUrl, "tel")))), "android_sdk"));
+					dataInfo.put("uid", uid);
+					dataInfo.put("ub", ub);
+					dataInfo.put("phoneNumber", tel);
+		
+					//String egsb_game_gamePlayerAuth_rsp = get_egsb_game_gamePlayerAuth(sdkversion, imei, imsi, sdkSessionId, uid, ub);
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+ub=" + ub + "&uid=" + uid, "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/game/gamePlayerAuth?uid=" + uid + "&ub=" + ub;
+					netContent="";
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("get_egsb_game_gamePlayerAuth :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"get_egsb_game_gamePlayerAuth :",jdNetUrl);
+					if (!JdTools.getContextByTag(jdNetUrl, "status").equals("0")){
+						type=false;
+					}
+				}
+				if(type){
+					//log2 http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?
+					logEventInvokeTime =Long.parseLong(jdGameExecLog.getLogEventInvokeTime()) + 15000 + Const.random.nextInt(15000);
+					logInvokeTime =Long.parseLong(jdGameExecLog.getLogInvokeTime())+ logEventInvokeTime;
+					String logdata2 = logdata + JdTools.getFormatTimeByMillis(logInvokeTime) + ",eventInvokeTime@" + logEventInvokeTime / 1000 + ",smsResult@1,eventId@E0007,smsDescn@7,eventType@7,screen@720*1280,os@4.1.1,location@,isRooted@1,smsFirewall@1,packageName@" + jdGameExecLog.getPackageName() + ",displayName@" + jdGameExecLog.getDisplayName() + ",versionName@" + jdGameExecLog.getVersionName() + ",versionCode@" + jdGameExecLog.getVersionCode();
+					Cookie.put("Cookie", jdGameExecLog.getCookie());
+					Cookie.put("Cookie2", "$Version=1");
+					//post_behaviorLogging_eventLogging_accept(sdkversion, imei, imsi, sdkSessionId, logdata2, Cookie);
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+data=" + logdata2, "Signature-OF-Secret&");
+					netURL= "http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?";
+					netContent="data=" + URLEncoder.encode(logdata2);
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("post_behaviorLogging_eventLogging_accept1 :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_behaviorLogging_eventLogging_accept1 :",jdNetUrl);
+					
+					//log3 http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?
+					logEventInvokeTime += 200 + Const.random.nextInt(800);
+					logInvokeTime += logEventInvokeTime;
+					String logdata3 = logdata + JdTools.getFormatTimeByMillis(logInvokeTime) + ",eventInvokeTime@" + logEventInvokeTime / 1000 + ",eventId@E0009_1,loginAccount@" + tel + ",loginMode@2,eventType@9";
+					//post_behaviorLogging_eventLogging_accept(sdkversion, imei, imsi, sdkSessionId, logdata3, Cookie);
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+data=" + logdata3, "Signature-OF-Secret&");
+					netURL= "http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?";
+					netContent="data=" + URLEncoder.encode(logdata3);
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("post_behaviorLogging_eventLogging_accept2 :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_behaviorLogging_eventLogging_accept2 :",jdNetUrl);
+				
+				
+					//String egsb_market_queryAnnouncement_rsp_1 = post_egsb_market_queryAnnouncement(sdkversion, imei, imsi, sdkSessionId, uid, ub, chid, contentId, "2");
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId() + "&type=2&ub=" + ub + "&uid=" + uid, "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/market/queryAnnouncement";
+					netContent="uid=" + uid + "&ub=" + ub + "&channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId() + "&type=2&versionNum=3";
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("post_egsb_market_queryAnnouncement :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_egsb_market_queryAnnouncement :",jdNetUrl);
+					if (!JdTools.getContextByTag(jdNetUrl, "status").equals("0"))
+						type=false;
+				}
+				
+				if(type){
+					//post_egsb_market_queryCardMarket(sdkversion, imei, imsi, sdkSessionId, uid, ub, chid, contentId);// http://drm.cmgame.com/egsb/market/queryCardMarket
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId() + "&ub=" + ub + "&uid=" + uid, "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/market/queryCardMarket";
+					netContent="uid=" + uid + "&ub=" + ub + "&channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId();
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("post_egsb_market_queryCardMarket :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_egsb_market_queryCardMarket :",jdNetUrl);
+					
+					//get_egsb_recommendGame_gameList(sdkversion, imei, imsi, sdkSessionId, uid, ub, contentId, chid);// http://drm.cmgame.com/egsb/recommendGame/gameList?ua=HTC_Desire&clientPlatform=03&channelId=12064000&uid=208380850&ub=9a388bf81f851efb52a6059fe3b6bdb4&contentId=622416051249
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+channelId=" + jdGameExecLog.getChid() + "&clientPlatform=03&ua=HTC_Desire", "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/recommendGame/gameList?ua=HTC_Desire&clientPlatform=03&channelId=" + jdGameExecLog.getChid() + "&uid=" + uid + "&ub=" + ub + "&contentId=" + jdGameExecLog.getContentId();
+					netContent="";
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("get_egsb_recommendGame_gameList :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"get_egsb_recommendGame_gameList :",jdNetUrl);
+					
+					//String egsb_game_subscribeAuth_rsp = get_egsb_game_subscribeAuth(sdkversion, imei, imsi, sdkSessionId, uid, ub, contentId, chid);
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+authType=1&channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId() + "&gameId=0&ub=" + ub + "&uid=" + uid, "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/game/subscribeAuth?uid=" + uid + "&ub=" + ub + "&authType=1&contentId=" + jdGameExecLog.getContentId() + "&channelId=" + jdGameExecLog.getChid() + "&gameId=0";
+					netContent="";
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("get_egsb_game_subscribeAuth1 :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"get_egsb_game_subscribeAuth1 :",jdNetUrl);
+					if (!JdTools.getContextByTag(jdNetUrl, "status").equals("0"))
+						type=false;
+				}
+				
+				if(type){
+					//String egsb_securityCounting_userTransLogin_rsp = post_egsb_securityCounting_userTransLogin(sdkversion, imei, imsi, sdkSessionId, uid, ub, chid, contentId, cpId, MODEL);
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId() + "&cpId=" + jdGameExecLog.getCpId() + "&cpparam=&ua=" + jdGameExecLog.getModel() + "&ub=" + ub + "&uid=" + uid, "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/securityCounting/userTransLogin";
+					netContent="uid=" + uid + "&ub=" + ub + "&contentId=" + jdGameExecLog.getContentId() + "&cpId=" + jdGameExecLog.getCpId() + "&channelId=" + jdGameExecLog.getChid() + "&cpparam=&ua=" + URLEncoder.encode(jdGameExecLog.getModel()) + "&needNotifyCP=1";
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("egsb_securityCounting_userTransLogin_rsp :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"egsb_securityCounting_userTransLogin_rsp :",jdNetUrl);
+					if (!JdTools.getContextByTag(jdNetUrl, "status").equals("0"))
+						return;
+					//log4 open order window http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?
+					logEventInvokeTime += 1000000 + Const.random.nextInt(1000000);
+					logInvokeTime += logEventInvokeTime;
+					stayTime = logInvokeTime;
+					String logdata4 = logdata + JdTools.getFormatTimeByMillis(logInvokeTime) + ",eventInvokeTime@" + logEventInvokeTime / 1000 + ",gamefee@" + jdGameExecLog.getGamefee() + ",chargePolicy@"+jdGameExecLog.getCsmPolicy()+",policyDesc@,itemName@" + jdGameExecLog.getItemName() + ",eventId@E0002_0,policy5Tel@,eventType@2,chargeTimes@,chargeType@0,itemCode@" + jdGameExecLog.getConsumeCode();
+					
+					//post_behaviorLogging_eventLogging_accept(sdkversion, imei, imsi, sdkSessionId, logdata4, Cookie);
+					signature =  JdTools.getHmacSHA1("+Signature-OF-Secret+POST+data=" + logdata4, "Signature-OF-Secret&");
+					netURL= "http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?";
+					netContent="data=" + URLEncoder.encode(logdata4);
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),Cookie);
+					logBuff.append("post_behaviorLogging_eventLogging_accept3 :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_behaviorLogging_eventLogging_accept3 :",jdNetUrl);
+					
+					//String egsb_discount_getLowestDiscountInfo_rsp = post_egsb_discount_getLowestDiscountInfo(sdkversion, imei, imsi, sdkSessionId, uid, ub, chid, contentId, cpId, consumeCode);
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+channelId=" + jdGameExecLog.getChid() + "&consumeCode=" + jdGameExecLog.getConsumeCode() + "&contentId=" + jdGameExecLog.getContentId() + "&packageId=&serviceId=&spId=" + jdGameExecLog.getCpId() + "&ub=" + ub + "&uid=" + uid, "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/discount/getLowestDiscountInfo";
+					netContent="uid=" + uid + "&ub=" + ub + "&contentId=" + jdGameExecLog.getContentId() + "&spId=" + jdGameExecLog.getCpId() + "&channelId=" + jdGameExecLog.getChid() + "&consumeCode=" + jdGameExecLog.getConsumeCode() + "&serviceId=&packageId=&adviceType=2";
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("egsb_discount_getLowestDiscountInfo_rsp :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"egsb_discount_getLowestDiscountInfo_rsp :",jdNetUrl);
+					if (!JdTools.getContextByTag(jdNetUrl, "status").equals("0"))
+						type=false;
+				}
+				
+				if(type){
+					//String egsb_props_queryPayment_rsp = post_egsb_props_queryPayment(sdkversion, imei, imsi, sdkSessionId, uid, ub, contentId, consumeCode);
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+contentId=" + jdGameExecLog.getContentId() + "&packageId=&propsId=" + jdGameExecLog.getConsumeCode() + "&ub=" + ub + "&uid=" + uid, "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/props/queryPayment";
+					netContent="uid=" + uid + "&ub=" + ub + "&contentId=" + jdGameExecLog.getContentId() + "&propsId=" + jdGameExecLog.getConsumeCode() + "&packageId=";
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("post_egsb_props_queryPayment :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_egsb_props_queryPayment :",jdNetUrl);
+					
+					//String egsb_market_queryAnnouncement_rsp_2 = post_egsb_market_queryAnnouncement(sdkversion, imei, imsi, sdkSessionId, uid, ub, chid, contentId, "1");
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId() + "&type=1&ub=" + ub + "&uid=" + uid, "Signature-OF-Secret&");
+					netURL= "http://drm.cmgame.com/egsb/market/queryAnnouncement";
+					netContent="uid=" + uid + "&ub=" + ub + "&channelId=" + jdGameExecLog.getChid() + "&contentId=" + jdGameExecLog.getContentId() + "&type=1&versionNum=3";
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("egsb_market_queryAnnouncement_rsp_2 :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"egsb_market_queryAnnouncement_rsp_2 :",jdNetUrl);
+					if (!JdTools.getContextByTag(jdNetUrl, "status").equals("0"))
+						type=false;
+				}
+				
+				if(type){
+					// click order button
+					String req = JdTools.generate_portalone_GetThirdPartySession_req(JdTools.getGameType(jdGameExecLog.getGameType()), jdGameExecLog.getRules(), jdGameExecLog.getSdkversion(), jdGameExecLog.getContentId(), jdGameExecLog.getChid(), jdGameExecLog.getPkgid(), jdGameExecLog.getConsumeCode(), jdGameExecLog.getImsi(), jdGameExecLog.getImei(), jdGameExecLog.getSdkSessionId(), jdGameExecLog.getAppid(), jdGameExecLog.getDevice_cid(), jdGameExecLog.getSoVersion(),Key1,Key2,jdGameExecLog.getCpparam(),jdGameExecLog.getReqNum());
+					
+					//String portalone_GetThirdPartySession_req = post_portalone_GetThirdPartySession(sdkversion, imei, imsi, sdkSessionId, req, cpId, contentId, chid, consumeCode);
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+chargeid=" + jdGameExecLog.getConsumeCode() + "&chid=" + jdGameExecLog.getChid() + "&cid=" + jdGameExecLog.getContentId() + "&cpId=" + jdGameExecLog.getCpId() + "&req=" + req + "&uid=" + JdTools.getIMEIUID(jdGameExecLog.getImei()), "Signature-OF-Secret&");
+					netURL= "http://wap.cmgame.com/portalone/GetThirdPartySession";
+					netContent="req=" + URLEncoder.encode(req) + "&uid=" + JdTools.getIMEIUID(jdGameExecLog.getImei()) + "&cpId=" + jdGameExecLog.getCpId() + "&cid=" + jdGameExecLog.getContentId() + "&chid=" + jdGameExecLog.getChid() + "&chargeid=" + jdGameExecLog.getConsumeCode();
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("post_portalone_GetThirdPartySession :").append(jdNetUrl).append("\r\n");
+					String sessionID = JdTools.getsessionID(jdNetUrl);
+					dataInfo.put("sessionID", sessionID);
+					//log5 http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?
+					logEventInvokeTime += 1000 + Const.random.nextInt(5000);
+					logInvokeTime += logEventInvokeTime;
+					String logdata5 = logdata + JdTools.getFormatTimeByMillis(logInvokeTime) + ",eventInvokeTime@" + logEventInvokeTime / 1000 + ",gamefee@" + jdGameExecLog.getGamefee() + ",chargePolicy@"+jdGameExecLog.getCsmPolicy()+",policyDesc@,itemName@" + jdGameExecLog.getItemName() + ",eventId@E0002,policy5Tel@,eventType@2,chargeTimes@1,chargeType@0,itemCode@" + jdGameExecLog.getConsumeCode();
+					
+					//post_behaviorLogging_eventLogging_accept(sdkversion, imei, imsi, sdkSessionId, logdata5, Cookie);
+					signature =  JdTools.getHmacSHA1("+Signature-OF-Secret+POST+data=" + logdata5, "Signature-OF-Secret&");
+					netURL= "http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?";
+					netContent="data=" + URLEncoder.encode(logdata5);
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),Cookie);
+					logBuff.append("post_behaviorLogging_eventLogging_accept4 :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_behaviorLogging_eventLogging_accept4 :",jdNetUrl);
+					
+					String paySms=JdTools.generateOrderSMS(JdTools.getGameType(jdGameExecLog.getGameType()), jdGameExecLog.getRules(), jdGameExecLog.getSdkversion(), jdGameExecLog.getContentId(), jdGameExecLog.getChid(), jdGameExecLog.getPkgid(), jdGameExecLog.getConsumeCode(), jdGameExecLog.getImsi(), jdGameExecLog.getImei(), jdGameExecLog.getSdkSessionId(), jdGameExecLog.getAppid(), sessionID, jdGameExecLog.getNetstat(),Key1,Key2,jdGameExecLog.getCpparam(),jdGameExecLog.getReqNum());
+					dataInfo.put("paySms", Base64.encode(paySms.getBytes()));
+				}
+			}else{
+			
+				//log6 http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?
+				long paytime = logInvokeTime + 20000 + Const.random.nextInt(5000);
+				logEventInvokeTime += 1000 + Const.random.nextInt(500);
+				logInvokeTime += logEventInvokeTime;
+				stayTime = logInvokeTime - stayTime;
+				paytime = logInvokeTime - paytime;
+				// 1_1_7_1 = isRooted + smsResult + smsDescn + smsFireWall
+				String reserve1 = "720*1280" + "_" + "4.1.1" + "__" + "1" + "_" + "1" + "_" + "7" + "_" + "1" + "_" + jdGameExecLog.getPackageName() + "_" + jdGameExecLog.getDisplayName() + "_" + jdGameExecLog.getVersionName() + "_" + jdGameExecLog.getVersionCode();
+				String reserve2 = logdata + JdTools.getFormatTimeByMillis(logInvokeTime) + ",eventInvokeTime@" + logEventInvokeTime / 1000 + ",reserve10@,reserve7@,reserve6@,reserve5@,reserve4@,reserve9@,reserve8@,track@,reserve3@,reserve2@,reserve1@" + reserve1;
+				reserve2 = JdTools.getBLD(reserve2);
+				String logdata6 = logdata + JdTools.getFormatTimeByMillis(logInvokeTime) + ",eventInvokeTime@" + logEventInvokeTime / 1000 + ",policyDesc@,reserve10@,rawPolicy@"+jdGameExecLog.getCsmPolicy()+",policy5Tel@,eventType@12,payTime@" + paytime + ",actionResult@20,stayTime@" + stayTime + ",eventId@E0012,itemCode@" + jdGameExecLog.getConsumeCode() + ",reserve7@,reserve6@,gameDiscountFee@10,reserve5@,itemName@" + jdGameExecLog.getItemName() + ",reserve4@,reserve9@,reserve8@,track@,applyCodeTime@,actionType@3,reserve3@,reserve2@" + reserve2 + ",reserve1@" + reserve1 + ",gamefee@" + jdGameExecLog.getGamefee() + ",chargePolicy@"+jdGameExecLog.getCsmPolicy()+",chargeTimes@2,chargeType@0";
+				
+				//post_behaviorLogging_eventLogging_accept(sdkversion, imei, imsi, sdkSessionId, logdata6, Cookie);
+				String signature =  JdTools.getHmacSHA1("+Signature-OF-Secret+POST+data=" + logdata6, "Signature-OF-Secret&");
+				String netURL= "http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?";
+				String netContent="data=" + URLEncoder.encode(logdata6);
+				String jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),Cookie);
+				logBuff.append("post_behaviorLogging_eventLogging_accept5 :").append(jdNetUrl).append("\r\n");
+				seveStepStatus(dataInfo,"post_behaviorLogging_eventLogging_accept5 :",jdNetUrl);
+				if (JdTools.getContextByTag(jdNetUrl, "status").equals("0"))
+					dataInfo.put("paySms", jdNetUrl);
+				
+				// open exit window
+				//String egsb_codes_queryExposureURL_req = post_egsb_codes_queryExposureURL(sdkversion, imei, imsi, sdkSessionId);// http://drm.cmgame.com/egsb/codes/queryExposureURL
+				String X_OF_Signature = JdTools.getHmacSHA1("+X-OF-Signature+POST+", "X-OF-Signature&");
+				signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+X-OF-Signature=" + X_OF_Signature + "=&apiVersion=2.2&imei=" + jdGameExecLog.getImei() + "&imsi=" + jdGameExecLog.getImsi() + "&platform=03&responseType=xml", "Signature-OF-Secret&");
+				netURL= "http://drm.cmgame.com/egsb/codes/queryExposureURL";
+				netContent="platform=03&apiVersion=2.2&imei=" + jdGameExecLog.getImei() + "&imsi=" + jdGameExecLog.getImsi() + "&X-OF-Signature=" + URLEncoder.encode(X_OF_Signature) + "&responseType=xml";
+				jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+				logBuff.append("egsb_codes_queryExposureURL_req :").append(jdNetUrl).append("\r\n");
+				seveStepStatus(dataInfo,"egsb_codes_queryExposureURL_req :",jdNetUrl);		
+				if (!JdTools.getContextByTag(jdNetUrl, "status").equals("0"))
+					type=false;
+			
+			
+				if(type){
+					String checkCodeURL = JdTools.getContextByTag(jdNetUrl, "url");
+					
+					//get_checkCode(checkCodeURL, sdkversion, imei, imsi, sdkSessionId, ip, macAddr, uuid);
+					String m1 = JdTools.md52String32(jdGameExecLog.getImei().getBytes());
+					String m1a = JdTools.md52String32("android_id".getBytes());
+					String m9b = JdTools.md52String32(jdGameExecLog.getMacAddr().getBytes());
+					signature = JdTools.getHmacSHA1("+Signature-OF-Secret+POST+m1=" + m1 + "&m1a=" + m1a + "&m1b=&m1c=&m2=&m2a=&m3=&m9=&m9b=" + m9b + "&m9c=&mo=0&ni=&ns=" + jdGameExecLog.getIp() + "&nx=" + jdGameExecLog.getUuid(), "Signature-OF-Secret&");
+					netURL = checkCodeURL+ "?mo=0&ni=&ns=" + jdGameExecLog.getIp() + "&m1=" + m1 + "&m2=&m3=&m1a=" + m1a + "&m2a=&m9=&m9b=" + m9b + "&m1b=&m1c=&m9c=&nx=" + jdGameExecLog.getUuid();
+					netContent="";
+					jdNetUrl=get_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),null);
+					logBuff.append("get_checkCode :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"get_checkCode :",jdNetUrl);	
+					//log7 http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?
+					logEventInvokeTime += 600000 + Const.random.nextInt(10000);
+					logInvokeTime += logEventInvokeTime;
+					String logdata7 = logdata + JdTools.getFormatTimeByMillis(logInvokeTime) + ",eventInvokeTime@" + logEventInvokeTime / 1000 + ",eventId@E0005_0,eventType@5";
+					
+					//post_behaviorLogging_eventLogging_accept(sdkversion, imei, imsi, sdkSessionId, logdata7, Cookie);
+					signature =  JdTools.getHmacSHA1("+Signature-OF-Secret+POST+data=" + logdata7, "Signature-OF-Secret&");
+					netURL= "http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?";
+					netContent="data=" + URLEncoder.encode(logdata7);
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),Cookie);
+					logBuff.append("post_behaviorLogging_eventLogging_accept6 :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_behaviorLogging_eventLogging_accept6 :",jdNetUrl);	
+					
+					//log8 click exit button http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?
+					logEventInvokeTime += 4000 + Const.random.nextInt(8000);
+					logInvokeTime += logEventInvokeTime;
+					String logdata8 = logdata + JdTools.getFormatTimeByMillis(logInvokeTime) + ",eventInvokeTime@" + logEventInvokeTime / 1000 + ",eventId@E0005,eventType@5";
+					//post_behaviorLogging_eventLogging_accept(sdkversion, imei, imsi, sdkSessionId, logdata8, Cookie);
+					signature =  JdTools.getHmacSHA1("+Signature-OF-Secret+POST+data=" + logdata8, "Signature-OF-Secret&");
+					netURL= "http://sdklog.cmgame.com/behaviorLogging/eventLogging/accept?";
+					netContent="data=" + URLEncoder.encode(logdata8);
+					jdNetUrl=post_doNetWork(netURL, signature, jdGameExecLog.getSdkversion(), jdGameExecLog.getImei(),  jdGameExecLog.getImsi(), jdGameExecLog.getSdkSessionId(), netContent,jdGameExecLog.getProxyIp(),Cookie);
+					logBuff.append("post_behaviorLogging_eventLogging_accept7 :").append(jdNetUrl).append("\r\n");
+					seveStepStatus(dataInfo,"post_behaviorLogging_eventLogging_accept7 :",jdNetUrl);
+					type=true;
+				}
+			}
+		} catch (Exception e) {
+			logger.error(ExceptionTools.exception(e));
+		}finally{
+			try {
+				if(dataInfo.containsKey("paySms")){
+					if(jdGameExecLog.getResponseType()==0){
+						updateExecLog(jdGameExecLog.getId());
+						sevePayResultLog(dataInfo);
+					}else{
+						deleteExecLog(jdGameExecLog.getId());
+					}
+				}else{
+					if(jdGameExecLog.getExecNum()<Const.JDGAME_LOGIC_RETRY_NUM-1){
+						updateExecNum(jdGameExecLog.getId());
+					}else{
+						if(jdGameExecLog.getResponseType()==0){
+							updateExecLog(jdGameExecLog.getId());
+							sevePayResultLog(dataInfo);
+						}else{
+							deleteExecLog(jdGameExecLog.getId());
+						}
+					}
+				}
+			} catch (Exception e) {
+				logger.info("处理请求失败，id为" + this.getKey() + ExceptionTools.exception(e));
+			} finally{
+				if (execFinish != null) {
+					execFinish.execDone(this.getKey());
+					logger.info("处理请求结束，id为" + this.getKey());
+				}
+			}
+			logger.info(logBuff);
+		}
+	}
+	public void sevePayResultLog(JSONObject dataInfo){
+		DbTools dt=new  DbTools(Const.DB_JDGAME_URL,Const.DB_MYSQL_DRIVER,Const.DB_JDGAME_USERNAME,Const.DB_JDGAME_PASSWORD);
+		logger.info("sevePayResultLog：" + dt.insertJson(Const.JDGAME_TABLE_PAY_RESULT_LOG, dataInfo, JdGameSmsExecLinstenerThreadDao.class));
+	}
+	
+	
+	public  void updateExecNum(long id){
+		StringBuffer sqlBuff=new StringBuffer();
+		sqlBuff.append("UPDATE ").append(dbTableName).append(" SET  execNum = execNum+1, updateDate='").append(BasicsTools.getForDate("yyyy-MM-dd HH:mm:ss")).append("'  WHERE `id` = '").append(id).append("' ");
+		DbTools dt=new  DbTools(Const.DB_JDGAME_URL,Const.DB_MYSQL_DRIVER,Const.DB_JDGAME_USERNAME,Const.DB_JDGAME_PASSWORD);
+		logger.info("updateExecNum：" + dt.upDate(sqlBuff.toString(), DmSmsExecLinstenerThreadDao.class));
+	}
+	
+	public  void deleteExecLog(long id){
+		StringBuffer sqlBuff=new StringBuffer();
+		sqlBuff.append("DELETE FROM gamebase.exec_log WHERE id = '").append(id).append("'");
+		DbTools dt=new  DbTools(Const.DB_JDGAME_URL,Const.DB_MYSQL_DRIVER,Const.DB_JDGAME_USERNAME,Const.DB_JDGAME_PASSWORD);
+		logger.info("deleteExecLog：" + dt.upDate(sqlBuff.toString(), DmSmsExecLinstenerThreadDao.class));
+	}
+	
+	public  void updateExecLog(long id){
+		StringBuffer sqlBuff=new StringBuffer();
+		sqlBuff.append("UPDATE gamebase.exec_log SET deleteType = '1' WHERE id= '").append(id).append("'");
+		DbTools dt=new  DbTools(Const.DB_JDGAME_URL,Const.DB_MYSQL_DRIVER,Const.DB_JDGAME_USERNAME,Const.DB_JDGAME_PASSWORD);
+		logger.info("deleteExecLog：" + dt.upDate(sqlBuff.toString(), DmSmsExecLinstenerThreadDao.class));
+	}
+	
+	private void seveStepStatus(JSONObject dataInfo,String stepName,String info){
+		dataInfo.put("stepName", stepName);
+		dataInfo.put("status", JdTools.getContextByTag(info, "status"));
+		dataInfo.put("message", JdTools.getContextByTag(info, "message"));
+	}
+	
+	private String post_doNetWork(String netURL,String signature,String sdkversion,String imei,String imsi,String sdkSessionId,String netContent,String proxyIp,Map<String, String> cookie) {
+		PostNetWork postNetWork =null;
+		String result = "";
+		try {
+			postNetWork = new PostNetWork(netURL);
+			postNetWork.setConnectionTimeout(this.connectionTimeout);
+			postNetWork.setSoTimeout(this.soTimeout);
+			postNetWork.getPostMethod().addRequestHeader("X-OF-Signature", signature);
+			postNetWork.getPostMethod().addRequestHeader("X-OF-Key", "Signature-OF-RSAUtils");
+			postNetWork.getPostMethod().addRequestHeader("OS_TYPE", "1");
+			postNetWork.getPostMethod().addRequestHeader("Accept", "application/xml");
+			postNetWork.getPostMethod().addRequestHeader("Response-Type", "xml");
+			postNetWork.getPostMethod().addRequestHeader("platform", "Android");
+			postNetWork.getPostMethod().addRequestHeader("apiVersion", "2.2");
+			postNetWork.getPostMethod().addRequestHeader("SDKVersion", sdkversion);
+			postNetWork.getPostMethod().addRequestHeader("imei", imei);
+			postNetWork.getPostMethod().addRequestHeader("imsi", imsi);
+			postNetWork.getPostMethod().addRequestHeader("signer", signature);
+			postNetWork.getPostMethod().addRequestHeader("sdkSessionId", sdkSessionId);
+			postNetWork.getPostMethod().addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			postNetWork.getPostMethod().addRequestHeader("Connection", "Keep-Alive");
+			postNetWork.getPostMethod().addRequestHeader("Accept-Encoding", "gzip");
+			if (cookie!=null) {
+				postNetWork.getPostMethod().addRequestHeader("Cookie", cookie.get("Cookie"));
+				postNetWork.getPostMethod().addRequestHeader("Cookie2",  cookie.get("Cookie2"));
+			}
+			
+			postNetWork.setInfoInputStream(netContent);
+		 	if(proxyIp.equals("") || proxyIp.equals("null")){
+				postNetWork.executeMethod();
+				result = postNetWork.getString("UTF-8");
+			}else{
+				String[] Proxy =proxyIp.split(":");
+				postNetWork.setProxyHost(Proxy[0]);
+				postNetWork.setProxyPort(Integer.parseInt(Proxy[1]));
+				postNetWork.executeMethod(true);
+				result = postNetWork.getString("UTF-8","GZIP");
+			}
+			postNetWork.getNetState();
+			if(cookie!=null){
+				String set_cookie=postNetWork.getCookie();
+				cookie.put("Cookie", set_cookie.substring(0, set_cookie.indexOf(';')));
+			}
+		} catch (Exception e) {
+			logger.error(ExceptionTool.getErrorInfo(e));
+		} finally {
+			postNetWork.closeConn();
+		}
+		return result;
+	} 
+
+	private String get_doNetWork(String netURL,String signature,String sdkversion,String imei,String imsi,String sdkSessionId,String netContent,String proxyIp,Map<String, String> cookie) {
+		GetNetWork getNetWork =null;
+		String result = "";
+		try {
+			getNetWork = new GetNetWork(netURL);
+			getNetWork.setConnectionTimeout(this.connectionTimeout);
+			getNetWork.setSoTimeout(this.soTimeout);
+			getNetWork.getGetMethod().addRequestHeader("X-OF-Signature", signature);
+			getNetWork.getGetMethod().addRequestHeader("X-OF-Key", "Signature-OF-RSAUtils");
+			getNetWork.getGetMethod().addRequestHeader("OS_TYPE", "1");
+			getNetWork.getGetMethod().addRequestHeader("Accept", "application/xml");
+			getNetWork.getGetMethod().addRequestHeader("Response-Type", "xml");
+			getNetWork.getGetMethod().addRequestHeader("platform", "Android");
+			getNetWork.getGetMethod().addRequestHeader("apiVersion", "2.2");
+			getNetWork.getGetMethod().addRequestHeader("SDKVersion", sdkversion);
+			getNetWork.getGetMethod().addRequestHeader("imei", imei);
+			getNetWork.getGetMethod().addRequestHeader("imsi", imsi);
+			getNetWork.getGetMethod().addRequestHeader("signer", signature);
+			getNetWork.getGetMethod().addRequestHeader("sdkSessionId", sdkSessionId);
+			getNetWork.getGetMethod().addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			getNetWork.getGetMethod().addRequestHeader("Connection", "Keep-Alive");
+			getNetWork.getGetMethod().addRequestHeader("Accept-Encoding", "gzip");
+			
+		 	if(proxyIp.equals("") || proxyIp.equals("null")){
+		 		getNetWork.executeMethod();
+				result = getNetWork.getString("UTF-8");
+			}else{
+				String[] Proxy =proxyIp.split(":");
+				getNetWork.setProxyHost(Proxy[0]);
+				getNetWork.setProxyPort(Integer.parseInt(Proxy[1]));
+				getNetWork.executeMethod(true);
+				result = getNetWork.getString("UTF-8","GZIP");
+			}
+		 	getNetWork.getNetState();
+		} catch (Exception e) {
+			logger.error(ExceptionTool.getErrorInfo(e));
+		} finally {
+			getNetWork.closeConn();
+		}
+		return result;
+	} 
+}

@@ -1,0 +1,197 @@
+2016-12-29 15:18:58,627 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-29 15:18:58,637 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-29 15:18:58,639 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-29 15:19:00,504 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数2
+ 2016-12-29 15:19:00,506 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-29 15:19:00,507 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量0
+ 2016-12-29 15:19:00,508 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为219
+ 2016-12-29 15:19:00,524 INFO  com.astrolink.service.JdLoginService  - id为219的处理线程添加成功
+ 2016-12-29 15:19:00,525 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为220
+ 2016-12-29 15:19:00,525 INFO  com.astrolink.service.JdLoginService  - id为220的处理线程添加成功
+ 2016-12-29 15:19:00,525 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量2删除缓冲0
+ 2016-12-29 15:19:35,939 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:19:36,963 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:19:38,986 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:19:39,554 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=219
+ 2016-12-29 15:19:39,959 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=219
+ 2016-12-29 15:19:40,004 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为219
+ 2016-12-29 15:19:40,327 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:19:40,796 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=220
+ 2016-12-29 15:19:41,514 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=220
+ 2016-12-29 15:19:41,551 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为220
+ 2016-12-29 15:36:31,323 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-29 15:36:31,332 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-29 15:36:31,333 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-29 15:47:00,326 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-29 15:47:00,335 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-29 15:47:00,337 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-29 15:47:03,743 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数6
+ 2016-12-29 15:47:03,744 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-29 15:47:03,744 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量0
+ 2016-12-29 15:47:03,744 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量3execMap执行缓冲数量0
+ 2016-12-29 15:47:03,745 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量4execMap执行缓冲数量0
+ 2016-12-29 15:47:03,745 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量5execMap执行缓冲数量0
+ 2016-12-29 15:47:03,745 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量6execMap执行缓冲数量0
+ 2016-12-29 15:47:03,746 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为194
+ 2016-12-29 15:47:03,760 INFO  com.astrolink.service.JdLoginService  - id为194的处理线程添加成功
+ 2016-12-29 15:47:03,761 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为195
+ 2016-12-29 15:47:03,762 INFO  com.astrolink.service.JdLoginService  - id为195的处理线程添加成功
+ 2016-12-29 15:47:03,762 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为196
+ 2016-12-29 15:47:03,762 INFO  com.astrolink.service.JdLoginService  - id为196的处理线程添加成功
+ 2016-12-29 15:47:03,763 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为197
+ 2016-12-29 15:47:03,763 INFO  com.astrolink.service.JdLoginService  - id为197的处理线程添加成功
+ 2016-12-29 15:47:03,763 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为198
+ 2016-12-29 15:47:03,763 INFO  com.astrolink.service.JdLoginService  - id为198的处理线程添加成功
+ 2016-12-29 15:47:03,763 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为199
+ 2016-12-29 15:47:03,765 INFO  com.astrolink.service.JdLoginService  - id为199的处理线程添加成功
+ 2016-12-29 15:47:03,765 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量6删除缓冲0
+ 2016-12-29 15:47:08,516 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:47:11,892 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=199
+ 2016-12-29 15:47:12,043 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:47:12,383 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=199
+ 2016-12-29 15:47:12,435 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为199
+ 2016-12-29 15:47:13,053 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:47:14,217 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:47:15,330 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:47:17,299 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:47:19,254 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=198
+ 2016-12-29 15:47:19,296 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - net.sf.json.JSONException: A JSONObject text must begin with '{' at character 1 of <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <base href="/open"/>
+
+    <title>咪咕游戏开放平台</title>
+</head>
+<body style="overflow: hidden;">
+<div style="text-align: center;">
+    <img
+            src="/open/errorPage/images/500.gif"
+            width="720" border="0" usemap="#Map"/>
+    <map name="Map">
+        <area shape="rect" coords="400,141,470,163"
+              href="javascript:history.back(-1)">
+        <area shape="rect" coords="489,140,552,164"
+              href="javascript:window.close();">
+    </map>
+</div>
+</body>
+</html>
+	at net.sf.json.util.JSONTokener.syntaxError(JSONTokener.java:499)
+	at net.sf.json.JSONObject._fromJSONTokener(JSONObject.java:972)
+	at net.sf.json.JSONObject._fromString(JSONObject.java:1201)
+	at net.sf.json.JSONObject.fromObject(JSONObject.java:165)
+	at net.sf.json.JSONObject.fromObject(JSONObject.java:134)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:265)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-29 15:47:19,784 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=198
+ 2016-12-29 15:47:19,822 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为198
+ 2016-12-29 15:47:20,509 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:47:20,631 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:47:21,031 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=196
+ 2016-12-29 15:47:21,234 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=197
+ 2016-12-29 15:47:21,543 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=196
+ 2016-12-29 15:47:21,615 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为196
+ 2016-12-29 15:47:21,915 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=197
+ 2016-12-29 15:47:21,948 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为197
+ 2016-12-29 15:47:22,951 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:47:24,343 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=195
+ 2016-12-29 15:47:26,352 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=195
+ 2016-12-29 15:47:26,453 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为195
+ 2016-12-29 15:47:34,522 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=194
+ 2016-12-29 15:47:34,564 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - net.sf.json.JSONException: A JSONObject text must begin with '{' at character 1 of <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <base href="/open"/>
+
+    <title>咪咕游戏开放平台</title>
+</head>
+<body style="overflow: hidden;">
+<div style="text-align: center;">
+    <img
+            src="/open/errorPage/images/500.gif"
+            width="720" border="0" usemap="#Map"/>
+    <map name="Map">
+        <area shape="rect" coords="400,141,470,163"
+              href="javascript:history.back(-1)">
+        <area shape="rect" coords="489,140,552,164"
+              href="javascript:window.close();">
+    </map>
+</div>
+</body>
+</html>
+	at net.sf.json.util.JSONTokener.syntaxError(JSONTokener.java:499)
+	at net.sf.json.JSONObject._fromJSONTokener(JSONObject.java:972)
+	at net.sf.json.JSONObject._fromString(JSONObject.java:1201)
+	at net.sf.json.JSONObject.fromObject(JSONObject.java:165)
+	at net.sf.json.JSONObject.fromObject(JSONObject.java:134)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:265)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-29 15:47:35,519 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=194
+ 2016-12-29 15:47:35,763 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为194
+ 2016-12-29 15:57:03,313 INFO  com.astrolink.consts.LoadProperties  - [系统初始化]服务器配置路径.\conf\config.properties
+ 2016-12-29 15:57:03,322 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务
+ 2016-12-29 15:57:03,325 INFO  com.astrolink.service.JdLoginService  - 数据导入监听服务完毕
+ 2016-12-29 15:57:05,095 INFO  com.astrolink.dao.JdLoginLinstenerThreadDao  - 扫描结束，需要处理的数据个数4
+ 2016-12-29 15:57:05,097 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量1execMap执行缓冲数量0
+ 2016-12-29 15:57:05,097 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量2execMap执行缓冲数量0
+ 2016-12-29 15:57:05,097 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量3execMap执行缓冲数量0
+ 2016-12-29 15:57:05,097 INFO  com.astrolink.service.JdLoginService  - 数据到达接收器，waitMap数据缓冲数量4execMap执行缓冲数量0
+ 2016-12-29 15:57:05,098 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为194
+ 2016-12-29 15:57:05,115 INFO  com.astrolink.service.JdLoginService  - id为194的处理线程添加成功
+ 2016-12-29 15:57:05,115 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为195
+ 2016-12-29 15:57:05,116 INFO  com.astrolink.service.JdLoginService  - id为195的处理线程添加成功
+ 2016-12-29 15:57:05,117 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为197
+ 2016-12-29 15:57:05,117 INFO  com.astrolink.service.JdLoginService  - id为197的处理线程添加成功
+ 2016-12-29 15:57:05,117 INFO  com.astrolink.service.JdLoginService  - 查询到,数据同步处理线程，开始添加，id为198
+ 2016-12-29 15:57:05,118 INFO  com.astrolink.service.JdLoginService  - id为198的处理线程添加成功
+ 2016-12-29 15:57:05,118 INFO  com.astrolink.service.JdLoginService  - 清除处理结束的缓存，waitMap数据缓冲数量0execMap执行缓冲数量4删除缓冲0
+ 2016-12-29 15:57:11,716 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:57:12,002 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=198
+ 2016-12-29 15:57:12,653 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=198
+ 2016-12-29 15:57:12,689 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为198
+ 2016-12-29 15:57:15,683 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:57:16,378 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:57:32,957 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:57:35,085 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉收入<br>出现异常'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=194
+ 2016-12-29 15:57:35,114 ERROR com.astrolink.dao.JdLoginExecLinstenerThreadDao  - net.sf.json.JSONException: A JSONObject text must begin with '{' at character 1 of <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <base href="/open"/>
+
+    <title>咪咕游戏开放平台</title>
+</head>
+<body style="overflow: hidden;">
+<div style="text-align: center;">
+    <img
+            src="/open/errorPage/images/500.gif"
+            width="720" border="0" usemap="#Map"/>
+    <map name="Map">
+        <area shape="rect" coords="400,141,470,163"
+              href="javascript:history.back(-1)">
+        <area shape="rect" coords="489,140,552,164"
+              href="javascript:window.close();">
+    </map>
+</div>
+</body>
+</html>
+	at net.sf.json.util.JSONTokener.syntaxError(JSONTokener.java:499)
+	at net.sf.json.JSONObject._fromJSONTokener(JSONObject.java:972)
+	at net.sf.json.JSONObject._fromString(JSONObject.java:1201)
+	at net.sf.json.JSONObject.fromObject(JSONObject.java:165)
+	at net.sf.json.JSONObject.fromObject(JSONObject.java:134)
+	at com.astrolink.dao.JdLoginExecLinstenerThreadDao.exec(JdLoginExecLinstenerThreadDao.java:265)
+	at com.astrolink.logic.listener.JobThread.run(JobThread.java:31)
+
+ 2016-12-29 15:57:35,509 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=194
+ 2016-12-29 15:57:35,543 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为194
+ 2016-12-29 15:57:36,365 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=195
+ 2016-12-29 15:57:36,653 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=195
+ 2016-12-29 15:57:36,681 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为195
+ 2016-12-29 15:57:43,608 WARN  org.apache.commons.httpclient.HttpMethodBase  - Going to buffer response body of large or unknown size. Using getResponseBodyAsStream instead is recommended.
+ 2016-12-29 15:58:00,541 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 基地投诉没数据
+ 2016-12-29 15:58:00,996 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate)SELECT CONCAT('id:',spProductTaskId,'<br>业务:',spProductName,'<br>基地投诉<br>没数据'),'1',NOW() FROM sp_product  AS a INNER JOIN sp_product_task AS b ON a.spProductId=b.spProductId WHERE spProductTaskId=197
+ 2016-12-29 15:58:02,242 INFO  com.astrolink.util.tools.DbTools  - com.astrolink.dao.DmLoginExecLinstenerThreadDao:UPDATE spinfo.sp_product_task SET automaticState = 0 WHERE spProductTaskId=197
+ 2016-12-29 15:58:02,298 INFO  com.astrolink.dao.JdLoginExecLinstenerThreadDao  - 处理请求结束，id为197
+ 

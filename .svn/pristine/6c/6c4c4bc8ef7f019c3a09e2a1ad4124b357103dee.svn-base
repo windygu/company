@@ -1,0 +1,232 @@
+package com.astrolink.service;
+
+import java.security.Key;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.log4j.Logger;
+
+import com.astrolink.consts.Const;
+import com.astrolink.util.tools.BasicsTools;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.ExceptionTools;
+import com.astrolink.util.tools.PostNetWork;
+import com.sun.rowset.CachedRowSetImpl;
+
+import net.sf.json.JSONObject;
+import sun.misc.BASE64Encoder;
+
+/**
+ * 心跳监护逻辑
+ * 
+ * @author cuilei
+ * @date 2015-11-30
+ */
+public class Dm20Updata implements Runnable {
+
+	private static Logger logger = Logger.getLogger(Dm20Updata.class);
+
+	public Dm20Updata() {
+		new Thread(this).start();
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+			try {
+				dmUpdataLogic();//检查动漫是否更新
+			} catch (Exception e) {
+				logger.error(ExceptionTools.exception(e));
+			} finally{
+				try {
+					Thread.sleep(1000 * 60 * 60 * 8);
+				} catch (InterruptedException e) {
+					logger.error(ExceptionTools.exception(e));
+				}
+			}
+		}
+	}
+	public static void dmUpdataLogic(){
+		JSONObject dataInfo=new JSONObject();
+		DmTools20InitData(dataInfo,"15606");
+		//dataInfo.put("SDKVersion","12002003");
+		//dataInfo.put("miguEDVersion","miguED.20.03");
+		String imsi=getImei("");
+		String imei=getImsi("");
+		//Map<String, String> headers = DmTools20InitHeaders(dataInfo.getString("apiVersion"), dataInfo.getString("SDKVersion"), dataInfo.getString("SEC_VERSION"), dataInfo.getString("nRQd_Lx"), dataInfo.getString("EN"), imsi, imei, dataInfo.getString("mg20irid"));
+		Map<String, String> headers = DmTools20InitHeaders(dataInfo.getString("apiVersion"), dataInfo.getString("SDKVersion"), dataInfo.getString("SEC_VERSION"), dataInfo.getString("nRQd_Lx"), dataInfo.getString("EN"), imsi, imei, dataInfo.getString("mg20irid"));
+		String info = post_verification_checkSdkUpdate(headers, dataInfo.getString("SDKVersion"), dataInfo.getString("miguEDVersion"), dataInfo.getString("soVersion"));
+		
+		if(info.indexOf("<updateFlag>1</updateFlag>")!=-1){
+			String sql ="INSERT INTO monitor_info (monitorInfo,sendOutType,inputDate) value ('动漫需要更新破解',0,now())";
+			try {
+				DbTools dt=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+				dt.upDate(sql, Dm20Updata.class);
+			} catch (Exception e) {
+				logger.error(ExceptionTools.exception(e));
+			}
+		}
+	}
+	
+	public static void DmTools20InitData(JSONObject dataInfo,String ssid) {
+		try {
+			String sql = "SELECT b.keyInfo from spinfo.dic_feecode_info AS a INNER JOIN spinfo.sp_product_crack_info AS b  ON a.spProductId=b.spProductId WHERE a.spProductConsumeCodeId='"+ssid+"' ";
+			DbTools dt=new  DbTools(Const.DB_SPINFO_URL,Const.DB_MYSQL_DRIVER,Const.DB_SPINFO_USERNAME,Const.DB_SPINFO_PASSWORD);
+			CachedRowSetImpl crsi= dt.executeQuery(sql, Dm20Updata.class);
+			while (crsi.next()) {
+				// 解析破解参数
+				JSONObject keys = object2JSON(crsi.getString("keyInfo"));
+				dataInfo.put("apiVersion", keys.getString("apiVersion"));
+				dataInfo.put("SDKVersion", keys.getString("SDKVersion"));
+				dataInfo.put("SEC_VERSION", keys.getString("SEC_VERSION"));
+				dataInfo.put("nRQd_Lx", keys.getString("nRQd_Lx"));
+				dataInfo.put("EN", keys.getString("EN"));
+				dataInfo.put("miguEDVersion", keys.getString("miguEDVersion"));
+				dataInfo.put("soVersion", keys.getString("soVersion"));
+				dataInfo.put("migusdkversion", keys.getString("migusdkversion"));
+				dataInfo.put("Serial", keys.getString("Serial"));
+				dataInfo.put("linux_version", keys.getString("linux_version"));
+				dataInfo.put("isRoot", keys.getString("isRoot"));
+				dataInfo.put("Ctype", keys.getString("Ctype"));
+				dataInfo.put("AppId", keys.getString("AppId"));
+				dataInfo.put("channelId", keys.getString("channelId"));
+				dataInfo.put("ChannelCode", keys.getString("ChannelCode"));
+				dataInfo.put("mg20irid", keys.getString("mg20irid"));
+				dataInfo.put("apkstatus", keys.getString("apkstatus"));
+				dataInfo.put("encodecid", keys.getString("encodecid"));
+				dataInfo.put("MiguPay_FileSHA1", keys.getString("MiguPay_FileSHA1"));
+				dataInfo.put("Location", keys.getString("Location"));
+				dataInfo.put("NetworkType", keys.getString("NetworkType"));
+				dataInfo.put("contentId", keys.getString("contentId"));
+				dataInfo.put("platformChannelCode", keys.getString("platformChannelCode"));
+			}
+			
+		} catch (Exception e) {
+			logger.error(ExceptionTools.exception(e));
+		}
+	}
+	
+	public static Map<String, String> DmTools20InitHeaders(String apiVersion, String SDKVersion, String SEC_VERSION, String nRQd_Lx, String EN, String imsi, String imei, String mg20irid) {
+		Map<String, String> headers = new HashMap<String, String>();
+		headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+		headers.put("Connection", "Keep-Alive");
+		headers.put("Accept-Encoding", "gzip");
+		headers.put("Accept", "application/xml");
+		headers.put("Response-Type", "xml");
+		headers.put("platform", "Android");
+		headers.put("Header-Key", "&apiVersion=" + apiVersion + "&SDKVersion=" + SDKVersion);
+		headers.put("apiVersion", apiVersion);
+		headers.put("SDKVersion", SDKVersion);
+		headers.put("EnVer", EN);
+		headers.put("nRQd-Lx", nRQd_Lx);
+		headers.put("scv-Xuw", SEC_VERSION);
+		headers.put("imei", imei);
+		headers.put("imsi", imsi);
+		headers.put("serialize", mg20irid);
+
+		return headers;
+	}
+	
+	public static String post_verification_checkSdkUpdate(Map<String, String> headers, String SDKVersion, String miguEDVersion, String soVersion) {
+		String result = "";
+		String verification_checkSdkUpdate_req = "resVersionCode=00000000&sdkVersionCode=" + SDKVersion + "&selfSoVersion=" + miguEDVersion.substring(miguEDVersion.lastIndexOf('.') + 1) + "&soVersionCode=" + soVersion.substring(0, 6);
+		String Signature = HmacSHA1("+  +POST+" + verification_checkSdkUpdate_req + headers.get("Header-Key"), "  &");
+		verification_checkSdkUpdate_req = "sdkVersionCode=" + SDKVersion + "&soVersionCode=" + soVersion.substring(0, 6) + "&resVersionCode=00000000&selfSoVersion=" + miguEDVersion.substring(miguEDVersion.lastIndexOf('.') + 1);// resVersionCode
+		headers.put("X-OF-Signature", Signature);
+		headers.put("Header-Signature", Signature);
+		result = netWorkIO("http://gmota.g188.net:8080/migusdk/verification/checkSdkUpdate", headers, verification_checkSdkUpdate_req);
+		//logger.info("verification_checkSdkUpdate_req:"+verification_checkSdkUpdate_req);
+		//logger.info("result:"+result);
+		return result;
+	}
+
+	public static String netWorkIO(String url, Map<String, String> headers, String data) {
+		PostNetWork postNetWork = null;
+		String result = "";
+		try {
+			postNetWork = new PostNetWork(url);
+			postNetWork.setConnectionTimeout(30000);
+			postNetWork.setSoTimeout(30000);
+			if (headers != null) {
+				if (!headers.containsKey("Content-Type")) {
+					postNetWork.getPostMethod().addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+				}
+				for (Entry<String, String> entry : headers.entrySet()) {
+					postNetWork.getPostMethod().addRequestHeader(entry.getKey(), entry.getValue());
+				}
+			}else{
+				postNetWork.getPostMethod().addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			}
+			postNetWork.setInfoInputStream(data);
+			postNetWork.executeMethod();
+			result = postNetWork.getString("UTF-8");
+			postNetWork.getNetState();
+		} catch (Exception e) {
+			logger.error(ExceptionTools.exception(e));
+		} finally {
+			postNetWork.closeConn();
+		}
+		return result;
+	}
+	
+	public static String HmacSHA1(String data, String key) {
+		try {
+			SecretKeySpec secretkey = new SecretKeySpec(key.getBytes("UTF-8"), "HmacSHA1");
+			Mac mac = Mac.getInstance("HmacSHA1");
+			mac.init(((Key) secretkey));
+			return BASE64encode(mac.doFinal(data.toString().getBytes("UTF-8"))).replace("\r\n", "");
+		} catch (Exception e2) {
+		}
+		return "";
+	}
+	
+	public static String BASE64encode(byte[] data) {
+		return new String(new BASE64Encoder().encode(data));
+	}
+	
+	/**
+	 * java对象串转JSONObject
+	 * @param str
+	 * @return
+	 */
+	public static JSONObject object2JSON(Object object) throws Exception {
+		return JSONObject.fromObject(object);
+	}
+	
+	/**
+	 * 生成Imei
+	 * 
+	 * @param imei
+	 *            原始Imei
+	 * @param dataInfo
+	 *            接受容器
+	 * @return
+	 */
+	public static String getImei(String imei) {
+		if (imei.length() != 15) {
+			imei = "86" + BasicsTools.getUuid(false, 13, Const.random);
+		}
+		return imei;
+	}
+
+	/**
+	 * 生成Imei
+	 * 
+	 * @param imsi
+	 *            原始imsi
+	 * @param dataInfo
+	 *            接受容器
+	 * @return
+	 */
+	public static String getImsi(String imsi) {
+		if (imsi.length() != 15) {
+			imsi = "46000" + BasicsTools.getUuid(false, 10, Const.random);
+		}
+		return imsi;
+	}
+
+}

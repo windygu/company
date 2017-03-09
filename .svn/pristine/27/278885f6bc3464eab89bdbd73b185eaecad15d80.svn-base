@@ -1,0 +1,227 @@
+package com.astrolink.util.tools.business;
+
+import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.security.Key;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
+import com.astrolink.consts.Const;
+
+public class DmTools20 {
+	public static char[]	LI	= "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
+
+	public static String chargeApkstatus(String apkstatus) {
+		int states = Integer.parseInt(apkstatus) + 8;
+		if (states < 10) {
+			return "0" + states;
+		}
+		return states + "";
+	}
+
+	public static String generate_charge_payReq_EDstr(String version, String timeStemp, String imei, int payCount, String startSecond, String mg20irid, String orderId, String phoneNumber) {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append(version);
+		buffer.append(timeStemp);
+		buffer.append(":");
+		buffer.append(imei);
+		buffer.append(":");
+		buffer.append(0);
+		buffer.append(":");
+		buffer.append(0);
+		buffer.append(":");
+		buffer.append(0);
+		buffer.append(":");
+		buffer.append(payCount);
+		buffer.append(":");
+		buffer.append(Integer.parseInt(startSecond) - 2);
+		buffer.append(":");
+		buffer.append(mg20irid);
+		buffer.append(":");
+		buffer.append(orderId);
+		buffer.append(":");
+		buffer.append(phoneNumber);
+		buffer.append(":");
+		return buffer.toString();
+	}
+
+	public static String generate_charge_payReq(String BaseClientHeader, String ChargePolicy, String phoneNumber, String ChannelFlag, String LogTimeStamp, String Ctype, String OrderId, String Fee, String ItemId, String cpId, String contentId, String ChannelId, String productId, String Cpparam, String friendNum, String SMSToken, String SDKSeq, String FeeRequestSeq, String SmsCode) {
+		String result = "<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><request>" + "<Ctype>" + Ctype + "</Ctype>" + "<ChargePolicy>" + ChargePolicy + "</ChargePolicy>" + "<RedListUsrId></RedListUsrId>" + "<CommLog>" + BaseClientHeader + "E0004" + "^" + LogTimeStamp + "^" + phoneNumber + "^null^" + ChannelFlag + "^" + "</CommLog>" + "<OrderId>" + OrderId + "</OrderId>" + "<VerifyInfo><SMSToken>" + SMSToken + "</SMSToken><Token></Token><SDKSeq>" + SDKSeq + "</SDKSeq><FeeRequestSeq>" + FeeRequestSeq + "</FeeRequestSeq><PicCode></PicCode><SmsCode>" + SmsCode + "</SmsCode><Usrname></Usrname><Pwd></Pwd></VerifyInfo>" + "<UserID>" + friendNum + "</UserID>" + "<RequestTime>" + LogTimeStamp.substring(0, 14) + "</RequestTime>" + "<VasType></VasType>" + "<ServType></ServType>"
+				+ "<SPCode></SPCode>" + "<LaunchType>0</LaunchType>" // 固定
+				+ "<SaleType></SaleType>" + "<CooperateCode>" + cpId + "</CooperateCode>" + "<ChannelCode>" + ChannelId + "</ChannelCode>" + "<ScdChannel></ScdChannel>" + "<ChannelClass></ChannelClass>" + "<ProductCode>" + productId + "</ProductCode>" + "<ContentCode>" + contentId + "</ContentCode>" + "<Fee>" + Fee + "</Fee>" + "<ItemId>" + ItemId + "</ItemId>" + "<SettleDate>" + LogTimeStamp.substring(0, 8) + "</SettleDate>" + "<MemberType></MemberType>" + "<StartChapter></StartChapter>" + "<Chapter></Chapter>" + "<SessionId></SessionId>" + "<Cpparam>" + Cpparam + "</Cpparam>" + "<ReserveParam></ReserveParam>" + "<Contendesc></Contendesc>" + "</request>";
+		return result;
+	}
+
+	public static String generate_charge_payReq(String BaseClientHeader, String ChargePolicy, String phoneNumber, String ChannelFlag, String LogTimeStamp, String Ctype, String OrderId, String Fee, String ItemId, String cpId, String contentId, String ChannelId, String productId, String Cpparam) {
+		String result = "<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><request>" + "<Ctype>" + Ctype + "</Ctype>" + "<ChargePolicy>" + ChargePolicy + "</ChargePolicy>" + "<RedListUsrId></RedListUsrId>" + "<CommLog>" + BaseClientHeader + "E0004" + "^" + LogTimeStamp + "^" + phoneNumber + "^1^" + ChannelFlag + "^" + "</CommLog>" + "<OrderId>" + OrderId + "</OrderId>" + "<VerifyInfo />" + "<UserID>" + phoneNumber + "</UserID>" + "<RequestTime>" + LogTimeStamp.substring(0, 14) + "</RequestTime>" + "<VasType></VasType>" + "<ServType></ServType>" + "<SPCode></SPCode>" + "<LaunchType>0</LaunchType>" // 固定
+				+ "<SaleType></SaleType>" + "<CooperateCode>" + cpId + "</CooperateCode>" + "<ChannelCode>" + ChannelId + "</ChannelCode>" + "<ScdChannel></ScdChannel>" + "<ChannelClass></ChannelClass>" + "<ProductCode>" + productId + "</ProductCode>" + "<ContentCode>" + contentId + "</ContentCode>" + "<Fee>" + Fee + "</Fee>" + "<ItemId>" + ItemId + "</ItemId>" + "<SettleDate>" + LogTimeStamp.substring(0, 8) + "</SettleDate>" + "<MemberType></MemberType>" + "<StartChapter></StartChapter>" + "<Chapter></Chapter>" + "<SessionId></SessionId>" + "<Cpparam>" + Cpparam + "</Cpparam>" + "<ReserveParam></ReserveParam>" + "<Contendesc></Contendesc>" + "</request>";
+		return result;
+	}
+
+	public static String generate_charge_sessionReq(String ChargePolicy, String phoneNumber, String LogTimeStamp, String Ctype, String OrderId, String Fee, String ItemId, String cpId, String contentId, String ChannelId, String productId, String Cpparam) {
+		String result = "<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><request>" + "<Ctype>" + Ctype + "</Ctype>" + "<ChargePolicy>" + ChargePolicy + "</ChargePolicy>" + "<RedListUsrId></RedListUsrId>" + "<CommLog></CommLog>" // 不设置
+				+ "<OrderId>" + OrderId + "</OrderId>" + "<UserID>" + phoneNumber + "</UserID>" + "<RequestTime>" + LogTimeStamp.substring(0, 14) + "</RequestTime>" + "<VasType></VasType>" + "<ServType></ServType>" + "<SPCode></SPCode>" + "<LaunchType>0</LaunchType>" // 固定
+				+ "<SaleType></SaleType>" + "<CooperateCode>" + cpId + "</CooperateCode>" + "<ChannelCode>" + ChannelId + "</ChannelCode>" + "<ChannelClass></ChannelClass>" + "<ProductCode>" + productId + "</ProductCode>" + "<ContentCode>" + contentId + "</ContentCode>" + "<Fee>" + Fee + "</Fee>" + "<ItemId>" + ItemId + "</ItemId>" + "<SettleDate>" + LogTimeStamp.substring(0, 8) + "</SettleDate>" + "<MemberType></MemberType>" + "<StartChapter></StartChapter>" + "<Chapter></Chapter>" + "<SessionId></SessionId>" + "<Cpparam>" + Cpparam + "</Cpparam>" + "<Contendesc></Contendesc>" + "</request>";
+		return result;
+	}
+
+	public static String generate_tl_tcttl_recordPolicyLog(String BaseClientHeader, String LogTimeStamp, String phoneNumber, String Ctype, String Orderid, String Userid, String cpId, String contentId, String ChannelId, String productId, String Fee, String policy, String channelFlag, String redFunOpenFlag) {
+		String result = "<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><request><LogInfo>" + BaseClientHeader + "E0011" + "^" + LogTimeStamp + "^" + phoneNumber + "^" + "1" + "^" + Ctype + "^" + Orderid + "^" + "0" + "^" + Userid + "^" + "1" + "^" + "[" + ChannelId + "`" + cpId + "`" + productId + "`" + contentId + "`" + ",]" + Fee + "^" + policy + "^" + channelFlag + "^" + redFunOpenFlag + "^" + "</LogInfo></request>";
+		return result;
+	}
+
+	public static String generate_policySecLv_queryChargePolicyInfoReq(String BaseClientHeader, String phoneNumber, String LogTimeStamp, String Ctype, String OrderId, String Fee, String ItemId, String cpId, String contentId, String ChannelId, String productId) {
+		String result = "<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><request>" + "<Ctype>" + Ctype + "</Ctype>" + "<CommLog>" + BaseClientHeader + "E0003" + "^" + LogTimeStamp + "^" + phoneNumber + "^" + "1" + "^" + "</CommLog>" + "<OrderId>" + OrderId + "</OrderId>" + "<PolicyType>0</PolicyType>" + "<UserID>" + phoneNumber + "</UserID>" + "<OrderNum>1</OrderNum>" + "<Fee>" + Fee + "</Fee>" + "<ItemId>" + ItemId + "</ItemId>" + "<RedListUsrId></RedListUsrId>" + "<BadRecType></BadRecType>" + "<OrderInfoList>" + "<CooperateCode>" + cpId + "</CooperateCode>" + "<ContentCode>" + contentId + "</ContentCode>" + "<ChannelCode>" + ChannelId + "</ChannelCode>" + "<ProductCode>" + productId + "</ProductCode>" + "<OrderType></OrderType>" + "<BatchSaleFlag>0</BatchSaleFlag>"
+				+ "<SaleNum></SaleNum>" + "<ScdChannel></ScdChannel>" + "</OrderInfoList>" + "</request>";
+		return result;
+	}
+
+	public static String generate_ReportStr(String phoneNumber, String imei, String imsi, String encodecid, String websessionid, String timestamp, String apkstatus, int netcount, int paycount, String startcount, String startSecond, String webSecond, String soVersion, String migusdkversion, String payReq1, String payReq2, String payReq3, String payReq4, String payReq5, String MiguPay_FileSHA1, String Serial, String linux_version, String Hardware, String local_ip, String callstack, String isRoot, String localsessionid) {
+		String result = "|0|" + phoneNumber + "|" + imei + "|" + imsi + "|" + encodecid + "|" + websessionid + "|" + timestamp + "|" + apkstatus + "|" + fillby0((netcount + ""), 4) + "|" + fillby0((paycount + ""), 4) + "|" + startcount + "|" + startSecond + "|" + webSecond + "|" + soVersion + "|" + migusdkversion + "|" + payReq1 + "|" + payReq2 + "|" + payReq3 + "|" + payReq4 + "|" + payReq5 + "|" + MiguPay_FileSHA1 + "|" + Serial + "|" + linux_version + "|" + Hardware + "|" + local_ip + "|" + callstack + "|" + isRoot + "|" + localsessionid + "|";
+		return result;
+	}
+
+	public static String generate_migu_sms(String mg20irid, String imsi, String imei, String encodeCID, String rand16Num, String smsTimeStamp, String apkstatus) {
+		String result = mg20irid + imei + imsi + encodeCID + rand16Num + smsTimeStamp + apkstatus + "00000000000" + "0";
+		result = DmNetTools20.generateSmsSignatureAndEncrypt(mg20irid, result);
+		if (result.equals(""))
+			return "";
+		String sms = "AE2" + result;
+		return sms;
+	}
+
+	public static String getContextByTag(String context, String tag) {
+		String result = "";
+		int start = context.indexOf("<" + tag + ">") + ("<" + tag + ">").length();
+		int end = context.indexOf("</" + tag + ">");
+		if (start != -1 && end != -1)
+			result = context.substring(start, end);
+		//System.out.println(tag + ":\t" + result);
+		return result;
+	}
+
+	public static String getLogTimeStampByMillis(long Millis) {
+		return new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(Millis));
+	}
+
+	public static String getSmsTimeStampByMillis(long Millis) {
+		return new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(Millis));
+	}
+
+	public static int getRandom(int n) {
+		return Const.random.nextInt(n);
+	}
+
+	public static String formateLocalip(String local_ip) {
+		String[] ips = local_ip.split("\\.");
+		String result = "";
+		for (int i = 0; i < ips.length; i++) {
+			result += fillby0(ips[i], 3);
+
+			if (i + 1 == ips.length) {
+				return result;
+			}
+			result += ".";
+		}
+		return "";
+	}
+
+	public static String getSession(int paramInt) {
+		StringBuffer buffer = new StringBuffer();
+		for (int i = 0; i < paramInt; i++) {
+			int j = Const.random.nextInt(LI.length);
+			buffer.append(String.valueOf(LI[j]));
+		}
+		// System.out.println(buffer.toString());
+		return buffer.toString();
+	}
+
+	public static String fillby0(String data, int len) {
+		while (data.length() < len) {
+			data = "0" + data;
+		}
+		return data;
+	}
+
+	public static String generate_BaseClientHeader(String sSdkSessionid, String isSelfClient, String imei, String imsi, String RELEASE, String screen, String BRAND, String MODEL, String SDKVersion, String apiVersion, String MacAddr, String Location, String local_ip, String NetworkType) {
+		String result = sSdkSessionid + "^" + isSelfClient + "^" + imei + "^" + imsi + "^" + RELEASE + "^" + screen + "^" + BRAND + "^" + MODEL + "^" + SDKVersion + "^" + apiVersion + "^" + MacAddr + "^" + Location + "^" + local_ip + "^" + NetworkType + "^";
+		return result;
+	}
+
+	public static Map<String, String> initHeaders(String apiVersion, String SDKVersion, String SEC_VERSION, String nRQd_Lx, String EN, String imsi, String imei, String mg20irid) {
+		Map<String, String> headers = new HashMap<String, String>();
+		headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+		headers.put("Connection", "Keep-Alive");
+		headers.put("Accept-Encoding", "gzip");
+		headers.put("Accept", "application/xml");
+		headers.put("Response-Type", "xml");
+		headers.put("platform", "Android");
+		headers.put("Header-Key", "&apiVersion=" + apiVersion + "&SDKVersion=" + SDKVersion);
+		headers.put("apiVersion", apiVersion);
+		headers.put("SDKVersion", SDKVersion);
+		headers.put("EnVer", EN);
+		headers.put("nRQd-Lx", nRQd_Lx);
+		headers.put("scv-Xuw", SEC_VERSION);
+		headers.put("imei", imei);
+		headers.put("imsi", imsi);
+		headers.put("serialize", mg20irid);
+
+		return headers;
+	}
+
+	public static String HmacSHA1(String data, String key) {
+		try {
+			SecretKeySpec secretkey = new SecretKeySpec(key.getBytes("UTF-8"), "HmacSHA1");
+			Mac mac = Mac.getInstance("HmacSHA1");
+			mac.init(((Key) secretkey));
+			return BASE64encode(mac.doFinal(data.toString().getBytes("UTF-8"))).replace("\r\n", "");
+		} catch (Exception e2) {
+		}
+		return "";
+	}
+
+	public static String URLencode(String data) {
+		return URLEncoder.encode(data);
+	}
+
+	public static String URLdecode(String data) {
+		return URLDecoder.decode(data);
+	}
+
+	public static String BASE64encode(byte[] data) {
+		return new String(new BASE64Encoder().encode(data));
+	}
+
+	public static String BASE64encode(String data) {
+		return new String(new BASE64Encoder().encode(data.getBytes()));
+	}
+
+	public static byte[] decode2bytes(String data) {
+		try {
+			return new BASE64Decoder().decodeBuffer(data);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static String decode2string(String data) {
+		try {
+			return new String(new BASE64Decoder().decodeBuffer(data));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

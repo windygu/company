@@ -1,0 +1,97 @@
+package com.astrolink.main;
+
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import net.sf.json.JSONObject;
+
+import com.astrolink.consts.Const;
+import com.astrolink.consts.LoadProperties;
+import com.astrolink.service.DmSmsService;
+import com.astrolink.util.tools.DbTools;
+import com.astrolink.util.tools.GetNetWork;
+import com.sun.rowset.CachedRowSetImpl;
+
+/**
+ * 动漫计费确认主入口
+ * 
+ * @author cuilei
+ * @date 2015-11-30
+ */
+public class DmSmsMain {
+
+	public static void main(String[] args) {
+		String configName = "config";
+		int methodType = 0;
+		if (args.length == 2) {
+			configName = args[0];
+			methodType = Integer.parseInt(args[1]);
+		}
+		System.setProperty("myconfig.accout",methodType+"");
+		System.out.print("configName="+configName+"  methodType="+methodType+"\r\n");
+		// 配置文件config.properties路径
+		String configPath = "." + File.separator + "conf" + File.separator + configName + ".properties";
+
+		new LoadProperties(configPath).init();
+		DmSmsService.getInstance().doDmSmsExec(methodType);
+		
+		//syn();
+	}
+	
+	public static void syn(){
+			
+			String sql="SELECT id,phoneNumber,cpInfoId,cpparam,monum,consumeCode,imei,imsi,transId,STATUS,message FROM  pay_result_log WHERE dayTime='2016-04-06' AND STATUS=0 AND synstatus IS NULL "; 
+			DbTools dt=new  DbTools(Const.DB_COMIC_URL,Const.DB_MYSQL_DRIVER,Const.DB_COMIC_USERNAME,Const.DB_COMIC_PASSWORD);
+			CachedRowSetImpl cesi=dt.executeQuery(sql, DmSmsMain.class);
+			try {
+				while (cesi.next()) {
+					JSONObject dataInfo=new JSONObject();
+					dataInfo.put("id",cesi.getString("id"));
+					dataInfo.put("phoneNumber",cesi.getString("phoneNumber"));
+					dataInfo.put("cpInfoId",cesi.getString("cpInfoId"));
+					dataInfo.put("cpparam",cesi.getString("cpparam"));
+					dataInfo.put("monum",cesi.getString("monum"));
+					dataInfo.put("consumeCode",cesi.getString("consumeCode"));
+					dataInfo.put("imei",cesi.getString("imei"));
+					dataInfo.put("imsi",cesi.getString("imsi"));
+					dataInfo.put("transId",cesi.getString("transId"));
+					dataInfo.put("status",cesi.getString("status"));
+					dataInfo.put("message",cesi.getString("message"));
+					crackSyn(dataInfo,crackSynUrl(dataInfo,"http://42.96.169.232:8081/syn/synDate/84"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+	}
+	
+	public static void crackSyn(JSONObject dataInfo,String url){
+		GetNetWork get=new GetNetWork(url);
+		get.executeMethod();
+		String sql="UPDATE pay_result_log SET synUrl = '"+url+"',synstatus = '"+get.getNetState()+"',synresult = '"+get.getString().replaceAll("'","")+"',methodType='-1' WHERE id = '"+dataInfo.getString("id")+"'" ;
+		DbTools dt=new  DbTools(Const.DB_COMIC_URL,Const.DB_MYSQL_DRIVER,Const.DB_COMIC_USERNAME,Const.DB_COMIC_PASSWORD);
+		dt.upDate(sql, DmSmsMain.class);
+	}
+	
+	public static String crackSynUrl(JSONObject dataInfo,String crackSynUrl){
+		StringBuffer sbuff =new StringBuffer();
+		sbuff.append(crackSynUrl);
+		sbuff.append("?").append("mobile=").append(dataInfo.optString("phoneNumber"));
+		sbuff.append("&").append("cpid=").append(dataInfo.optString("cpInfoId"));
+		sbuff.append("&").append("cpparam=").append(dataInfo.optString("cpparam"));
+		sbuff.append("&").append("monum=").append(dataInfo.optString("monum"));
+		sbuff.append("&").append("sid=").append(dataInfo.optString("consumeCode"));
+		sbuff.append("&").append("imei=").append(dataInfo.optString("imei"));
+		sbuff.append("&").append("imsi=").append(dataInfo.optString("imsi"));
+		sbuff.append("&").append("linkId=").append(dataInfo.optString("transId"));
+		sbuff.append("&").append("status=").append(dataInfo.optString("status"));
+		try {
+			sbuff.append("&").append("message=").append(URLEncoder.encode(dataInfo.optString("message"),"utf-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return sbuff.toString();
+
+	}
+}
